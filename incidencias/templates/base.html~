@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<!--
+	ZeroFour 2.5 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Sistema de Incidencias del Cuerpo de Bomberos del Estado Mérida</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="Sistema de Incidencias del Cuerpo de Bomberos del Estado Mérida" />
+		<meta name="keywords" content="incidencias, bomberos, mérida" />
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800" rel="stylesheet" type="text/css" />
+		<script src="{{MEDIA_URL}}/js/jquery.min.js"></script>
+		<script src="{{MEDIA_URL}}/js/jquery.dropotron.min.js"></script>
+		<script src="{{MEDIA_URL}}/js/config.js"></script>
+		<script src="{{MEDIA_URL}}/js/skel.min.js"></script>
+		<script src="{{MEDIA_URL}}/js/skel-panels.min.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="{{MEDIA_URL}}/css/skel-noscript.css" />
+			<link rel="stylesheet" href="{{MEDIA_URL}}/css/style.css" />
+			<link rel="stylesheet" href="{{MEDIA_URL}}/css/style-desktop.css" />
+		</noscript>
+	</head>
+	<body class="left-sidebar">
+		<!-- Header Wrapper -->
+		<div id="header-wrapper">
+			<div class="container">
+				<div class="row">
+					<div class="12u">
+						<!-- Header -->
+						<header id="header">
+							<div class="inner">
+								<!-- Logo -->
+								<h1><a href="#" id="logo">LOGO</a></h1>
+								<!-- Nav -->
+								<nav id="nav">
+									<ul>
+										<li><a href="#">Inicio</a></li>
+										<li>
+											<span>Incidencias</span>
+											<ul>
+												<li><a href="#">UNO</a></li>
+												<li><a href="#">DOS</a></li>
+												<li>
+													<span>TRES</span>
+													<ul>
+														<li><a href="#">TRES - UNO</a></li>
+														<li><a href="#">TRES - DOS</a></li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						</header>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
