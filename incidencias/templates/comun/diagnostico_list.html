@@ -1,0 +1,14 @@
+{% extends "base2.html" %}
+{% block formulario %}
+	<h1>Diagnósticos</h1>
+	<ul>
+		{% for diagnostico in object_list %}
+		<li>{{ diagnostico.nombre }}  :  
+			<a href="{% url 'diagnostico_edit' diagnostico.id %}">{{ diagnostico.id }}</a>
+			<a href="{% url 'diagnostico_delete' diagnostico.id %}">eliminar</a>
+		</li>
+		{% endfor %}
+	</ul>
+
+	<a href="{% url 'diagnostico_new' %}">Nuevo</a>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base2.html" %}
+{% block formulario %}
+	<h1>Novedades</h1>
+	<ul>
+		{% for novedad in object_list %}
+		<li>{{ novedad.fecha }}  :  
+			<a href="{% url 'novedad_edit' novedad.id %}">{{ novedad.id }}</a>
+			<a href="{% url 'novedad_delete' novedad.id %}">eliminar</a>
+		</li>
+		{% endfor %}
+	</ul>
+
+	<a href="{% url 'novedad_new' %}">Nuevo</a>
+{% endblock %}

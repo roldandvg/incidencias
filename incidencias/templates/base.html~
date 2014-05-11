@@ -4,6 +4,7 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+{% load static from staticfiles %}
 <html>
 	<head>
 		<title>Sistema de Incidencias del Cuerpo de Bomberos del Estado Mérida</title>
@@ -11,15 +12,15 @@
 		<meta name="description" content="Sistema de Incidencias del Cuerpo de Bomberos del Estado Mérida" />
 		<meta name="keywords" content="incidencias, bomberos, mérida" />
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800" rel="stylesheet" type="text/css" />
-		<script src="{{MEDIA_URL}}/js/jquery.min.js"></script>
-		<script src="{{MEDIA_URL}}/js/jquery.dropotron.min.js"></script>
-		<script src="{{MEDIA_URL}}/js/config.js"></script>
-		<script src="{{MEDIA_URL}}/js/skel.min.js"></script>
-		<script src="{{MEDIA_URL}}/js/skel-panels.min.js"></script>
+		<script src="{% static "js/jquery.min.js" %}"></script>
+		<script src="{% static "js/jquery.dropotron.min.js" %}"></script>
+		<script src="{% static "js/config.js" %}"></script>
+		<script src="{% static "js/skel.min.js" %}"></script>
+		<script src="{% static "js/skel-panels.min.js" %}"></script>
 		<noscript>
-			<link rel="stylesheet" href="{{MEDIA_URL}}/css/skel-noscript.css" />
-			<link rel="stylesheet" href="{{MEDIA_URL}}/css/style.css" />
-			<link rel="stylesheet" href="{{MEDIA_URL}}/css/style-desktop.css" />
+			<link rel="stylesheet" href="{% static "css/skel-noscript.css" %}" />
+			<link rel="stylesheet" href="{% static "css/style.css" %}" />
+			<link rel="stylesheet" href="{% static "css/style-desktop.css" %}" />
 		</noscript>
 	</head>
 	<body class="left-sidebar">
@@ -51,10 +52,36 @@
 												</li>
 											</ul>
 										</li>
+										<li><a href="#">Reportes</a></li>
 									</ul>
 								</nav>
 							</div>
 						</header>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Main Wrapper -->
+		<div id="main-wrapper">
+			<div class="main-wrapper-style2">
+				<div class="inner">
+					<div class="container">
+						<div class="row">
+							<div class="4u">
+								<div id="sidebar">
+									<!-- Sidebar -->
+									<section>
+										<header class="major">
+											<h2>Panel de Acceso</h2>
+										</header>
+										<p>FORMULARIO DE ACCESO</p>
+										<footer>
+											BOTONES
+										</footer>
+									</section>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

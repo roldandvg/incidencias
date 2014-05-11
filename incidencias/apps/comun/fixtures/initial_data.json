@@ -1,0 +1,382 @@
+[
+	{
+		"pk": 1,
+		"model": "comun.zona",
+		"fields": {
+			"nombre": "Metropolitana"
+		}
+	},
+	{
+		"pk": 2,
+		"model": "comun.zona",
+		"fields": {
+			"nombre": "Valle del Mocotíes"
+		}
+	},
+	{
+		"pk": 3,
+		"model": "comun.zona",
+		"fields": {
+			"nombre": "Panamericana"
+		}
+	},
+	{
+		"pk": 4,
+		"model": "comun.zona",
+		"fields": {
+			"nombre": "Páramo"
+		}
+	},
+	{
+		"pk": 1,
+		"model": "comun.municipio",
+		"fields": {
+			"nombre": "Libertador",
+			"zona": 1
+		}
+	},
+	{
+		"pk": 2,
+		"model": "comun.municipio",
+		"fields": {
+			"nombre": "Campo Elías",
+			"zona": 1
+		}
+	},
+	{
+		"pk": 3,
+		"model": "comun.municipio",
+		"fields": {
+			"nombre": "Tovar",
+			"zona": 2
+		}
+	},
+	{
+		"pk": 4,
+		"model": "comun.municipio",
+		"fields": {
+			"nombre": "Guaraque",
+			"zona": 2
+		}
+	},
+	{
+		"pk": 5,
+		"model": "comun.municipio",
+		"fields": {
+			"nombre": "Alberto Adriani",
+			"zona": 3
+		}
+	},
+	{
+		"pk": 6,
+		"model": "comun.municipio",
+		"fields": {
+			"nombre": "Caracciolo Parra y Olmedo",
+			"zona": 3
+		}
+	},
+	{
+		"pk": 7,
+		"model": "comun.municipio",
+		"fields": {
+			"nombre": "Tulio Febres Cordero",
+			"zona": 3
+		}
+	},
+	{
+		"pk": 8,
+		"model": "comun.municipio",
+		"fields": {
+			"nombre": "Rángel",
+			"zona": 4
+		}
+	},
+	{
+		"pk": 9,
+		"model": "comun.municipio",
+		"fields": {
+			"nombre": "Cardenal Quintero",
+			"zona": 4
+		}
+	},
+	{
+		"pk": 1,
+		"model": "comun.parroquia",
+		"fields": {
+			"nombre": "Caracciolo Parra",
+			"municipio": 1
+		}
+	},
+	{
+		"pk": 2,
+		"model": "comun.parroquia",
+		"fields": {
+			"nombre": "Milla",
+			"municipio": 1
+		}
+	},
+	{
+		"pk": 3,
+		"model": "comun.parroquia",
+		"fields": {
+			"nombre": "Jacinto Plaza",
+			"municipio": 1
+		}
+	},
+	{
+		"pk": 4,
+		"model": "comun.parroquia",
+		"fields": {
+			"nombre": "Domingo Peña",
+			"municipio": 1
+		}
+	},
+	{
+		"pk": 5,
+		"model": "comun.parroquia",
+		"fields": {
+			"nombre": "Juan Rodríguez Suarez",
+			"municipio": 1
+		}
+	},
+	{
+		"pk": 6,
+		"model": "comun.parroquia",
+		"fields": {
+			"nombre": "Gonzalo Picón Febres",
+			"municipio": 1
+		}
+	},
+	{
+		"pk": 7,
+		"model": "comun.parroquia",
+		"fields": {
+			"nombre": "Matriz",
+			"municipio": 2
+		}
+	},
+	{
+		"pk": 8,
+		"model": "comun.parroquia",
+		"fields": {
+			"nombre": "Montalbán",
+			"municipio": 2
+		}
+	},
+	{
+		"pk": 9,
+		"model": "comun.parroquia",
+		"fields": {
+			"nombre": "Tovar",
+			"municipio": 3
+		}
+	},
+	{
+		"pk": 10,
+		"model": "comun.parroquia",
+		"fields": {
+			"nombre": "Guaraque",
+			"municipio": 4
+		}
+	},
+	{
+		"pk": 11,
+		"model": "comun.parroquia",
+		"fields": {
+			"nombre": "Presidente José Antonio Paez",
+			"municipio": 5
+		}
+	},
+	{
+		"pk": 12,
+		"model": "comun.parroquia",
+		"fields": {
+			"nombre": "Florencio Ramírez",
+			"municipio": 6
+		}
+	},
+	{
+		"pk": 13,
+		"model": "comun.parroquia",
+		"fields": {
+			"nombre": "Apartaderos",
+			"municipio": 8
+		}
+	},
+	{
+		"pk": 14,
+		"model": "comun.parroquia",
+		"fields": {
+			"nombre": "Las Piedras",
+			"municipio": 9
+		}
+	},
+	{
+		"pk": 1,
+		"model": "comun.estacion",
+		"fields": {
+			"nombre": "Sede Principal",
+			"detalle": "Cuartel de Bomberos 'Vicente Campo Elías'",
+			"telefono": "0274-266.36.12",
+			"jefe": "Teniente (B) Juan Carlos Angulo",
+			"direccion": "Final de Av. Las Américas, Urb. Humboldt",
+			"parroquia": 1
+		}
+	},
+	{
+		"pk": 2,
+		"model": "comun.estacion",
+		"fields": {
+			"nombre": "Libertador",
+			"detalle": "'Gregorio Isilio Vivas'",
+			"telefono": "0274-790.23.89",
+			"jefe": "Teniente (B) Orlando Hernández",
+			"direccion": "Av. Universidad",
+			"parroquia": 2
+		}
+	},
+	{
+		"pk": 3,
+		"model": "comun.estacion",
+		"fields": {
+			"nombre": "Cuenca del Chama",
+			"detalle": "'C/1° (B) José Alexander Rojas'",
+			"telefono": "0274-511.13.39",
+			"jefe": "S/A (B) Jhonny Rojas",
+			"direccion": "Urbanización Carabobo",
+			"parroquia": 3
+		}
+	},
+	{
+		"pk": 4,
+		"model": "comun.estacion",
+		"fields": {
+			"nombre": "B.R.A.I.",
+			"detalle": "Brigada de Reacción y Atención Inmediata (B.R.A.I.)",
+			"telefono": "0274-414.82.81",
+			"jefe": "Sargento/1ero (B) Roger Alexander Toro",
+			"direccion": "Urbanización San Antonio",
+			"parroquia": 4
+		}
+	},
+	{
+		"pk": 5,
+		"model": "comun.estacion",
+		"fields": {
+			"nombre": "MAT-PEL",
+			"detalle": "Brigada de Materiales Peligrosos (MAT-PEL)",
+			"telefono": "0274-789.74.00",
+			"jefe": "Stte. (B) Luis Molina",
+			"direccion": "Instalaciones del Estadio Metropolitano, sector Zumba",
+			"parroquia": 5
+		}
+	},
+	{
+		"pk": 6,
+		"model": "comun.estacion",
+		"fields": {
+			"nombre": "El Valle",
+			"detalle": "",
+			"telefono": "0274-789.48.79",
+			"jefe": "Sub-Teniente (B) Vitalio Ortega",
+			"direccion": "Sector Las Cuadras, vía La Culata",
+			"parroquia": 6
+		}
+	},
+	{
+		"pk": 7,
+		"model": "comun.estacion",
+		"fields": {
+			"nombre": "Ejido",
+			"detalle": "'Cap. Comuneros Francisco Javier Angulo'",
+			"telefono": "0274-221.52.36",
+			"jefe": "Teniente (B) Sabino Rángel",
+			"direccion": "Av. Centenario",
+			"parroquia": 7
+		}
+	},
+	{
+		"pk": 8,
+		"model": "comun.estacion",
+		"fields": {
+			"nombre": "B.O.E.",
+			"detalle": "Brigada de Operaciones Especiales (B.O.E.)",
+			"telefono": "0274-658.87.85",
+			"jefe": "Sarg. / Avte. (B) Luis Soto",
+			"direccion": "Vía a Jají, sector Salado Alto",
+			"parroquia": 8
+		}
+	},
+	{
+		"pk": 9,
+		"model": "comun.estacion",
+		"fields": {
+			"nombre": "Tovar",
+			"detalle": "'General Francisco Picón González'",
+			"telefono": "0275-873.02.87",
+			"jefe": "Sub-Teniente (B) Irving Paéz",
+			"direccion": "Avenida Perimetral de Tovar",
+			"parroquia": 9
+		}
+	},
+	{
+		"pk": 10,
+		"model": "comun.estacion",
+		"fields": {
+			"nombre": "Guaraque",
+			"detalle": "'Pueblos del Sur'",
+			"telefono": "0274-789.12.16",
+			"jefe": "Sub-Teniente (B) Ramón Moreno",
+			"direccion": "En las afueras de la población de Guaraque",
+			"parroquia": 10
+		}
+	},
+	{
+		"pk": 11,
+		"model": "comun.estacion",
+		"fields": {
+			"nombre": "El Vigía",
+			"detalle": "'Mayor (B) Cesar Guillén Calderón'",
+			"telefono": "0275-882.00.50",
+			"jefe": "Sub-Teniente (B) Vicencio Angulo",
+			"direccion": "Zona Industrial, vía San Cristóbal",
+			"parroquia": 11
+		}
+	},
+	{
+		"pk": 12,
+		"model": "comun.estacion",
+		"fields": {
+			"nombre": "Tucaní",
+			"detalle": "'S/A (B) German Sulbaran'",
+			"telefono": "0275-415.80.28",
+			"jefe": "Sub-Teniente (B) Yoston Peña",
+			"direccion": "Población de Tucaní",
+			"parroquia": 12
+		}
+	},
+	{
+		"pk": 13,
+		"model": "comun.estacion",
+		"fields": {
+			"nombre": "Apartaderos",
+			"detalle": "'Indio Tinjaca'",
+			"telefono": "0274-789.12.16",
+			"jefe": "Sub-Teniente (B) Ricardo Rey",
+			"direccion": "Población de Apartaderos, carretera Trasandina",
+			"parroquia": 13
+		}
+	},
+	{
+		"pk": 14,
+		"model": "comun.estacion",
+		"fields": {
+			"nombre": "Santo Domingo",
+			"detalle": "'C/1° (B) Lizandro Méndez'",
+			"telefono": "0274-511.65.43",
+			"jefe": "S/A (B) Luis Seijas",
+			"direccion": "Población de Santo Domingo, sector La Mitisus",
+			"parroquia": 14
+		}
+	}
+]

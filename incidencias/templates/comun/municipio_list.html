@@ -1,0 +1,15 @@
+{% extends "base2.html" %}
+{% block formulario %}
+	<h1>Municipios</h1>
+	<ul>
+		{% for municipio in object_list %}
+		<li>
+			{{ municipio.nombre }}  :  
+			<a href="{% url 'municipio_edit' municipio.id %}">{{ municipio.id }}</a>
+			<a href="{% url 'municipio_delete' municipio.id %}">eliminar</a>
+		</li>
+		{% endfor %}
+	</ul>
+
+	<a href="{% url 'municipio_new' %}">Nuevo</a>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base2.html" %}
+{% block formulario %}
+	<h1>Parroquias</h1>
+	<ul>
+		{% for parroquia in object_list %}
+		<li>
+			{{ parroquia.nombre }}  :  
+			<a href="{% url 'parroquia_edit' parroquia.id %}">{{ parroquia.id }}</a>
+			<a href="{% url 'parroquia_delete' parroquia.id %}">eliminar</a>
+		</li>
+		{% endfor %}
+	</ul>
+
+	<a href="{% url 'parroquia_new' %}">Nuevo</a>
+{% endblock %}

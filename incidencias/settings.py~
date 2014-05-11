@@ -38,7 +38,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 	'incidencias.apps.autenticar',
 	'incidencias.apps.comun',
-	'incidencias.apps.novedad',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -81,7 +80,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-STATIC_ROOT = '' #os.path.join(BASE_DIR, 'incidencias/media/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'incidencias/media/')
 
 STATIC_URL = '/media/'
 
@@ -89,7 +88,7 @@ STATIC_URL = '/media/'
 MEDIA_URL = '/media/'"""
 
 STATICFILES_DIRS = (
-	os.path.join(BASE_DIR, 'incidencias/media/'),
+	#os.path.join(BASE_DIR, 'incidencias/media/'),
 	#os.path.join(BASE_DIR, 'incidencias/media/js/'),
 )
 
@@ -101,6 +100,5 @@ STATICFILES_FINDERS = (
 
 
 TEMPLATE_DIRS = (
-	os.path.join(BASE_DIR, "incidencias/templates"),
-	os.path.join(BASE_DIR, "incidencias/apps/comun/templates"),
+	os.path.join(BASE_DIR, "incidencias/templates"),		
 )

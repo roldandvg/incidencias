@@ -1,0 +1,14 @@
+{% extends "base2.html" %}
+{% block formulario %}
+	<h1>Comisiones</h1>
+	<ul>
+		{% for comision in object_list %}
+		<li>{{ comision.nombre }}  :  
+			<a href="{% url 'comision_edit' comision.id %}">{{ comision.id }}</a>
+			<a href="{% url 'comision_delete' comision.id %}">eliminar</a>
+		</li>
+		{% endfor %}
+	</ul>
+
+	<a href="{% url 'comision_new' %}">Nuevo</a>
+{% endblock %}

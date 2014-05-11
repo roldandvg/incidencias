@@ -1,0 +1,18 @@
+body {
+	background: url('images/background.png') no-repeat
+}
+
+#banner {
+	width:auto;
+	background: url('images/logo-merida-nvo-final.png');
+	float:right;
+}
+
+#contenido {
+	border: 1px solid;
+	width: 950px;
+	height: 700px;
+	background-color:white;
+	float: right;
+	opacity:0.8;
+}

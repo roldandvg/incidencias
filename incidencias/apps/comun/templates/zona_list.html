@@ -1,0 +1,14 @@
+{% extends "base2.html" %}
+{% block formulario %}
+	<h1>Zonas</h1>
+	<ul>
+		{% for zona in object_list %}
+		<li>{{ zona.nombre }}  :  
+			<a href="{% url 'zona_edit' zona.id %}">{{ zona.id }}</a>
+			<a href="{% url 'zona_delete' zona.id %}">eliminar</a>
+		</li>
+		{% endfor %}
+	</ul>
+
+	<a href="{% url 'zona_new' %}">Nuevo</a>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base2.html" %}
+{% block formulario %}
+	<h1>Detalle de Tipos de Procedimientos</h1>
+	<ul>
+		{% for detalletipoprocedimiento in object_list %}
+		<li>
+			{{ detalletipoprocedimiento.nombre }}  :  
+			<a href="{% url 'detalletipoprocedimiento_edit' detalletipoprocedimiento.id %}">{{ detalletipoprocedimiento.id }}</a>
+			<a href="{% url 'detalletipoprocedimiento_delete' detalletipoprocedimiento.id %}">eliminar</a>
+		</li>
+		{% endfor %}
+	</ul>
+
+	<a href="{% url 'detalletipoprocedimiento_new' %}">Nuevo</a>
+{% endblock %}

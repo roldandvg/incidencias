@@ -1,0 +1,15 @@
+{% extends "base2.html" %}
+{% block formulario %}
+	<h1>Estaciones</h1>
+	<ul>
+		{% for estacion in object_list %}
+		<li>
+			{{ estacion.nombre }}  :  
+			<a href="{% url 'estacion_edit' estacion.id %}">{{ estacion.id }}</a>
+			<a href="{% url 'estacion_delete' estacion.id %}">eliminar</a>
+		</li>
+		{% endfor %}
+	</ul>
+
+	<a href="{% url 'estacion_new' %}">Nuevo</a>
+{% endblock %}
