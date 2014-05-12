@@ -1,7 +1,8 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
+{% block titleform %}<i class='icon-info-sign'></i> Mensaje de eliminación{% endblock %}
+{% block subtitleform %}{% endblock %}
 {% block formulario %}
-	<form method="post">{% csrf_token %}
-		Estas completamente seguro de eliminar el registro de "{{ object }}" ?
-		<input type="submit" value="Submit" />
-	</form>
+	{% csrf_token %}
+	Estas completamente seguro de eliminar el registro de "{{ object }}" ?
+	<button class="small blue"><i class="icon-ok-circle"></i> OK</button>
 {% endblock %}

@@ -1,7 +1,40 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
+{% block titleform %}Registro de Estaciones{% endblock %}
+{% block subtitleform %}{% endblock %}
 {% block formulario %}
-	<form method="post">{% csrf_token %}
-		{{ form.as_p }}
-		<input type="submit" value="Submit" />
-	</form>
+	{% csrf_token %}
+	{% load widget_tweaks %}
+	<label for="id_{{form.nombre.html_name}}">Nombre:</label><br/>
+	{{form.nombre|attr:"size:60"|attr:"placeholder:Indique el nombre de la estación"}} <i class="icon-asterisk icono-small icono-required"></i><br/><!-- icon-spin -->
+	{% if form.nombre.errors %}
+		<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.nombre.errors }}<a href="#close" class="icon-remove"></a></div>
+	{% endif %}<br/>
+	<label for="id_{{form.detalle.html_name}}">Detalle:</label><br/>
+	{{form.detalle|attr:"size:60"|attr:"placeholder:indique una descripción de la estación"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+	{% if form.detalle.errors %}
+		<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.detalle.errors }}<a href="#close" class="icon-remove"></a></div>
+	{% endif %}<br/>
+	<label for="id_{{form.telefono.html_name}}">Teléfono:</label><br/>
+	{{form.telefono|attr:"size:15"|attr:"placeholder:indique el teléfono de la estación"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+	{% if form.telefono.errors %}
+		<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.telefono.errors }}<a href="#close" class="icon-remove"></a></div>
+	{% endif %}<br/>
+	<label for="id_{{form.jefe.html_name}}">Jefe:</label><br/>
+	{{form.jefe|attr:"size:60"|attr:"placeholder:indique el nombre del jefe de la estación"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+	{% if form.jefe.errors %}
+		<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.jefe.errors }}<a href="#close" class="icon-remove"></a></div>
+	{% endif %}<br/>
+	<label for="id_{{form.direccion.html_name}}">Dirección:</label><br/>
+	{{form.direccion|attr:"size:60"|attr:"placeholder:indique la dirección de la estación"}}<br/>
+	{% if form.direccion.errors %}
+		<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.direccion.errors }}<a href="#close" class="icon-remove"></a></div>
+	{% endif %}<br/>
+	<label for="id_{{form.parroquia.html_name}}">Parroquia:</label><br/>
+	{{form.parroquia|attr:"title:Seleccione la parroquia en donde se encuentra la estación"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+	{% if form.parroquia.errors %}
+		<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.parroquia.errors }}<a href="#close" class="icon-remove"></a></div>
+	{% endif %}<br/><br/>
+	<button class="small blue"><i class="icon-check"></i> Guardar</button>
+	&#160;&#160;
+	<button class="small blue" type="button" onclick="location='{% url 'estacion_list' %}'"><i class="icon-remove-circle"></i> Cancelar</button>
 {% endblock %}

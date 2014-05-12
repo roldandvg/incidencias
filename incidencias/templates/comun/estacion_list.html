@@ -1,15 +1,34 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
+{% block titleform %}Estaciones <a href="{% url 'estacion_new' %}"><i class="icon-plus-sign" title="Nuevo Registro"></i></a>{% endblock %}
+{% block subtitleform %}Listado de estaciones bomberiles{% endblock %}
 {% block formulario %}
-	<h1>Estaciones</h1>
-	<ul>
-		{% for estacion in object_list %}
-		<li>
-			{{ estacion.nombre }}  :  
-			<a href="{% url 'estacion_edit' estacion.id %}">{{ estacion.id }}</a>
-			<a href="{% url 'estacion_delete' estacion.id %}">eliminar</a>
-		</li>
-		{% endfor %}
-	</ul>
-
-	<a href="{% url 'estacion_new' %}">Nuevo</a>
+	<table class="sortable">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Detalle</th>
+				<th>Dirección</th>
+				<th>Parroquia</th>
+				<th>Teléfono</th>
+				<th>Jefe</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for estacion in object_list %}
+				<tr class="{% cycle 'colorblanco' 'colorazul' as rowcolors %}">
+					<td>{{ estacion.nombre }}</td>
+					<td>{{ estacion.detalle }}</td>
+					<td>{{ estacion.direccion }}</td>
+					<td>{{ estacion.parroquia }}</td>
+					<td>{{ estacion.telefono }}</td>
+					<td>{{ estacion.jefe }}</td>
+					<td>
+						<a href="{% url 'estacion_edit' estacion.id %}"><i class="icon-pencil"></i></a>
+						<a href="{% url 'estacion_delete' estacion.id %}"><i class="icon-trash"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 {% endblock %}

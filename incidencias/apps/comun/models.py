@@ -135,3 +135,36 @@ class Diagnostico(models.Model):
 		verbose_name = 'Diagnóstico'
 		verbose_name_plural = 'Diagnósticos'
 
+
+class Persona(models.Model):
+	nombre = models.CharField(max_length=80)
+	cedula = models.CharField(max_length=10, unique=True)
+	edad = models.SmallIntegerField()
+	sexo = models.CharField(max_length=1, choices=[('M','Masculino'),('F','Femenino')])
+	diagnostico = models.ManyToManyField(Diagnostico)
+	
+	def __unicode__(self):
+		return self.nombre
+		
+	class Meta:
+		ordering = ["cedula", "nombre"]
+		verbose_name = "Persona"
+		verbose_name_plural = "Personas"
+
+class DetallePersona(models.Model):
+	posicion = models.CharField(max_length=45)
+	dias_desaparecido = models.SmallIntegerField()
+	causa_muerte = models.CharField(max_length=255, blank=True, null=True)
+	camisa = models.CharField(max_length=45)
+	pantalon = models.CharField(max_length=45)
+	zapatos = models.CharField(max_length=45)
+	observacion = models.CharField(max_length=255)
+	persona = models.ForeignKey(Persona)
+	
+	def __unicode__(self):
+		return self.persona
+		
+	class Meta:
+		ordering = ["dias_desaparecido"]
+		verbose_name = "Detalle de Persona"
+		verbose_name_plural = "Detalles de Personas"

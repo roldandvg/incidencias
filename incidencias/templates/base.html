@@ -1,121 +1,44 @@
 <!DOCTYPE HTML>
-<!--
-	ZeroFour 2.5 by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 {% load static from staticfiles %}
 <html>
 	<head>
-		<title>Sistema de Incidencias del Cuerpo de Bomberos del Estado Mérida</title>
+		<title>Sistema de Procedimientos Operacionales del Cuerpo de Bomberos del Estado Mérida</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="Sistema de Incidencias del Cuerpo de Bomberos del Estado Mérida" />
-		<meta name="keywords" content="incidencias, bomberos, mérida" />
-		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800" rel="stylesheet" type="text/css" />
-		<script src="{% static "js/jquery.min.js" %}"></script>
-		<script src="{% static "js/jquery.dropotron.min.js" %}"></script>
-		<script src="{% static "js/config.js" %}"></script>
-		<script src="{% static "js/skel.min.js" %}"></script>
-		<script src="{% static "js/skel-panels.min.js" %}"></script>
-			<link rel="stylesheet" href="{% static 'css/skel-noscript.css' %}" />
-			<link rel="stylesheet" href="{% static 'css/style.css' %}" />
-			<link rel="stylesheet" href="{% static 'css/style-desktop.css' %}" />
+		<meta name="description" content="Sistema de Procedimientos Operacionales del Cuerpo de Bomberos del Estado Mérida" />
+		<meta name="keywords" content="incidencias, bomberos, mérida, procedimientos, operaciones, novedades" />
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'api/kickstart/js/kickstart.js' %}"></script>
+		<link rel="stylesheet" href="{% static 'api/kickstart/css/kickstart.css' %}" media="all" />
+		<link rel="stylesheet" href="{% static 'css/estilos.css' %}" media="all" />
 	</head>
-	<body class="left-sidebar">
-		<!-- Header Wrapper -->
-		<div id="header-wrapper">
-			<div class="container">
-				<div class="row">
-					<div class="12u">
-						<!-- Header -->
-						<header id="header">
-							<div class="inner">
-								<!-- Logo -->
-								<h1><a href="#" id="logo">LOGO</a></h1>
-								<!-- Nav -->
-								<nav id="nav">
-									<ul>
-										<li><a href="#">Inicio</a></li>
-										<li>
-											<span>Incidencias</span>
-											<ul>
-												<li><a href="#">UNO</a></li>
-												<li><a href="#">DOS</a></li>
-												<li>
-													<span>TRES</span>
-													<ul>
-														<li><a href="#">TRES - UNO</a></li>
-														<li><a href="#">TRES - DOS</a></li>
-													</ul>
-												</li>
-											</ul>
-										</li>
-										<li><a href="#">Reportes</a></li>
-									</ul>
-								</nav>
-							</div>
-						</header>
-					</div>
-				</div>
-			</div>
+	<body>
+		<!-- Capa del banner de la aplicación -->
+		<div class="col_12 center">
+			<img src="{% static 'images/logo_gobernacion.jpg' %}" width="700px" height="90px"/>
+			<img src="{% static 'images/logo.png' %}" height="90px"/>
 		</div>
-		<!-- Main Wrapper -->
-		<div id="main-wrapper">
-			<div class="main-wrapper-style2">
-				<div class="inner">
-					<div class="container">
-						<div class="row">
-							<div class="4u">
-								<div id="sidebar">
-									<!-- Sidebar -->
-									<section>
-										<header class="major">
-											<h2>Panel de Acceso</h2>
-										</header>
-										<p>FORMULARIO DE ACCESO</p>
-										<footer>
-											BOTONES
-										</footer>
-									</section>
-								</div>
-							</div>
-							<!-- PANEL DERECHO -->
-							<div class="8u skel-cell-important">
-								<div id="content">
-									<!-- CONTENIDO -->
-									<article>
-										<header class="major">
-											<h2>TITULO DEL FORMULARIO</h2>
-											<span class="byline">Which means the sidebar is on the left</span>
-										</header>
-												
-										<span class="image image-full"><img src="images/pic08.jpg" alt="" /></span>
-												
-										<p>FORMULARIO</p>
-												
-										<h3>OTROS DATOS</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac quam risus, at tempus 
-										justo. Sed dictum rutrum massa eu volutpat. Quisque vitae hendrerit sem. Pellentesque lorem felis, 
-										ultricies a bibendum id, bibendum sit amet nisl. Mauris et lorem quam. Maecenas rutrum imperdiet 
-										vulputate. Nulla quis nibh ipsum, sed egestas justo. Morbi ut ante mattis orci convallis tempor. 
-										Etiam a lacus a lacus pharetra porttitor quis accumsan odio. Sed vel euismod nisi. Etiam convallis 
-										rhoncus dui quis euismod. Maecenas lorem tellus, congue et condimentum ac, ullamcorper non sapien. 
-										Donec sagittis massa et leo semper a scelerisque metus faucibus. Morbi congue mattis mi. 
-										Phasellus sed nisl vitae risus tristique volutpat. Cras rutrum commodo luctus.</p>
-
-										<p>Phasellus odio risus, faucibus et viverra vitae, eleifend ac purus. Praesent mattis, enim 
-										quis hendrerit porttitor, sapien tortor viverra magna, sit amet rhoncus nisl lacus nec arcu. 
-										Suspendisse laoreet metus ut metus imperdiet interdum aliquam justo tincidunt. Mauris dolor urna, 
-										fringilla vel malesuada ac, dignissim eu mi. Praesent mollis massa ac nulla pretium pretium. 
-										Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu. 
-										Vestibulum purus augue, tincidunt sit amet iaculis id, porta eu purus.</p>
-									</article>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+		<!-- Capa del menú vertical del sistema -->
+		<div class="col_12 center">{% include 'menu.html' %}</div>
+		<!-- Capa para el contenido de la aplicación -->
+		<div class="col_3 fondo">
+			<form method="post">
+				<h4>{% block titleuser %}Panel de Acceso{% endblock %}</h4>
+				{% block formuser %}
+					<label for="usuario">Usuario:</label><br/>
+					<input id="usuario" type="text" placeholder="nombre de usuario" /><br/>
+					<label for="passwd">Contraseña:</label><br/>
+					<input id="passwd" type="password" placeholder="contraseña de acceso" /><br/><br/>
+				{% endblock %}
+				<button class="small blue"><i class="icon-signin"></i> Acceso</button>
+				<button class="small blue"><i class="icon-signout"></i> Salir</button>
+			</form>
+		</div>
+		<div class="col_9 fondo" style="height:520px;overflow:auto;">
+			<h5 class="center">{% block titleform %}Sistema de Procedimientos Operacionales{% endblock %}</h5>
+			<h6 class="center">{% block subtitleform %}Cuerpo de Bomberos del Estado Mérida{% endblock %}</h6>
+			<form method="{% block metodorequest %}post{% endblock %}">
+				{% block formulario %}{% endblock %}
+			</form>
 		</div>
 	</body>
 </html>

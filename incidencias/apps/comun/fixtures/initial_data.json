@@ -378,5 +378,33 @@
 			"direccion": "Población de Santo Domingo, sector La Mitisus",
 			"parroquia": 14
 		}
+	},
+	{
+		"pk": 1,
+		"model": "comun.procedimiento",
+		"fields": {
+			"nombre": "Combate de Incendios"
+		}
+	},
+	{
+		"pk": 2,
+		"model": "comun.procedimiento",
+		"fields": {
+			"nombre": "Búsqueda y Rescate"
+		}
+	},
+	{
+		"pk": 3,
+		"model": "comun.procedimiento",
+		"fields": {
+			"nombre": "Emergencia Prehospitalaria"
+		}
+	},
+	{
+		"pk": 4,
+		"model": "comun.procedimiento",
+		"fields": {
+			"nombre": "Guardias de presencia"
+		}
 	}
 ]
