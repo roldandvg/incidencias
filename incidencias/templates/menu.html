@@ -15,20 +15,29 @@
 	</li>
 	<li><a href=""><i class="icon-cogs"></i> Configuración</a>
 		<ul>
+			<li><a href=""><i class=""></i> Ubicación</a>
+				<ul>
+					<li><a href="{% url 'zona_list' %}"><i class=""></i> Zona</a></li>
+					<li><a href="{% url 'municipio_list' %}"><i class=""></i> Municipio</a></li>
+					<li><a href="{% url 'parroquia_list' %}"><i class=""></i> Parroquia</a></li>
+				</ul>
+			</li>
 			<li><a href="{% url 'estacion_list' %}"><i class="icon-truck"></i> Estación</a></li>
 			<li><a href=""><i class="icon-group"></i> Personal</a></li>
 			<li><a href=""><i class="icon-user"></i> Usuario</a></li>
 		</ul>
 	</li>
 	<li class="right texto-small">
-		{% if username %}
-			usuario: {{ username }}
-			<button class="small blue"><i class="icon-signout"></i> Salir</button>
-		{% else %}
-			Acceso
-			<input type="text" id="usuario" size="15" class="small" placeholder="nombre de usuario"/>
-			<input type="password" id="passwd" size="15" class="small" placeholder="contraseña de acceso"/>
-			<button class="small blue"><i class="icon-signin"></i> Acceso</button>
-		{% endif %}
+		<form method="post">
+			{% if username %}
+				usuario: {{ username }}
+				<button class="small blue"><i class="icon-signout"></i> Salir</button>
+			{% else %}
+				Acceso
+				<input type="text" id="usuario" size="15" class="small" placeholder="nombre de usuario"/>
+				<input type="password" id="passwd" size="15" class="small" placeholder="contraseña de acceso"/>
+				<button class="small blue"><i class="icon-signin"></i> Acceso</button>
+			{% endif %}
+		</form>
 	</li>
 </ul>

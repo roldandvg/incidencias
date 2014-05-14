@@ -5,4 +5,6 @@
 	{% csrf_token %}
 	Estas completamente seguro de eliminar el registro de "{{ object }}" ?
 	<button class="small blue"><i class="icon-ok-circle"></i> OK</button>
+	&#160;&#160;
+		<button class="small blue" type="button" onclick="location='{% url 'estacion_list' %}'"><i class="icon-remove-circle"></i> Cancelar</button>
 {% endblock %}

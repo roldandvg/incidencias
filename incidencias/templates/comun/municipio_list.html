@@ -1,15 +1,26 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
+{% block titleform %}Municipios <a href="{% url 'municipio_new' %}"><i class="icon-plus-sign" title="Nuevo Registro"></i></a>{% endblock %}
+{% block subtitleform %}Listado de municipios bomberiles{% endblock %}
 {% block formulario %}
-	<h1>Municipios</h1>
-	<ul>
-		{% for municipio in object_list %}
-		<li>
-			{{ municipio.nombre }}  :  
-			<a href="{% url 'municipio_edit' municipio.id %}">{{ municipio.id }}</a>
-			<a href="{% url 'municipio_delete' municipio.id %}">eliminar</a>
-		</li>
-		{% endfor %}
-	</ul>
-
-	<a href="{% url 'municipio_new' %}">Nuevo</a>
+	<table class="sortable">
+		<thead>
+			<tr>
+				<th>Municipio</th>
+				<th>Zona</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for municipio in object_list %}
+				<tr class="{% cycle 'colorblanco' 'colorazul' as rowcolors %}">
+					<td>{{municipio.nombre}}</td>
+					<td>{{municipio.zona}}</td>
+					<td>
+						<a href="{% url 'municipio_edit' municipio.id %}"><i class="icon-pencil"></i></a>
+						<a href="{% url 'municipio_delete' municipio.id %}"><i class="icon-trash"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 {% endblock %}

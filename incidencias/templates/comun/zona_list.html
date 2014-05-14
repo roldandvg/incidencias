@@ -1,14 +1,24 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
+{% block titleform %}Zonas <a href="{% url 'zona_new' %}"><i class="icon-plus-sign" title="Nuevo Registro"></i></a>{% endblock %}
+{% block subtitleform %}Listado de zonas bomberiles{% endblock %}
 {% block formulario %}
-	<h1>Zonas</h1>
-	<ul>
-		{% for zona in object_list %}
-		<li>{{ zona.nombre }}  :  
-			<a href="{% url 'zona_edit' zona.id %}">{{ zona.id }}</a>
-			<a href="{% url 'zona_delete' zona.id %}">eliminar</a>
-		</li>
-		{% endfor %}
-	</ul>
-
-	<a href="{% url 'zona_new' %}">Nuevo</a>
+	<table class="sortable">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for zona in object_list %}
+				<tr class="{% cycle 'colorblanco' 'colorazul' as rowcolors %}">
+					<td>{{ zona.nombre }}</td>
+					<td>
+						<a href="{% url 'zona_edit' zona.id %}"><i class="icon-pencil"></i></a>
+						<a href="{% url 'zona_delete' zona.id %}"><i class="icon-trash"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 {% endblock %}

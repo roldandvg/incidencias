@@ -20,20 +20,7 @@
 		<!-- Capa del menú vertical del sistema -->
 		<div class="col_12 center">{% include 'menu.html' %}</div>
 		<!-- Capa para el contenido de la aplicación -->
-		<div class="col_3 fondo">
-			<form method="post">
-				<h4>{% block titleuser %}Panel de Acceso{% endblock %}</h4>
-				{% block formuser %}
-					<label for="usuario">Usuario:</label><br/>
-					<input id="usuario" type="text" placeholder="nombre de usuario" /><br/>
-					<label for="passwd">Contraseña:</label><br/>
-					<input id="passwd" type="password" placeholder="contraseña de acceso" /><br/><br/>
-				{% endblock %}
-				<button class="small blue"><i class="icon-signin"></i> Acceso</button>
-				<button class="small blue"><i class="icon-signout"></i> Salir</button>
-			</form>
-		</div>
-		<div class="col_9 fondo" style="height:520px;overflow:auto;">
+		<div class="col_12 fondo" style="height:520px;overflow:auto;">
 			<h5 class="center">{% block titleform %}Sistema de Procedimientos Operacionales{% endblock %}</h5>
 			<h6 class="center">{% block subtitleform %}Cuerpo de Bomberos del Estado Mérida{% endblock %}</h6>
 			<form method="{% block metodorequest %}post{% endblock %}">
