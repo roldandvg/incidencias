@@ -1,7 +1,26 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
+{% block titleform %}Registro de Parroquias{% endblock %}
+{% block subtitleform %}{% endblock %}
 {% block formulario %}
-	<form method="post">{% csrf_token %}
-		{{ form.as_p }}
-		<input type="submit" value="Submit" />
-	</form>
+	{% csrf_token %}
+	{% load widget_tweaks %}
+	<div class="col_6">
+		{{form.nombre.label}}<br/>
+		{{form.nombre|attr:"size:60"|attr:"placeholder:Indique el nombre de la parroquia"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{% if form.nombre.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.nombre.errors }}<a href="#close" class="icon-remove"></a></div><br/>
+		{% endif %}
+	</div>
+	<div class="col_6">
+		{{form.municipio.label}}<br/>
+		{{form.municipio|attr:"title:Seleccione el Municipio"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{% if form.municipio.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.municipio.errors }}<a href="#close" class="icon-remove"></a></div><br/>
+		{% endif %}
+	</div>
+	<div class="col_12 center separar-vertical-40x">
+		<button class="small blue"><i class="icon-check"></i> Guardar</button>
+		&#160;&#160;
+		<button class="small blue" type="button" onclick="location='{% url 'parroquia_list' %}'"><i class="icon-remove-circle"></i> Cancelar</button>
+	</div>
 {% endblock %}

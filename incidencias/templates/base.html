@@ -13,19 +13,28 @@
 	</head>
 	<body>
 		<!-- Capa del banner de la aplicación -->
-		<div class="col_12 center">
-			<img src="{% static 'images/logo_gobernacion.jpg' %}" width="700px" height="90px"/>
-			<img src="{% static 'images/logo.png' %}" height="90px"/>
+		<div class="col_12 center banner colorblanco">
+			<div class="col_11">
+				<img src="{% static 'images/logo_gobernacion.jpg' %}" width="700px" height="90px"/>
+			</div>
+			<div class="col_1">
+				<img src="{% static 'images/logo.png' %}" height="90px"/>
+			</div>
 		</div>
 		<!-- Capa del menú vertical del sistema -->
 		<div class="col_12 center">{% include 'menu.html' %}</div>
 		<!-- Capa para el contenido de la aplicación -->
-		<div class="col_12 fondo" style="height:520px;overflow:auto;">
+		<div class="col_12 fondo" style="height:490px;overflow:auto;margin-bottom:0">
 			<h5 class="center">{% block titleform %}Sistema de Procedimientos Operacionales{% endblock %}</h5>
 			<h6 class="center">{% block subtitleform %}Cuerpo de Bomberos del Estado Mérida{% endblock %}</h6>
 			<form method="{% block metodorequest %}post{% endblock %}">
 				{% block formulario %}{% endblock %}
 			</form>
+		</div>
+		<div class="col_12 fondo center" style="margin-top:0; font-size:10px; padding:4px; font-family:Arial;">
+			Proyecto Socio-Tecnológico para el Departamento de Bomberos del Estado Mérida
+			&#160;&#160;&#160;&#160;|&#160;&#160;&#160;&#160;   
+			Copyleft 2014
 		</div>
 	</body>
 </html>

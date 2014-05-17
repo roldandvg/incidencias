@@ -1,15 +1,26 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
+{% block titleform %}Detalles de Tipos de Procedimientos <a href="{% url 'detalletipoprocedimiento_new' %}"><i class="icon-plus-sign" title="Nuevo Registro"></i></a>{% endblock %}
+{% block subtitleform %}Listado de los detalles de los tipos de procedimientos atendidos{% endblock %}
 {% block formulario %}
-	<h1>Detalle de Tipos de Procedimientos</h1>
-	<ul>
-		{% for detalletipoprocedimiento in object_list %}
-		<li>
-			{{ detalletipoprocedimiento.nombre }}  :  
-			<a href="{% url 'detalletipoprocedimiento_edit' detalletipoprocedimiento.id %}">{{ detalletipoprocedimiento.id }}</a>
-			<a href="{% url 'detalletipoprocedimiento_delete' detalletipoprocedimiento.id %}">eliminar</a>
-		</li>
-		{% endfor %}
-	</ul>
-
-	<a href="{% url 'detalletipoprocedimiento_new' %}">Nuevo</a>
+	<table class="sortable">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Tipo de Procedimiento</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for detalletipoprocedimiento in object_list %}
+				<tr class="{% cycle 'colorblanco' 'colorazul' as rowcolors %}">
+					<td>{{detalletipoprocedimiento.nombre}}</td>
+					<td>{{detalletipoprocedimiento.tipo_procedimiento}}</td>
+					<td>
+						<a href="{% url 'detalletipoprocedimiento_edit' detalletipoprocedimiento.id %}"><i class="icon-pencil"></i></a>
+						<a href="{% url 'detalletipoprocedimiento_delete' detalletipoprocedimiento.id %}"><i class="icon-trash"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 {% endblock %}

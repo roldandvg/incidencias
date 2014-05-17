@@ -404,7 +404,342 @@
 		"pk": 4,
 		"model": "comun.procedimiento",
 		"fields": {
-			"nombre": "Guardias de presencia"
+			"nombre": "Guardias de prevención"
 		}
+	},
+	{
+	    "pk": 5,
+	    "model": "comun.procedimiento",
+	    "fields": {
+	        "nombre": "Actividades Especiales"
+	    }
+	},
+	{
+	    "pk": 1,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Incendio",
+	        "procedimiento": 1
+	    }
+	},
+	{
+	    "pk": 2,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Escape de gas licuado del petróleo",
+	        "procedimiento": 1
+	    }
+	},
+	{
+	    "pk": 3,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Explosiones / Defragación",
+	        "procedimiento": 1
+	    }
+	},
+	{
+	    "pk": 4,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Cortos circuítos",
+	        "procedimiento": 1
+	    }
+	},
+	{
+	    "pk": 5,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Quemas de basura",
+	        "procedimiento": 1
+	    }
+	},
+	{
+	    "pk": 6,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Quemas de neumáticos",
+	        "procedimiento": 1
+	    }
+	},
+	{
+	    "pk": 7,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Control / Neutralización de combustible",
+	        "procedimiento": 1
+	    }
+	},
+	{
+	    "pk": 8,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Control / Neutralización de materiales peligrosos",
+	        "procedimiento": 1
+	    }
+	},
+	{
+	    "pk": 9,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Servicios de abastecimiento de agua",
+	        "procedimiento": 1
+	    }
+	},
+	{
+	    "pk": 10,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Actos de presencia",
+	        "procedimiento": 5
+	    }
+	},
+	{
+	    "pk": 11,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Alarmas Infundadas",
+	        "procedimiento": 5
+	    }
+	},
+	{
+	    "pk": 12,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Control / Exterminio de plagas/insectos",
+	        "procedimiento": 2
+	    }
+	},
+	{
+	    "pk": 13,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Desbordamiento de Río",
+	        "procedimiento": 5
+	    }
+	},
+	{
+	    "pk": 14,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Deslizamiento de tierra",
+	        "procedimiento": 5
+	    }
+	},
+	{
+	    "pk": 15,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Recuperación de Cadáver",
+	        "procedimiento": 2
+	    }
+	},
+	{
+	    "pk": 16,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Rescate de animales",
+	        "procedimiento": 2
+	    }
+	},
+	{
+	    "pk": 17,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Rescate de llaves",
+	        "procedimiento": 2
+	    }
+	},
+	{
+	    "pk": 18,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Rescate de personas en asensor",
+	        "procedimiento": 2
+	    }
+	},
+	{
+	    "pk": 19,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Rescate de personas incomunicadas",
+	        "procedimiento": 2
+	    }
+	},
+	{
+	    "pk": 20,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Rescates en aguas",
+	        "procedimiento": 2
+	    }
+	},
+	{
+	    "pk": 21,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Búsqueda y rescate en montañas",
+	        "procedimiento": 2
+	    }
+	},
+	{
+	    "pk": 22,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Rescates en estructuras colapsadas",
+	        "procedimiento": 2
+	    }
+	},
+	{
+	    "pk": 23,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Accidentes aéreos",
+	        "procedimiento": 2
+	    }
+	},
+	{
+	    "pk": 24,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Talas / Podas de árboles",
+	        "procedimiento": 2
+	    }
+	},
+	{
+	    "pk": 25,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Intentos de suicidio",
+	        "procedimiento": 2
+	    }
+	},
+	{
+	    "pk": 26,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Acto de presencia",
+	        "procedimiento": 5
+	    }
+	},
+	{
+	    "pk": 27,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Inundaciones de viviendas",
+	        "procedimiento": 2
+	    }
+	},
+	{
+	    "pk": 28,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Viviendas afectadas",
+	        "procedimiento": 2
+	    }
+	},
+    {
+	    "pk": 29,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Personas afectadas por lluvias",
+	        "procedimiento": 2
+	    }
+	},
+	{
+	    "pk": 30,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Accidente de tránsito",
+	        "procedimiento": 2
+	    }
+	},
+	{
+	    "pk": 31,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Servicios médicos pre-hospitalarios",
+	        "procedimiento": 3
+	    }
+	},
+	{
+	    "pk": 32,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Servicios de Ambulancia",
+	        "procedimiento": 3
+	    }
+	},
+	{
+	    "pk": 33,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Atenciones primarias",
+	        "procedimiento": 3
+	    }
+	},
+	{
+	    "pk": 34,
+	    "model": "comun.tipoprocedimiento",
+	    "fields": {
+	        "nombre": "Acto de presencia en persona fallecida",
+	        "procedimiento": 3
+	    }
+	},
+	{
+	    "pk": 1,
+	    "model": "comun.detalletipoprocedimiento",
+	    "fields": {
+	        "nombre": "Colisión entre vehículos",
+	        "tipo_procedimiento": 30
+	    }
+	},
+	{
+	    "pk": 2,
+	    "model": "comun.detalletipoprocedimiento",
+	    "fields": {
+	        "nombre": "Choque con objeto fijo",
+	        "tipo_procedimiento": 30
+	    }
+	},
+	{
+	    "pk": 3,
+	    "model": "comun.detalletipoprocedimiento",
+	    "fields": {
+	        "nombre": "Vuelcos sobre la vía",
+	        "tipo_procedimiento": 30
+	    }
+	},
+	{
+	    "pk": 4,
+	    "model": "comun.detalletipoprocedimiento",
+	    "fields": {
+	        "nombre": "Vuelcos fuera de la vía",
+	        "tipo_procedimiento": 30
+	    }
+	},
+	{
+	    "pk": 5,
+	    "model": "comun.detalletipoprocedimiento",
+	    "fields": {
+	        "nombre": "Arrollamientos",
+	        "tipo_procedimiento": 30
+	    }
+	},
+	{
+	    "pk": 6,
+	    "model": "comun.detalletipoprocedimiento",
+	    "fields": {
+	        "nombre": "Expelimentos",
+	        "tipo_procedimiento": 30
+	    }
+	},
+	{
+	    "pk": 7,
+	    "model": "comun.detalletipoprocedimiento",
+	    "fields": {
+	        "nombre": "Otro tipo de accidentes (aplastamientos)",
+	        "tipo_procedimiento": 30
+	    }
 	}
 ]

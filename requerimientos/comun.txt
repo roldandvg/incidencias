@@ -1,2 +1,4 @@
 Django==1.6.4
 django-widget-tweaks
+django-model-report==0.2.1
+PyPDF2==1.21

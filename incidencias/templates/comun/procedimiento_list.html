@@ -1,15 +1,24 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
+{% block titleform %}Procedimientos <a href="{% url 'procedimiento_new' %}"><i class="icon-plus-sign" title="Nuevo Registro"></i></a>{% endblock %}
+{% block subtitleform %}Listado de procedimientos atendidos{% endblock %}
 {% block formulario %}
-	<h1>Procedimientos</h1>
-	<ul>
-		{% for procedimiento in object_list %}
-		<li>
-			{{ procedimiento.nombre }}  :  
-			<a href="{% url 'procedimiento_edit' procedimiento.id %}">{{ procedimiento.id }}</a>
-			<a href="{% url 'procedimiento_delete' procedimiento.id %}">eliminar</a>
-		</li>
-		{% endfor %}
-	</ul>
-
-	<a href="{% url 'procedimiento_new' %}">Nuevo</a>
+	<table class="sortable">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for procedimiento in object_list %}
+				<tr class="{% cycle 'colorblanco' 'colorazul' as rowcolors %}">
+					<td>{{procedimiento.nombre}}</td>
+					<td>
+						<a href="{% url 'procedimiento_edit' procedimiento.id %}"><i class="icon-pencil"></i></a>
+						<a href="{% url 'procedimiento_delete' procedimiento.id %}"><i class="icon-trash"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 {% endblock %}

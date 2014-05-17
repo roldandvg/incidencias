@@ -1,30 +1,55 @@
 <ul class="menu left">
-	<li class="current"><a href="{% url 'inicio' %}"><i class="icon-home"></i> Inicio</a></li>
-	<li><a href=""><i class="icon-eye-open"></i> Novedades</a></li>
-	<li><a href=""><i class="icon-bar-chart"></i> Reportes</a>
+	<li class="tooltip-top {% ifequal request.path '/' %}current{% endifequal %}" title="Inicio del Sistema / Sección de bienvenida"><a href="{% url 'inicio' %}"><i class="icon-home"></i> Inicio</a></li>
+	<li class="tooltip-top {% if 'comun/' in request.path %}current{% endif %}" title="Configuración básica del sistema"><a href=""><i class="icon-cogs"></i> Configuración</a>
 		<ul>
-			<li><a href=""><i class="icon-ok"></i> Reporte1</a></li>
-			<li><a href=""><i class="icon-ok"></i> Reporte2</a></li>
-		</ul>
-	</li>
-	<li><a href=""><i class="icon-bar-chart"></i> Estadísticas</a>
-		<ul>
-			<li title="Procedimientos Operacionales"><a href=""><i class="icon-ok"></i> Proc. Op.</a></li>
-			<li title="Emergencia Prehospitalaria"><a href=""><i class="icon-ok"></i> Emer. Preh.</a></li>
-		</ul>
-	</li>
-	<li><a href=""><i class="icon-cogs"></i> Configuración</a>
-		<ul>
-			<li><a href=""><i class=""></i> Ubicación</a>
+			<li class="tooltip-top {% if '/zona/' in request.path or '/municipio/' in request.path or '/parroquia/' in request.path %}current{% endif %}" title="Configuración de cobertura geográfica"><a href=""><i class="icon-globe"></i> Ubicación</a>
 				<ul>
-					<li><a href="{% url 'zona_list' %}"><i class=""></i> Zona</a></li>
-					<li><a href="{% url 'municipio_list' %}"><i class=""></i> Municipio</a></li>
-					<li><a href="{% url 'parroquia_list' %}"><i class=""></i> Parroquia</a></li>
+					<li class="tooltip-top {% if '/zona/' in request.path %}current{% endif %}" title="Configuración de Zonas"><a href="{% url 'zona_list' %}"><i class="icon-map-marker"></i> Zona</a></li>
+					<li class="tooltip-top {% if '/municipio/' in request.path %}current{% endif %}" title="Configuración de Municipios"><a href="{% url 'municipio_list' %}"><i class="icon-map-marker"></i> Municipio</a></li>
+					<li class="tooltip-top {% if '/parroquia/' in request.path %}current{% endif %}" title="Configuración de Parroquias"><a href="{% url 'parroquia_list' %}"><i class="icon-map-marker"></i> Parroquia</a></li>
 				</ul>
 			</li>
-			<li><a href="{% url 'estacion_list' %}"><i class="icon-truck"></i> Estación</a></li>
-			<li><a href=""><i class="icon-group"></i> Personal</a></li>
-			<li><a href=""><i class="icon-user"></i> Usuario</a></li>
+			<li class="tooltip-top {% if '/procedimiento/' in request.path or '/tipoprocedimiento/' in request.path or 'detalletipoprocedimiento' in request.path %}current{% endif %}" title="Configuración de procedimientos de atención bomberil"><a href=""><i class="icon-retweet"></i> Atención</a>
+				<ul>
+					<li class="tooltip-top {% if '/procedimiento/' in request.path %}current{% endif %}" title="Configuración de Procedimientos"><a href="{% url 'procedimiento_list' %}"><i class="icon-pushpin"></i> Proc.</a></li>
+					<li class="tooltip-top {% if '/tipoprocedimiento/' in request.path %}current{% endif %}" title="Configuración de Tipos de Procedimientos"><a href="{% url 'tipoprocedimiento_list' %}"><i class="icon-pushpin"></i> Tipo de Proc.</a></li>
+					<li class="tooltip-top {% if '/detalletipoprocedimiento/' in request.path %}current{% endif %}" title="Configuración de Detalles de Tipo de Procedimientos"><a href="{% url 'detalletipoprocedimiento_list' %}"><i class="icon-pushpin"></i> Detalles</a></li>
+				</ul>
+			</li>
+			<li class="tooltip-top" title="Configuración de Estaciones de Comandos Bomberiles"><a href=""><i class="icon-bookmark"></i> Comando</a>
+				<ul>
+					<li class="tooltip-top {% if '/estacion/' in request.path %}current{% endif %}" title="Configuración de los datos de la Estación"><a href="{% url 'estacion_list' %}"><i class="icon-circle-blank"></i> Estación</a></li>
+					<li class="tooltip-top" title="Configuración del talento humano"><a href=""><i class="icon-group"></i> Personal</a>
+						<ul>
+							<li class="tooltip-top" title="Configuración de Cargos"><a href=""><i class="icon-sitemap"></i> Cargo</a></li>
+							<li class="tooltip-top" title="Configuración de Rangos"><a href=""><i class="icon-tasks"></i> Rango</a></li>
+							<li class="tooltip-top" title="Configuración del Personal adscrito a las Estaciones Bomberiles"><a href=""><i class="icon-folder-open"></i> Personal</a></li>
+						</ul>
+					</li>
+					<li class="tooltip-top" title="Configuración sobre las Unidades de Bomberos"><a href=""><i class="icon-truck"></i> Unidades</a></li>
+					<li class="tooltip-top" title="Configuración de comisiones externas a los bomberos"><a href=""><i class="icon-ambulance"></i> Comisiones</a></li>
+				</ul>
+			</li>
+			<li class="tooltip-top" title="Configuración de usuarios del sistema"><a href=""><i class="icon-user"></i> Usuario</a></li>
+		</ul>
+	</li>
+	<li class="tooltip-top" title="Registro de novedades y/o Incidencias atendidas"><a href=""><i class="icon-eye-open"></i> Novedades</a></li>
+	<li class="tooltip-top" title="Estadísticas generadas de acuerdo a los procedimientos atendidos"><a href=""><i class="icon-bar-chart"></i> Estadísticas</a>
+		<ul>
+			<li class="tooltip-top" title="Procedimientos Operacionales"><a href=""><i class="icon-ok"></i> Proc. Op.</a></li>
+			<li class="tooltip-top" title="Emergencia Prehospitalaria"><a href=""><i class="icon-ok"></i> Emer. Preh.</a></li>
+		</ul>
+	</li>
+	<li class="tooltip-top" title="Reportes sobre los procedimientos realizados"><a href=""><i class="icon-print"></i> Reportes</a>
+		<ul>
+			<li class="tooltip-top" title="Reporte1"><a href=""><i class="icon-copy"></i> Reporte1</a></li>
+			<li class="tooltip-top" title="Reporte2"><a href=""><i class="icon-copy"></i> Reporte2</a></li>
+		</ul>
+	</li>
+	<li class="tooltip-top" title="Sección de ayuda sobre el uso del sistema"><a href=""><i></i> Ayuda</a>
+		<ul>
+			<li class="tooltip-top" title="Manual de usuario en línea"><a href=""><i class="icon-book"></i> Manual</a></li>
+			<li class="tooltip-top" title="Información básica sobre el sistema"><a href=""><i class="icon-question-sign"></i> Acerca de</a></li>
 		</ul>
 	</li>
 	<li class="right texto-small">

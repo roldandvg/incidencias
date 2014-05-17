@@ -1,6 +1,7 @@
-/*body {
-	background: url('images/background.png') no-repeat
-}*/
+body {
+	/*background: url('images/background.png') no-repeat;*/
+	padding:0px;
+}
 
 #banner {
 	width:auto;
@@ -17,6 +18,10 @@
 	opacity:0.8;
 }
 
+.banner {
+	margin-top:0px;
+}
+
 .negrita {
 	font-weight:bold;
 }
@@ -31,6 +36,7 @@
 	background: linear-gradient(top, rgba(252,252,252,1) 0%,rgba(224,224,224,1) 100%); /* W3C */
 	z-index:600;
 	padding: 10px;
+	opacity:0.955;
 }
 
 .colorblanco {
@@ -76,4 +82,8 @@
 
 .separar-vertical-40x {
 	margin-top:40px;
+}
+
+.imagen-fondo {
+	background: url('images/background.png') no-repeat;
 }
