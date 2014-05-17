@@ -44,23 +44,6 @@ class Parroquia(models.Model):
         verbose_name_plural = 'Parroquias'
 
 
-class Estacion(models.Model):
-    nombre = models.CharField(max_length=60)
-    detalle = models.CharField(max_length=120)
-    telefono = models.CharField(max_length=15)
-    jefe = models.CharField(max_length=45)
-    direccion = models.CharField(max_length=255, blank=True)
-    parroquia = models.ForeignKey(Parroquia)
-
-    def __unicode__(self):
-        return self.nombre
-
-    class Meta:
-        ordering = ["nombre"]
-        verbose_name = 'Estación'
-        verbose_name_plural = 'Estaciones'
-
-
 class Procedimiento(models.Model):
     nombre = models.CharField(max_length=45)
 
@@ -97,19 +80,6 @@ class DetalleTipoProcedimiento(models.Model):
         ordering = ["nombre"]
         verbose_name = 'Detalle de Tipo de Procedimiento'
         verbose_name_plural = 'Detalles de Tipos de Procedimientos'
-
-
-class Unidad(models.Model):
-    numero = models.CharField(max_length=10)
-    modelo = models.CharField(max_length=45)
-
-    def __unicode__(self):
-        return self.numero + ' ' + self.modelo
-
-    class Meta:
-        ordering = ["numero", "modelo"]
-        verbose_name = 'Unidad'
-        verbose_name_plural = 'Unidades'
 
 
 class Comision(models.Model):

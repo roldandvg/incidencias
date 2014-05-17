@@ -2,41 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cd54fbf-4fb4-4581-9050-c7cd5216649e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/incidencias/templates/institucion/cargo_confirm_delete.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/incidencias/templates/institucion/cargo_form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/incidencias/templates/institucion/cargo_list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/incidencias/templates/institucion/rango_confirm_delete.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/incidencias/templates/institucion/rango_form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/incidencias/templates/institucion/rango_list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/incidencias/templates/institucion/trabajador_confirm_delete.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/incidencias/templates/institucion/trabajador_form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/incidencias/templates/institucion/trabajador_list.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/incidencias/apps/institucion/fixtures/initial_data.json" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/incidencias/media/images/incendio-bomberos-llamas-1674300.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/templates/base.html" afterPath="$PROJECT_DIR$/incidencias/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requerimientos/comun.txt" afterPath="$PROJECT_DIR$/requerimientos/comun.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/templates/comun/detalletipoprocedimiento_form.html" afterPath="$PROJECT_DIR$/incidencias/templates/comun/detalletipoprocedimiento_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/templates/comun/detalletipoprocedimiento_list.html" afterPath="$PROJECT_DIR$/incidencias/templates/comun/detalletipoprocedimiento_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/media/css/estilos.css" afterPath="$PROJECT_DIR$/incidencias/media/css/estilos.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/apps/comun/fixtures/initial_data.json" afterPath="$PROJECT_DIR$/incidencias/apps/comun/fixtures/initial_data.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/templates/menu.html" afterPath="$PROJECT_DIR$/incidencias/templates/menu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/apps/autenticar/models.py" afterPath="$PROJECT_DIR$/incidencias/apps/autenticar/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/apps/comun/models.py" afterPath="$PROJECT_DIR$/incidencias/apps/comun/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/apps/novedad/models.py" afterPath="$PROJECT_DIR$/incidencias/apps/novedad/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/templates/comun/parroquia_confirm_delete.html" afterPath="$PROJECT_DIR$/incidencias/templates/comun/parroquia_confirm_delete.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/templates/comun/parroquia_form.html" afterPath="$PROJECT_DIR$/incidencias/templates/comun/parroquia_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/templates/comun/parroquia_list.html" afterPath="$PROJECT_DIR$/incidencias/templates/comun/parroquia_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/templates/comun/procedimiento_confirm_delete.html" afterPath="$PROJECT_DIR$/incidencias/templates/comun/procedimiento_confirm_delete.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/templates/comun/procedimiento_form.html" afterPath="$PROJECT_DIR$/incidencias/templates/comun/procedimiento_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/templates/comun/procedimiento_list.html" afterPath="$PROJECT_DIR$/incidencias/templates/comun/procedimiento_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/settings.py" afterPath="$PROJECT_DIR$/incidencias/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/templates/comun/tipoprocedimiento_confirm_delete.html" afterPath="$PROJECT_DIR$/incidencias/templates/comun/tipoprocedimiento_confirm_delete.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/templates/comun/tipoprocedimiento_form.html" afterPath="$PROJECT_DIR$/incidencias/templates/comun/tipoprocedimiento_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/templates/comun/tipoprocedimiento_list.html" afterPath="$PROJECT_DIR$/incidencias/templates/comun/tipoprocedimiento_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/urls.py" afterPath="$PROJECT_DIR$/incidencias/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/apps/comun/urls.py" afterPath="$PROJECT_DIR$/incidencias/apps/comun/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/apps/autenticar/views.py" afterPath="$PROJECT_DIR$/incidencias/apps/autenticar/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/apps/comun/views.py" afterPath="$PROJECT_DIR$/incidencias/apps/comun/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/apps/institucion/models.py" afterPath="$PROJECT_DIR$/incidencias/apps/institucion/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="incidencias.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,93 +30,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/incidencias/apps/institucion/views.py">
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/incidencias/apps/comun/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="42" selection-start="1548" selection-end="1548" vertical-scroll-proportion="0.0" vertical-offset="361" max-vertical-offset="1080">
+            <state line="46" column="0" selection-start="1023" selection-end="1023" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="2295">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/incidencias/apps/institucion/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="73" column="40" selection-start="1925" selection-end="1925" vertical-scroll-proportion="0.0" vertical-offset="444" max-vertical-offset="1185">
               <folding>
-                <element signature="e#24#60#0" expanded="true" />
+                <element signature="e#24#52#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cargo_confirm_delete.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/incidencias/templates/institucion/cargo_confirm_delete.html">
+      <file leaf-file-name="initial_data.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/incidencias/apps/institucion/fixtures/initial_data.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
+            <state line="168" column="5" selection-start="3994" selection-end="3994" vertical-scroll-proportion="-25.04" vertical-offset="1894" max-vertical-offset="2625">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cargo_form.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/incidencias/templates/institucion/cargo_form.html">
+      <file leaf-file-name="initial_data.json" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/incidencias/apps/comun/fixtures/initial_data.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cargo_list.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/incidencias/templates/institucion/cargo_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="rango_confirm_delete.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/incidencias/templates/institucion/rango_confirm_delete.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="rango_form.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/incidencias/templates/institucion/rango_form.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="rango_list.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/incidencias/templates/institucion/rango_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="trabajador_confirm_delete.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/incidencias/templates/institucion/trabajador_confirm_delete.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="trabajador_form.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/incidencias/templates/institucion/trabajador_form.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="trabajador_list.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/incidencias/templates/institucion/trabajador_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="659">
+            <state line="213" column="4" selection-start="2942" selection-end="2942" vertical-scroll-proportion="0.3597561" vertical-offset="2959" max-vertical-offset="8745">
               <folding />
             </state>
           </provider>
@@ -166,15 +83,16 @@
       <list>
         <option value="$PROJECT_DIR$/incidencias/templates/comun/tipoprocedimiento_form.html" />
         <option value="$PROJECT_DIR$/incidencias/apps/novedad/models.py" />
-        <option value="$PROJECT_DIR$/incidencias/apps/comun/models.py" />
-        <option value="$PROJECT_DIR$/incidencias/apps/comun/fixtures/initial_data.json" />
         <option value="$PROJECT_DIR$/incidencias/apps/comun/views.py" />
         <option value="$PROJECT_DIR$/incidencias/apps/autenticar/models.py" />
-        <option value="$PROJECT_DIR$/incidencias/apps/institucion/models.py" />
         <option value="$PROJECT_DIR$/incidencias/settings.py" />
         <option value="$PROJECT_DIR$/incidencias/urls.py" />
         <option value="$PROJECT_DIR$/incidencias/apps/comun/urls.py" />
         <option value="$PROJECT_DIR$/incidencias/apps/institucion/views.py" />
+        <option value="$PROJECT_DIR$/incidencias/apps/comun/models.py" />
+        <option value="$PROJECT_DIR$/incidencias/apps/institucion/models.py" />
+        <option value="$PROJECT_DIR$/incidencias/apps/comun/fixtures/initial_data.json" />
+        <option value="$PROJECT_DIR$/incidencias/apps/institucion/fixtures/initial_data.json" />
       </list>
     </option>
   </component>
@@ -406,6 +324,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="institucion" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fixtures" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="incidencias" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="incidencias" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="incidencias" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="comun" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -609,13 +553,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1280" height="776" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24609375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24609375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -668,26 +612,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/incidencias/apps/comun/fixtures/initial_data.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="684" column="18" selection-start="12942" selection-end="12942" vertical-scroll-proportion="-0.6" vertical-offset="10245" max-vertical-offset="11265">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/incidencias/apps/novedad/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="0" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1695">
           <folding>
             <element signature="e#24#52#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/incidencias/apps/comun/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="158" column="0" selection-start="4052" selection-end="4052" vertical-scroll-proportion="0.0" vertical-offset="2025" max-vertical-offset="2745">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -719,15 +649,6 @@
         <state line="12" column="116" selection-start="887" selection-end="887" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1050">
           <folding>
             <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/incidencias/apps/institucion/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="23" selection-start="946" selection-end="946" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="735">
-          <folding>
-            <element signature="e#24#52#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -809,6 +730,36 @@
     <entry file="file://$PROJECT_DIR$/incidencias/templates/institucion/trabajador_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="659">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incidencias/apps/comun/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="0" selection-start="1023" selection-end="1023" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="2295">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incidencias/apps/institucion/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="40" selection-start="1925" selection-end="1925" vertical-scroll-proportion="0.0" vertical-offset="444" max-vertical-offset="1185">
+          <folding>
+            <element signature="e#24#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incidencias/apps/institucion/fixtures/initial_data.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="168" column="5" selection-start="3994" selection-end="3994" vertical-scroll-proportion="-25.04" vertical-offset="1894" max-vertical-offset="2625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incidencias/apps/comun/fixtures/initial_data.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="213" column="4" selection-start="2942" selection-end="2942" vertical-scroll-proportion="0.3597561" vertical-offset="2959" max-vertical-offset="8745">
           <folding />
         </state>
       </provider>
