@@ -5,8 +5,8 @@ from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 
-from incidencias.apps.comun.models import Zona, Municipio, Parroquia, Estacion, Procedimiento, TipoProcedimiento, \
-    DetalleTipoProcedimiento, Unidad, Comision, Diagnostico
+from incidencias.apps.comun.models import Zona, Municipio, Parroquia, Procedimiento, TipoProcedimiento, \
+    DetalleTipoProcedimiento, Comision
 
 
 # Vistas genericas para controlar el CRUD del modelo Zona
@@ -69,26 +69,6 @@ class ParroquiaDelete(DeleteView):
     success_url = reverse_lazy('parroquia_list')
 
 
-# Vistas genericas para controlar el CRUD del modelo Estación
-class EstacionList(ListView):
-    model = Estacion
-
-
-class EstacionCreate(CreateView):
-    model = Estacion
-    success_url = reverse_lazy('estacion_list')
-
-
-class EstacionUpdate(UpdateView):
-    model = Estacion
-    success_url = reverse_lazy('estacion_list')
-
-
-class EstacionDelete(DeleteView):
-    model = Estacion
-    success_url = reverse_lazy('estacion_list')
-
-
 # Vistas genericas para controlar el CRUD del modelo Procedimiento
 class ProcedimientoList(ListView):
     model = Procedimiento
@@ -149,26 +129,6 @@ class DetalleTipoProcedimientoDelete(DeleteView):
     success_url = reverse_lazy('detalletipoprocedimiento_list')
 
 
-# Vistas genericas para controlar el CRUD del modelo Unidad
-class UnidadList(ListView):
-    model = Unidad
-
-
-class UnidadCreate(CreateView):
-    model = Unidad
-    success_url = reverse_lazy('unidad_list')
-
-
-class UnidadUpdate(UpdateView):
-    model = Unidad
-    success_url = reverse_lazy('unidad_list')
-
-
-class UnidadDelete(DeleteView):
-    model = Unidad
-    success_url = reverse_lazy('unidad_list')
-
-
 # Vistas genericas para controlar el CRUD del modelo Comision
 class ComisionList(ListView):
     model = Comision
@@ -187,23 +147,3 @@ class ComisionUpdate(UpdateView):
 class ComisionDelete(DeleteView):
     model = Comision
     success_url = reverse_lazy('comision_list')
-
-
-# Vistas genericas para controlar el CRUD del modelo Diagnostico
-class DiagnosticoList(ListView):
-    model = Diagnostico
-
-
-class DiagnosticoCreate(CreateView):
-    model = Diagnostico
-    success_url = reverse_lazy('diagnostico_list')
-
-
-class DiagnosticoUpdate(UpdateView):
-    model = Diagnostico
-    success_url = reverse_lazy('diagnostico_list')
-
-
-class DiagnosticoDelete(DeleteView):
-    model = Diagnostico
-    success_url = reverse_lazy('diagnostico_list')

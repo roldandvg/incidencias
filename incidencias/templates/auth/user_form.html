@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block titleform %}Registro de Usuarios{% endblock %}
+{% block subtitleform %}{% endblock %}
+{% block formulario %}
+	{% csrf_token %}
+	{% load widget_tweaks %}
+    <div class="col_6">
+		{{form.personal.label}}<br/>
+		{{form.personal|attr:"Seleccione al personal al cual asignar el usuario"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{% if form.personal.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.personal.errors }}<a href="#close" class="icon-remove"></a></div>
+		{% endif %}
+	</div>
+    <div class="col_6">
+		{{form.username.label}}<br/>
+		{{form.username|attr:"size:40"|attr:"placeholder:Indique el nombre de usuario"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{% if form.username.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.username.errors }}<a href="#close" class="icon-remove"></a></div>
+		{% endif %}
+	</div>
+    <div class="col_6">
+		{{form.password.label}}<br/>
+		{{form.password|attr:"size:40"|attr:"type:password"|attr:"placeholder:Indique una contraseña"|attr:"value:123456"|attr:"title:La contraseña por defecto es 123456"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{% if form.password.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.password.errors }}<a href="#close" class="icon-remove"></a></div>
+		{% endif %}
+	</div>
+    <div class="col_6">
+		<label>Confirme la contraseña</label><br/>
+		<input type="password" name="confirm_password" id="confirm_password" size="40" placeholder="Indique nuevamente la contraseña"/> <i class="icon-asterisk icono-small icono-required"></i><br/>
+		<div id="error_confir_password" class="hide"><i class="icon-remove-sign icon-large"></i> La contraseña no coincide</label><a href="#close" class="icon-remove"></a></div>
+	</div>
+    <div class="col_6">
+		{{form.email.label}}<br/>
+		{{form.email|attr:"size:40"|attr:"placeholder:Indique el correo del usuario"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{% if form.email.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.email.errors }}<a href="#close" class="icon-remove"></a></div>
+		{% endif %}
+	</div>
+    <div class="col_12">
+		{{form.is_superuser.label}}<br/>
+		{{form.is_superuser|attr:"size:40"|attr:"title:Marque esta opción si el usuario tiene permiso de administrador del sistema"}}<br/>
+		{% if form.is_superuser.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.is_superuser.errors }}<a href="#close" class="icon-remove"></a></div>
+		{% endif %}
+	</div>
+    <div class="col_12">
+		{{form.is_staff.label}}<br/>
+		{{form.is_staff|attr:"size:40"|attr:"title:Marque esta opción si el usuario tiene permisos especiales del sistema"}}<br/>
+		{% if form.is_staff.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.is_staff.errors }}<a href="#close" class="icon-remove"></a></div>
+		{% endif %}
+	</div>
+    <div class="col_12">
+		{{form.is_active.label}}<br/>
+		{{form.is_active|attr:"size:40"|attr:"title:Marque esta opción si el usuario está activo en el sistema"}}<br/>
+		{% if form.is_active.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.is_active.errors }}<a href="#close" class="icon-remove"></a></div>
+		{% endif %}
+	</div>
+	<div class="col_12 center separar-vertical-40x">
+		<button class="small blue"><i class="icon-check"></i> Guardar</button>
+		&#160;&#160;
+		<button class="small blue" type="button" onclick="location='{% url 'user_list' %}'"><i class="icon-remove-circle"></i> Cancelar</button>
+	</div>
+{% endblock %}

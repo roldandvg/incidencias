@@ -45,18 +45,16 @@ class Estacion(models.Model):
         verbose_name_plural = 'Estaciones'
 
 
-class Trabajador(models.Model):
-    persona = models.ForeignKey(Persona)
+class Trabajador(Persona):
     cargo = models.ForeignKey(Cargo)
-    rango = models.ForeignKey(Rango, null=True)
+    rango = models.ForeignKey(Rango, null=True, default=None)
     estacion = models.ForeignKey(Estacion)
-    usuario = models.ForeignKey(User, null=True)
 
     def __unicode__(self):
-        return self.persona
+        return self.nombre
 
     class Meta:
-        ordering = ["estacion", "cargo", "persona"]
+        ordering = ["estacion", "cargo", "nombre"]
         verbose_name = "Trabajador"
         verbose_name_plural = "Trabajadores"
 

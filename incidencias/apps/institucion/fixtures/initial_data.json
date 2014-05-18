@@ -1,7 +1,7 @@
 [
     {
 		"pk": 1,
-		"model": "comun.estacion",
+		"model": "institucion.estacion",
 		"fields": {
 			"nombre": "Sede Principal",
 			"detalle": "Cuartel de Bomberos 'Vicente Campo Elías'",
@@ -13,7 +13,7 @@
 	},
 	{
 		"pk": 2,
-		"model": "comun.estacion",
+		"model": "institucion.estacion",
 		"fields": {
 			"nombre": "Libertador",
 			"detalle": "'Gregorio Isilio Vivas'",
@@ -25,7 +25,7 @@
 	},
 	{
 		"pk": 3,
-		"model": "comun.estacion",
+		"model": "institucion.estacion",
 		"fields": {
 			"nombre": "Cuenca del Chama",
 			"detalle": "'C/1° (B) José Alexander Rojas'",
@@ -37,7 +37,7 @@
 	},
 	{
 		"pk": 4,
-		"model": "comun.estacion",
+		"model": "institucion.estacion",
 		"fields": {
 			"nombre": "B.R.A.I.",
 			"detalle": "Brigada de Reacción y Atención Inmediata (B.R.A.I.)",
@@ -49,7 +49,7 @@
 	},
 	{
 		"pk": 5,
-		"model": "comun.estacion",
+		"model": "institucion.estacion",
 		"fields": {
 			"nombre": "MAT-PEL",
 			"detalle": "Brigada de Materiales Peligrosos (MAT-PEL)",
@@ -61,7 +61,7 @@
 	},
 	{
 		"pk": 6,
-		"model": "comun.estacion",
+		"model": "institucion.estacion",
 		"fields": {
 			"nombre": "El Valle",
 			"detalle": "",
@@ -73,7 +73,7 @@
 	},
 	{
 		"pk": 7,
-		"model": "comun.estacion",
+		"model": "institucion.estacion",
 		"fields": {
 			"nombre": "Ejido",
 			"detalle": "'Cap. Comuneros Francisco Javier Angulo'",
@@ -85,7 +85,7 @@
 	},
 	{
 		"pk": 8,
-		"model": "comun.estacion",
+		"model": "institucion.estacion",
 		"fields": {
 			"nombre": "B.O.E.",
 			"detalle": "Brigada de Operaciones Especiales (B.O.E.)",
@@ -97,7 +97,7 @@
 	},
 	{
 		"pk": 9,
-		"model": "comun.estacion",
+		"model": "institucion.estacion",
 		"fields": {
 			"nombre": "Tovar",
 			"detalle": "'General Francisco Picón González'",
@@ -109,7 +109,7 @@
 	},
 	{
 		"pk": 10,
-		"model": "comun.estacion",
+		"model": "institucion.estacion",
 		"fields": {
 			"nombre": "Guaraque",
 			"detalle": "'Pueblos del Sur'",
@@ -121,7 +121,7 @@
 	},
 	{
 		"pk": 11,
-		"model": "comun.estacion",
+		"model": "institucion.estacion",
 		"fields": {
 			"nombre": "El Vigía",
 			"detalle": "'Mayor (B) Cesar Guillén Calderón'",
@@ -133,7 +133,7 @@
 	},
 	{
 		"pk": 12,
-		"model": "comun.estacion",
+		"model": "institucion.estacion",
 		"fields": {
 			"nombre": "Tucaní",
 			"detalle": "'S/A (B) German Sulbaran'",
@@ -145,7 +145,7 @@
 	},
 	{
 		"pk": 13,
-		"model": "comun.estacion",
+		"model": "institucion.estacion",
 		"fields": {
 			"nombre": "Apartaderos",
 			"detalle": "'Indio Tinjaca'",
@@ -157,7 +157,7 @@
 	},
 	{
 		"pk": 14,
-		"model": "comun.estacion",
+		"model": "institucion.estacion",
 		"fields": {
 			"nombre": "Santo Domingo",
 			"detalle": "'C/1° (B) Lizandro Méndez'",
@@ -166,5 +166,12 @@
 			"direccion": "Población de Santo Domingo, sector La Mitisus",
 			"parroquia": 14
 		}
+	},
+	{
+	    "pk": 1,
+	    "model": "institucion.rango",
+	    "fields": {
+	        "rango": "Sin rango"
+	    }
 	}
 ]

@@ -4,7 +4,7 @@ from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 
-from incidencias.apps.institucion.models import Cargo, Rango, Trabajador
+from incidencias.apps.institucion.models import Cargo, Rango, Estacion, Trabajador, Unidad
 
 
 # Vistas genericas para controlar el CRUD del modelo Cargo
@@ -47,6 +47,26 @@ class RangoDelete(DeleteView):
     success_url = reverse_lazy('rango_list')
 
 
+# Vistas genericas para controlar el CRUD del modelo Estación
+class EstacionList(ListView):
+    model = Estacion
+
+
+class EstacionCreate(CreateView):
+    model = Estacion
+    success_url = reverse_lazy('estacion_list')
+
+
+class EstacionUpdate(UpdateView):
+    model = Estacion
+    success_url = reverse_lazy('estacion_list')
+
+
+class EstacionDelete(DeleteView):
+    model = Estacion
+    success_url = reverse_lazy('estacion_list')
+
+
 # Vistas genericas para controlar el CRUD del modelo Trabajador
 class TrabajadorList(ListView):
     model = Trabajador
@@ -54,14 +74,37 @@ class TrabajadorList(ListView):
 
 class TrabajadorCreate(CreateView):
     model = Trabajador
+    fields = ["nombre", "cedula", "edad", "sexo", "estacion", "cargo", "rango"]
+    initial = {"rango": 1}
     success_url = reverse_lazy('trabajador_list')
 
 
 class TrabajadorUpdate(UpdateView):
     model = Trabajador
+    fields = ["nombre", "cedula", "edad", "sexo", "estacion", "cargo", "rango"]
     success_url = reverse_lazy('trabajador_list')
 
 
 class TrabajadorDelete(DeleteView):
     model = Trabajador
     success_url = reverse_lazy('trabajador_list')
+
+
+# Vistas genericas para controlar el CRUD del modelo Unidad
+class UnidadList(ListView):
+    model = Unidad
+
+
+class UnidadCreate(CreateView):
+    model = Unidad
+    success_url = reverse_lazy('unidad_list')
+
+
+class UnidadUpdate(UpdateView):
+    model = Unidad
+    success_url = reverse_lazy('unidad_list')
+
+
+class UnidadDelete(DeleteView):
+    model = Unidad
+    success_url = reverse_lazy('unidad_list')

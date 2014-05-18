@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block titleform %}Personal <a href="{% url 'trabajador_new' %}"><i class="icon-plus-sign" title="Nuevo Registro"></i></a>{% endblock %}
+{% block subtitleform %}Listado de Personal{% endblock %}
+{% block formulario %}
+	<table class="sortable">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+                <th>Rango</th>
+                <th>Cargo</th>
+                <th>Estación</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for trabajador in object_list %}
+				<tr class="{% cycle 'colorblanco' 'colorazul' as rowcolors %}">
+					<td>{{ trabajador.nombre }}</td>
+                    <td>{{ trabajador.rango }}</td>
+                    <td>{{ trabajador.cargo }}</td>
+                    <td>{{ trabajador.estacion }}</td>
+					<td>
+						<a href="{% url 'trabajador_edit' trabajador.id %}"><i class="icon-pencil"></i></a>
+						<a href="{% url 'trabajador_delete' trabajador.id %}"><i class="icon-trash"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

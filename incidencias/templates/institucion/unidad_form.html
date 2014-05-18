@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block titleform %}Registro de Unidades{% endblock %}
+{% block subtitleform %}{% endblock %}
+{% block formulario %}
+    {% csrf_token %}
+	{% load widget_tweaks %}
+    <div class="col_6">
+        {{form.numero.label}}<br/>
+        {{form.numero|attr:"size:20"|attr:"placeholder:Indique el número de la unidad"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{% if form.numero.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.numero.errors }}<a href="#close" class="icon-remove"></a></div>
+		{% endif %}
+    </div>
+    <div class="col_6">
+        {{form.modelo.label}}<br/>
+        {{form.modelo|attr:"size:60"|attr:"placeholder:Indique el modelo de la unidad"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{% if form.modelo.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.modelo.errors }}<a href="#close" class="icon-remove"></a></div>
+		{% endif %}
+    </div>
+    <div class="col_12 center separar-vertical-40x">
+        <button class="small blue"><i class="icon-check"></i> Guardar</button>
+        &#160;&#160;
+        <button class="small blue" type="button" onclick="location='{% url 'unidad_list' %}'"><i class="icon-remove-circle"></i> Cancelar</button>
+	</div>
+{% endblock %}

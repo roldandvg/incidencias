@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block titleform %}Rangos <a href="{% url 'rango_new' %}"><i class="icon-plus-sign" title="Nuevo Registro"></i></a>{% endblock %}
+{% block subtitleform %}Listado de rangos bomberiles{% endblock %}
+{% block formulario %}
+	<table class="sortable">
+		<thead>
+			<tr>
+				<th>Rango</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for rgo in object_list %}
+				<tr class="{% cycle 'colorblanco' 'colorazul' as rowcolors %}">
+					<td>{{ rgo.cargo }}</td>
+					<td>
+						<a href="{% url 'rango_edit' rgo.id %}"><i class="icon-pencil"></i></a>
+						<a href="{% url 'rango_delete' rgo.id %}"><i class="icon-trash"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

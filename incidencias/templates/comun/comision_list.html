@@ -1,14 +1,26 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
+{% block titleform %}Comisiones <a href="{% url 'comision_new' %}"><i class="icon-plus-sign" title="Nuevo Registro"></i></a>{% endblock %}
+{% block subtitleform %}Listado de comisiones externas{% endblock %}
 {% block formulario %}
-	<h1>Comisiones</h1>
-	<ul>
-		{% for comision in object_list %}
-		<li>{{ comision.nombre }}  :  
-			<a href="{% url 'comision_edit' comision.id %}">{{ comision.id }}</a>
-			<a href="{% url 'comision_delete' comision.id %}">eliminar</a>
-		</li>
-		{% endfor %}
-	</ul>
-
-	<a href="{% url 'comision_new' %}">Nuevo</a>
+	<table class="sortable">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+                <th>Descripción</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for comision in object_list %}
+				<tr class="{% cycle 'colorblanco' 'colorazul' as rowcolors %}">
+					<td>{{comision.nombre}}</td>
+                    <td>{{comision.descripcion}}</td>
+					<td>
+						<a href="{% url 'comision_edit' comision.id %}"><i class="icon-pencil"></i></a>
+						<a href="{% url 'comision_delete' comision.id %}"><i class="icon-trash"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 {% endblock %}

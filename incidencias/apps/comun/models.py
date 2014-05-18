@@ -45,7 +45,7 @@ class Parroquia(models.Model):
 
 
 class Procedimiento(models.Model):
-    nombre = models.CharField(max_length=45)
+    nombre = models.CharField(max_length=80)
 
     def __unicode__(self):
         return self.nombre
@@ -57,7 +57,7 @@ class Procedimiento(models.Model):
 
 
 class TipoProcedimiento(models.Model):
-    nombre = models.CharField(max_length=45)
+    nombre = models.CharField(max_length=80)
     procedimiento = models.ForeignKey(Procedimiento)
 
     def __unicode__(self):
@@ -70,7 +70,7 @@ class TipoProcedimiento(models.Model):
 
 
 class DetalleTipoProcedimiento(models.Model):
-    nombre = models.CharField(max_length=45)
+    nombre = models.CharField(max_length=80)
     tipo_procedimiento = models.ForeignKey(TipoProcedimiento)
 
     def __unicode__(self):
@@ -84,6 +84,7 @@ class DetalleTipoProcedimiento(models.Model):
 
 class Comision(models.Model):
     nombre = models.CharField(max_length=45)
+    descripcion = models.CharField(max_length=200)
 
     def __unicode__(self):
         return self.nombre
@@ -92,21 +93,6 @@ class Comision(models.Model):
         ordering = ["nombre"]
         verbose_name = 'Comisión'
         verbose_name_plural = 'Comisiones'
-
-
-class Diagnostico(models.Model):
-    nombre = models.CharField(max_length=45)
-    descripcion = models.CharField(max_length=255)
-    lesionado = models.NullBooleanField(null=True)
-    fallecido = models.NullBooleanField(null=True)
-
-    def __unicode__(self):
-        return self.nombre
-
-    class Meta:
-        ordering = ["nombre"]
-        verbose_name = 'Diagnóstico'
-        verbose_name_plural = 'Diagnósticos'
 
 
 class Persona(models.Model):
@@ -122,26 +108,3 @@ class Persona(models.Model):
         ordering = ["cedula", "nombre"]
         verbose_name = "Persona"
         verbose_name_plural = "Personas"
-
-
-class PersonaAtendida(Persona):
-    diagnostico = models.ManyToManyField(Diagnostico)
-
-
-class DetallePersona(models.Model):
-    posicion = models.CharField(max_length=45)
-    dias_desaparecido = models.SmallIntegerField()
-    causa_muerte = models.CharField(max_length=255, blank=True, null=True)
-    camisa = models.CharField(max_length=45)
-    pantalon = models.CharField(max_length=45)
-    zapatos = models.CharField(max_length=45)
-    observacion = models.CharField(max_length=255)
-    persona = models.ForeignKey(PersonaAtendida)
-
-    def __unicode__(self):
-        return self.persona
-
-    class Meta:
-        ordering = ["dias_desaparecido"]
-        verbose_name = "Detalle de Persona"
-        verbose_name_plural = "Detalles de Personas"

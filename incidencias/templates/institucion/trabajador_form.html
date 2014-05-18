@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block titleform %}Registro de Personal{% endblock %}
+{% block subtitleform %}{% endblock %}
+{% block formulario %}
+    {% csrf_token %}
+	{% load widget_tweaks %}
+    <div class="col_6">
+        {{form.cedula.label}}<br/>
+		{{form.cedula|attr:"size:10"|attr:"placeholder:indique el número de cédula"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{% if form.cedula.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.cedula.errors }}<a href="#close" class="icon-remove"></a></div>
+		{% endif %}
+    </div>
+    <div class="col_6">
+        {{form.nombre.label}}<br/>
+		{{form.nombre|attr:"size:60"|attr:"placeholder:indique el nombre del trabajador"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{% if form.nombre.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.nombre.errors }}<a href="#close" class="icon-remove"></a></div>
+		{% endif %}
+    </div>
+    <div class="col_6">
+        {{form.edad.label}}<br/>
+		{{form.edad|attr:"size:4"|attr:"placeholder:edad"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{% if form.edad.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.edad.errors }}<a href="#close" class="icon-remove"></a></div>
+		{% endif %}
+    </div>
+    <div class="col_6">
+        {{form.sexo.label}}<br/>
+		{{form.sexo|attr:"title:Seleccione el sexo"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{% if form.sexo.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.sexo.errors }}<a href="#close" class="icon-remove"></a></div>
+		{% endif %}
+    </div>
+    <div class="col_6">
+        {{form.estacion.label}}<br/>
+		{{form.estacion|attr:"title:Seleccione la estación"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{% if form.estacion.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.estacion.errors }}<a href="#close" class="icon-remove"></a></div>
+		{% endif %}
+    </div>
+    <div class="col_6">
+        {{form.cargo.label}}<br/>
+		{{form.cargo|attr:"title:Seleccione el cargo"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{% if form.cargo.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.cargo.errors }}<a href="#close" class="icon-remove"></a></div>
+		{% endif %}
+    </div>
+    <div class="col_6">
+        {{form.rango.label}}<br/>
+		{{form.rango|attr:"title:Seleccione el rango"}}<br/>
+		{% if form.rango.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.rango.errors }}<a href="#close" class="icon-remove"></a></div>
+		{% endif %}
+    </div>
+    <div class="col_12 center separar-vertical-40x">
+		<button class="small blue"><i class="icon-check"></i> Guardar</button>
+		&#160;&#160;
+		<button class="small blue" type="button" onclick="location='{% url 'trabajador_list' %}'"><i class="icon-remove-circle"></i> Cancelar</button>
+	</div>
+{% endblock %}

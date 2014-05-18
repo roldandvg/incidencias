@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block titleform %}Usuarios <a href="{% url 'user_new' %}"><i class="icon-plus-sign" title="Nuevo Registro"></i></a>{% endblock %}
+{% block subtitleform %}Listado de Usuarios del Sistema{% endblock %}
+{% block formulario %}
+    <table class="sortable">
+		<thead>
+			<tr>
+				<th>Personal</th>
+                <th>Usuario</th>
+                <th>Correo</th>
+                <th>Fecha de Creación</th>
+                <th>Última fecha de acceso</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in object_list %}
+				<tr class="{% cycle 'colorblanco' 'colorazul' as rowcolors %}">
+					<td>{{user.personal}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.date_joined}}</td>
+                    <td>{{user.last_login}}</td>
+					<td>
+						<a href="{% url 'user_edit' user.id %}"><i class="icon-pencil"></i></a>
+						<a href="{% url 'user_delete' user.id %}"><i class="icon-trash"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

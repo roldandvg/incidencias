@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block titleform %}Cargos <a href="{% url 'cargo_new' %}"><i class="icon-plus-sign" title="Nuevo Registro"></i></a>{% endblock %}
+{% block subtitleform %}Listado de cargos{% endblock %}
+{% block formulario %}
+	<table class="sortable">
+		<thead>
+			<tr>
+				<th>Cargo</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for cgo in object_list %}
+				<tr class="{% cycle 'colorblanco' 'colorazul' as rowcolors %}">
+					<td>{{ cgo.cargo }}</td>
+					<td>
+						<a href="{% url 'cargo_edit' cgo.id %}"><i class="icon-pencil"></i></a>
+						<a href="{% url 'cargo_delete' cgo.id %}"><i class="icon-trash"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

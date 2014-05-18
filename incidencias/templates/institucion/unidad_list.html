@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block titleform %}Unidades <a href="{% url 'unidad_new' %}"><i class="icon-plus-sign" title="Nuevo Registro"></i></a>{% endblock %}
+{% block subtitleform %}Listado de unidades bomberiles{% endblock %}
+{% block formulario %}
+	<table class="sortable">
+		<thead>
+			<tr>
+				<th>Número</th>
+                <th>Modelo</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for unidad in object_list %}
+				<tr class="{% cycle 'colorblanco' 'colorazul' as rowcolors %}">
+					<td>{{ unidad.numero }}</td>
+                    <td>{{ unidad.modelo }}</td>
+					<td>
+						<a href="{% url 'unidad_edit' unidad.id %}"><i class="icon-pencil"></i></a>
+						<a href="{% url 'unidad_delete' unidad.id %}"><i class="icon-trash"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

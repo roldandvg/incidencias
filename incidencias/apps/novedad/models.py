@@ -1,10 +1,48 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from incidencias.apps.comun.models import TipoProcedimiento, \
-    Estacion, Unidad, Comision, Persona
+from incidencias.apps.comun.models import TipoProcedimiento, Comision, Persona
+from incidencias.apps.institucion.models import Estacion, Unidad
 
 
 # Create your models here.
+class Diagnostico(models.Model):
+    nombre = models.CharField(max_length=45)
+    descripcion = models.CharField(max_length=255)
+    lesionado = models.NullBooleanField(null=True)
+    fallecido = models.NullBooleanField(null=True)
+
+    def __unicode__(self):
+        return self.nombre
+
+    class Meta:
+        ordering = ["nombre"]
+        verbose_name = 'Diagnóstico'
+        verbose_name_plural = 'Diagnósticos'
+
+
+class PersonaAtendida(Persona):
+    diagnostico = models.ManyToManyField(Diagnostico)
+
+
+class DetallePersona(models.Model):
+    posicion = models.CharField(max_length=45)
+    dias_desaparecido = models.SmallIntegerField()
+    causa_muerte = models.CharField(max_length=255, blank=True, null=True)
+    camisa = models.CharField(max_length=45)
+    pantalon = models.CharField(max_length=45)
+    zapatos = models.CharField(max_length=45)
+    observacion = models.CharField(max_length=255)
+    persona = models.ForeignKey(PersonaAtendida)
+
+    def __unicode__(self):
+        return self.persona
+
+    class Meta:
+        ordering = ["dias_desaparecido"]
+        verbose_name = "Detalle de Persona"
+        verbose_name_plural = "Detalles de Personas"
+
+
 class Novedad(models.Model):
     fecha = models.DateField()
     lugar = models.CharField(max_length=255)
