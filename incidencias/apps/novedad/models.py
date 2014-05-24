@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from incidencias.apps.comun.models import TipoProcedimiento, Comision, Persona
+from django.contrib.auth.models import User
+
+from incidencias.apps.comun.models import TipoProcedimiento, Comision, Persona, Parroquia
 from incidencias.apps.institucion.models import Estacion, Unidad
 
 
@@ -8,8 +10,6 @@ from incidencias.apps.institucion.models import Estacion, Unidad
 class Diagnostico(models.Model):
     nombre = models.CharField(max_length=45)
     descripcion = models.CharField(max_length=255)
-    lesionado = models.NullBooleanField(null=True)
-    fallecido = models.NullBooleanField(null=True)
 
     def __unicode__(self):
         return self.nombre
@@ -22,6 +22,8 @@ class Diagnostico(models.Model):
 
 class PersonaAtendida(Persona):
     diagnostico = models.ManyToManyField(Diagnostico)
+    lesionado = models.NullBooleanField(null=True)
+    fallecido = models.NullBooleanField(null=True)
 
 
 class DetallePersona(models.Model):
@@ -51,7 +53,10 @@ class Novedad(models.Model):
     hora_salida = models.TimeField()
     hora_llegada = models.TimeField()
     hora_reporte = models.TimeField()
+    accion_ejecutada = models.CharField(max_length=255)
+    parroquia = models.ForeignKey(Parroquia)
     tipo_procedimiento = models.ForeignKey(TipoProcedimiento)
+    usuario = models.ForeignKey(User)
     unidad = models.ManyToManyField(Unidad)
     comision = models.ManyToManyField(Comision)
     persona = models.ManyToManyField(Persona)
@@ -60,7 +65,7 @@ class Novedad(models.Model):
         return self.motivo
 
     class Meta:
-        ordering = ["fecha", "lugar"]
+        ordering = ["fecha", "lugar", "tipo_procedimiento"]
         verbose_name = 'Novedad'
         verbose_name_plural = 'Novedades'
 

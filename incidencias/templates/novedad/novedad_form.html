@@ -1,7 +1,94 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
+{% block titleform %}Registro de Novedades{% endblock %}
+{% block subtitleform %}{% endblock %}
 {% block formulario %}
-	<form method="post">{% csrf_token %}
-		{{ form.as_p }}
-		<input type="submit" value="Submit" />
-	</form>
+	{% csrf_token %}
+	{% load widget_tweaks %}
+    <ul class="tabs left">
+        <li><a href="#tab_novedad">Novedad</a></li>
+        <li><a href="#tab_datos">Datos</a></li>
+    </ul>
+    <div id="tab_novedad" class="tab-content tab-content-custom">
+        <div class="col_6">
+            Procedimiento<br/>
+            <select><option>------</option></select>
+        </div>
+        <div class="col_6">
+            {{form.tipo_procedimiento.label}}<br/>
+            {{form.tipo_procedimiento}}
+        </div>
+        <div class="col_6"></div>
+        <div class="col_6">
+            Detalle del tipo de procedimiento<br/>
+            <select><option>------</option></select>
+        </div>
+        <div class="col_6">
+            <div class="col_3">
+                {{form.fecha.label}}<br/>
+                {{form.fecha|attr:"size:10"|attr:"placeholder:DD/MM/AAAA"}}
+                {% if form.fecha.errors %}
+                    <div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.fecha.errors }}<a href="#close" class="icon-remove"></a></div>
+                {% endif %}<br/>
+            </div>
+            <div class="col_3">
+                {{form.hora_salida.label}}<br/>
+                {{form.hora_salida|attr:"size:8"|attr:"placeholder:00:00"}}
+                {% if form.hora_salida.errors %}
+                    <div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.hora_salida.errors }}<a href="#close" class="icon-remove"></a></div>
+                {% endif %}<br/>
+            </div>
+        </div>
+        <div class="col_6">
+            <div class="col_3">
+                {{form.hora_llegada.label}}<br/>
+                {{form.hora_llegada|attr:"size:8"|attr:"placeholder:00:00"}}
+                {% if form.hora_llegada.errors %}
+                    <div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.hora_llegada.errors }}<a href="#close" class="icon-remove"></a></div>
+                {% endif %}<br/>
+            </div>
+            <div class="col_3">
+                {{form.hora_reporte.label}}<br/>
+                {{form.hora_reporte|attr:"size:8"|attr:"placeholder:00:00"}}
+                {% if form.hora_reporte.errors %}
+                    <div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.hora_reporte.errors }}<a href="#close" class="icon-remove"></a></div>
+                {% endif %}<br/>
+            </div>
+        </div>
+        <div class="col_6">
+            Municipio
+            <select><option>------</option></select>
+        </div>
+        <div class="col_6">
+            {{form.parroquia.label}}<br/>
+            {{form.parroquia}}
+        </div>
+        <div class="col_6">
+            {{form.lugar.label}}<br/>
+            {{form.lugar}}
+        </div>
+        <div class="col_6">
+            {{form.motivo.label}}<br/>
+            {{form.motivo}}
+        </div>
+        <div class="col_6">
+            {{form.unidad.label}}<br/>
+            {{form.unidad}}
+        </div>
+        <div class="col_6">
+            {{form.comision.label}}<br/>
+            {{form.comision}}
+        </div>
+    </div>
+    <div id="tab_datos" class="tab-content tab-content-custom">
+        <div class="col_6">
+            {{form.accion_ejecutada.label}}<br/>
+            {{form.accion_ejecutada}}
+        </div>
+        <div class="col_6"></div>
+    </div>
+	<div class="col_12 center separar-vertical-20x">
+		<button class="small blue"><i class="icon-check"></i> Guardar</button>
+		&#160;&#160;
+		<button class="small blue" type="button" onclick="location='{% url 'novedad_list' %}'"><i class="icon-remove-circle"></i> Cancelar</button>
+	</div>
 {% endblock %}

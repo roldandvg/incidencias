@@ -44,21 +44,9 @@ class Parroquia(models.Model):
         verbose_name_plural = 'Parroquias'
 
 
-class Procedimiento(models.Model):
-    nombre = models.CharField(max_length=80)
-
-    def __unicode__(self):
-        return self.nombre
-
-    class Meta:
-        ordering = ["nombre"]
-        verbose_name = 'Procedimiento'
-        verbose_name_plural = 'Procedimientos'
-
-
 class TipoProcedimiento(models.Model):
     nombre = models.CharField(max_length=80)
-    procedimiento = models.ForeignKey(Procedimiento)
+    division = models.ForeignKey()
 
     def __unicode__(self):
         return self.nombre
@@ -96,10 +84,10 @@ class Comision(models.Model):
 
 
 class Persona(models.Model):
-    nombre = models.CharField(max_length=80)
-    cedula = models.CharField(max_length=10, unique=True)
-    edad = models.SmallIntegerField()
-    sexo = models.CharField(max_length=1, choices=[('M', 'Masculino'), ('F', 'Femenino')])
+    nombre = models.CharField(max_length=80, null=True)
+    cedula = models.CharField(max_length=10, unique=True, null=True)
+    edad = models.SmallIntegerField(null=True)
+    sexo = models.CharField(max_length=1, null=True, choices=[('M', 'Masculino'), ('F', 'Femenino')])
 
     def __unicode__(self):
         return self.nombre

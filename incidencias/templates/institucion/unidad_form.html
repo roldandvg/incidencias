@@ -12,10 +12,10 @@
 		{% endif %}
     </div>
     <div class="col_6">
-        {{form.modelo.label}}<br/>
-        {{form.modelo|attr:"size:60"|attr:"placeholder:Indique el modelo de la unidad"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
-		{% if form.modelo.errors %}
-			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.modelo.errors }}<a href="#close" class="icon-remove"></a></div>
+        {{form.tipo.label}}<br/>
+        {{form.tipo|attr:"type:radio"|attr:"title:Seleccione un tipo de unidad"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{% if form.tipo.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.tipo.errors }}<a href="#close" class="icon-remove"></a></div>
 		{% endif %}
     </div>
     <div class="col_12 center separar-vertical-40x">

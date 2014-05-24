@@ -13,9 +13,9 @@
                     </li>
                     <li class="tooltip-top {% if '/procedimiento/' in request.path or '/tipoprocedimiento/' in request.path or 'detalletipoprocedimiento' in request.path %}current{% endif %}" title="Configuración de procedimientos de atención bomberil"><a href=""><i class="icon-retweet"></i> Atención</a>
                         <ul>
-                            <li class="tooltip-top {% if '/procedimiento/' in request.path %}current{% endif %}" title="Configuración de Procedimientos"><a href="{% url 'procedimiento_list' %}"><i class="icon-pushpin"></i> Proc.</a></li>
                             <li class="tooltip-top {% if '/tipoprocedimiento/' in request.path %}current{% endif %}" title="Configuración de Tipos de Procedimientos"><a href="{% url 'tipoprocedimiento_list' %}"><i class="icon-pushpin"></i> Tipo de Proc.</a></li>
                             <li class="tooltip-top {% if '/detalletipoprocedimiento/' in request.path %}current{% endif %}" title="Configuración de Detalles de Tipo de Procedimientos"><a href="{% url 'detalletipoprocedimiento_list' %}"><i class="icon-pushpin"></i> Detalles</a></li>
+                            <li class="tooltip-top {% if '/diagnostico/' in request.path %}current{% endif %}" title="Configuración de Diagnósticos"><a href="{% url 'diagnostico_list' %}"><i class="icon-pushpin"></i> Diagnósticos</a></li>
                         </ul>
                     </li>
                     <li class="tooltip-top" title="Configuración de Estaciones de Comandos Bomberiles"><a href=""><i class="icon-bookmark"></i> Institución</a>
@@ -36,17 +36,29 @@
                 </ul>
             </li>
         {% endif %}
-        <li class="tooltip-top" title="Registro de novedades y/o Incidencias atendidas"><a href=""><i class="icon-eye-open"></i> Novedades</a></li>
+        <li class="tooltip-top" title="Registro de novedades y/o Incidencias atendidas"><a href="{% url 'novedad_list' %}"><i class="icon-eye-open"></i> Novedades</a></li>
         <li class="tooltip-top" title="Estadísticas generadas de acuerdo a los procedimientos atendidos"><a href=""><i class="icon-bar-chart"></i> Estadísticas</a>
             <ul>
-                <li class="tooltip-top" title="Procedimientos Operacionales"><a href=""><i class="icon-ok"></i> Proc. Op.</a></li>
-                <li class="tooltip-top" title="Emergencia Prehospitalaria"><a href=""><i class="icon-ok"></i> Emer. Preh.</a></li>
+                <li class="tooltip-top" title="Procedimientos Operacionales"><a href=""><i class="icon-ok"></i> Proc. Op.</a>
+                    <ul>
+                        <li class="tooltip-top" title="Estadística General de Procedimientos Operacionales"><a href=""><i class="icon-ok"></i> General</a></li>
+                        <li class="tooltip-top" title="Estadística individual por Procedimiento"><a href=""><i class="icon-ok"></i> Procedim.</a></li>
+                        <li class="tooltip-top" title="Estadística por Estaciones"><a href=""><i class="icon-ok"></i> Estación</a></li>
+                    </ul>
+                </li>
             </ul>
         </li>
         <li class="tooltip-top" title="Reportes sobre los procedimientos realizados"><a href=""><i class="icon-print"></i> Reportes</a>
             <ul>
-                <li class="tooltip-top" title="Reporte1"><a href=""><i class="icon-copy"></i> Reporte1</a></li>
-                <li class="tooltip-top" title="Reporte2"><a href=""><i class="icon-copy"></i> Reporte2</a></li>
+                <li class="tooltip-top" title="Reportes sobre realaciones"><a href=""><i class="icon-copy"></i> Relación</a>
+                    <ul>
+                        <li class="tooltip-top" title="Reporte de relación por estación"><a href=""><i class="icon-copy"></i> Estación</a></li>
+                        <li class="tooltip-top" title="Reporte de relación mensual"><a href=""><i class="icon-copy"></i> Mensual</a></li>
+                    </ul>
+                </li>
+                <li class="tooltip-top" title="Reporte de procedimientos mensuales"><a href=""><i class="icon-copy"></i> Proced.</a></li>
+                <li class="tooltip-top" title="Reporte mensual de lesionados y fallecidos"><a href=""><i class="icon-copy"></i> Les. Fall.</a></li>
+                <li class="tooltip-top" title="Reporte por zonas"><a href=""><i class="icon-copy"></i> Zonas</a></li>
             </ul>
         </li>
     {% endif %}

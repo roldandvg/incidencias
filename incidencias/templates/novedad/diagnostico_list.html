@@ -1,14 +1,26 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
+{% block titleform %}Diagnósticos <a href="{% url 'diagnostico_new' %}"><i class="icon-plus-sign" title="Nuevo Registro"></i></a>{% endblock %}
+{% block subtitleform %}Listado de diagnósticos{% endblock %}
 {% block formulario %}
-	<h1>Diagnósticos</h1>
-	<ul>
-		{% for diagnostico in object_list %}
-		<li>{{ diagnostico.nombre }}  :  
-			<a href="{% url 'diagnostico_edit' diagnostico.id %}">{{ diagnostico.id }}</a>
-			<a href="{% url 'diagnostico_delete' diagnostico.id %}">eliminar</a>
-		</li>
-		{% endfor %}
-	</ul>
-
-	<a href="{% url 'diagnostico_new' %}">Nuevo</a>
+	<table class="sortable">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+                <th>Descripción</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for diagnostico in object_list %}
+				<tr class="{% cycle 'colorblanco' 'colorazul' as rowcolors %}">
+					<td>{{ diagnostico.nombre }}</td>
+                    <td>{{ diagnostico.descripcion }}</td>
+					<td>
+						<a href="{% url 'diagnostico_edit' diagnostico.id %}"><i class="icon-pencil"></i></a>
+						<a href="{% url 'diagnostico_delete' diagnostico.id %}"><i class="icon-trash"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 {% endblock %}

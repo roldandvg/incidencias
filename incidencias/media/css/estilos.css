@@ -76,6 +76,14 @@ body {
 	padding-right:6px;
 }
 
+.separar-vertical-5x {
+	margin-top:5px;
+}
+
+.separar-vertical-10x {
+	margin-top:10px;
+}
+
 .separar-vertical-20x {
 	margin-top:20px;
 }
@@ -86,4 +94,21 @@ body {
 
 .imagen-fondo {
 	background: url('images/background.png') no-repeat;
+}
+
+.contenido_form {
+    height:490px;
+    overflow:auto;
+    margin-bottom:0;
+}
+
+.contenido_form form {
+    font-size:12px;
+    font-family:Arial;
+}
+
+.tab-content-custom {
+    height:320px;
+    margin-bottom:0;
+    overflow:auto;
 }

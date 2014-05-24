@@ -1,14 +1,32 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
+{% block titleform %}Novedades <a href="{% url 'novedad_new' %}"><i class="icon-plus-sign" title="Nuevo Registro"></i></a>{% endblock %}
+{% block subtitleform %}Listado de Novedades Atendidas{% endblock %}
 {% block formulario %}
-	<h1>Novedades</h1>
-	<ul>
-		{% for novedad in object_list %}
-		<li>{{ novedad.fecha }}  :  
-			<a href="{% url 'novedad_edit' novedad.id %}">{{ novedad.id }}</a>
-			<a href="{% url 'novedad_delete' novedad.id %}">eliminar</a>
-		</li>
-		{% endfor %}
-	</ul>
-
-	<a href="{% url 'novedad_new' %}">Nuevo</a>
+	<table class="sortable">
+		<thead>
+			<tr>
+				<th>Fecha</th>
+                <th>Lugar</th>
+                <th>Motivo</th>
+                <th>Descripción</th>
+                <th>Tipo de Procedimiento</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for novedad in object_list %}
+				<tr class="{% cycle 'colorblanco' 'colorazul' as rowcolors %}">
+					<td>{{ novedad.fecha }}</td>
+                    <td>{{ novedad.lugar }}</td>
+                    <td>{{ novedad.motivo }}</td>
+                    <td>{{ novedad.descripcion }}</td>
+                    <td>{{ novedad.tipo_procedimiento }}</td>
+					<td>
+						<a href="{% url 'novedad_edit' novedad.id %}"><i class="icon-pencil"></i></a>
+						<a href="{% url 'novedad_delete' novedad.id %}"><i class="icon-trash"></i></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 {% endblock %}

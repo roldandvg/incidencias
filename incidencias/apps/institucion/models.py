@@ -61,12 +61,13 @@ class Trabajador(Persona):
 
 class Unidad(models.Model):
     numero = models.CharField(max_length=10)
-    modelo = models.CharField(max_length=45)
+    tipo = models.CharField(max_length=1, choices=[('A', 'Ambulancia'), ('R', 'Rescate'), ('I', 'Incendio'),
+                                                   ('O', 'Otros')])
 
     def __unicode__(self):
-        return self.numero + ' ' + self.modelo
+        return self.tipo + ' ' + self.numero
 
     class Meta:
-        ordering = ["numero", "modelo"]
+        ordering = ["tipo", "numero"]
         verbose_name = 'Unidad'
         verbose_name_plural = 'Unidades'

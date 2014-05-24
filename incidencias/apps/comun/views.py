@@ -69,26 +69,6 @@ class ParroquiaDelete(DeleteView):
     success_url = reverse_lazy('parroquia_list')
 
 
-# Vistas genericas para controlar el CRUD del modelo Procedimiento
-class ProcedimientoList(ListView):
-    model = Procedimiento
-
-
-class ProcedimientoCreate(CreateView):
-    model = Procedimiento
-    success_url = reverse_lazy('procedimiento_list')
-
-
-class ProcedimientoUpdate(UpdateView):
-    model = Procedimiento
-    success_url = reverse_lazy('procedimiento_list')
-
-
-class ProcedimientoDelete(DeleteView):
-    model = Procedimiento
-    success_url = reverse_lazy('procedimiento_list')
-
-
 # Vistas genericas para controlar el CRUD del modelo TipoProcedimiento
 class TipoProcedimientoList(ListView):
     model = TipoProcedimiento
