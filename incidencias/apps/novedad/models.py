@@ -54,6 +54,8 @@ class Novedad(models.Model):
     hora_llegada = models.TimeField()
     hora_reporte = models.TimeField()
     accion_ejecutada = models.CharField(max_length=255)
+    alarma_infundada = models.BooleanField(default=False)
+    acto_presencia = models.BooleanField(default=False)
     parroquia = models.ForeignKey(Parroquia)
     tipo_procedimiento = models.ForeignKey(TipoProcedimiento)
     usuario = models.ForeignKey(User)

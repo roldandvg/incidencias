@@ -16,7 +16,7 @@
 		<tbody>
 			{% for user in object_list %}
 				<tr class="{% cycle 'colorblanco' 'colorazul' as rowcolors %}">
-					<td>{{user.personal}}</td>
+					<td>{% if user.is_superuser %}Administrador del Sistema{% else %}{{user.personal}}{% endif %}</td>
                     <td>{{user.username}}</td>
                     <td>{{user.email}}</td>
                     <td>{{user.date_joined}}</td>
@@ -29,4 +29,19 @@
 			{% endfor %}
 		</tbody>
 	</table>
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="{% url 'user_list' %}?page={{ page_obj.previous_page_number }}">previo</a>
+                {% endif %}
+                <span class="page-current">
+                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{% url 'user_list' %}?page={{ page_obj.next_page_number }}">próximo</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
 {% endblock %}

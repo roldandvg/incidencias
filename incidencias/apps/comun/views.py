@@ -5,13 +5,14 @@ from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 
-from incidencias.apps.comun.models import Zona, Municipio, Parroquia, Procedimiento, TipoProcedimiento, \
-    DetalleTipoProcedimiento, Comision
+from incidencias.apps.comun.models import Zona, Municipio, Parroquia, TipoProcedimiento, DetalleTipoProcedimiento, \
+    Comision
 
 
 # Vistas genericas para controlar el CRUD del modelo Zona
 class ZonaList(ListView):
     model = Zona
+    paginate_by = 10
 
 
 class ZonaCreate(CreateView):
@@ -32,6 +33,7 @@ class ZonaDelete(DeleteView):
 # Vistas genericas para controlar el CRUD del modelo Municipio
 class MunicipioList(ListView):
     model = Municipio
+    paginate_by = 10
 
 
 class MunicipioCreate(CreateView):
@@ -52,6 +54,7 @@ class MunicipioDelete(DeleteView):
 # Vistas genericas para controlar el CRUD del modelo Parroquia
 class ParroquiaList(ListView):
     model = Parroquia
+    paginate_by = 10
 
 
 class ParroquiaCreate(CreateView):
@@ -72,6 +75,7 @@ class ParroquiaDelete(DeleteView):
 # Vistas genericas para controlar el CRUD del modelo TipoProcedimiento
 class TipoProcedimientoList(ListView):
     model = TipoProcedimiento
+    paginate_by = 10
 
 
 class TipoProcedimientoCreate(CreateView):
@@ -92,6 +96,7 @@ class TipoProcedimientoDelete(DeleteView):
 # Vistas genericas para controlar el CRUD del modelo DetalleTipoProcedimiento
 class DetalleTipoProcedimientoList(ListView):
     model = DetalleTipoProcedimiento
+    paginate_by = 10
 
 
 class DetalleTipoProcedimientoCreate(CreateView):
@@ -112,6 +117,7 @@ class DetalleTipoProcedimientoDelete(DeleteView):
 # Vistas genericas para controlar el CRUD del modelo Comision
 class ComisionList(ListView):
     model = Comision
+    paginate_by = 10
 
 
 class ComisionCreate(CreateView):

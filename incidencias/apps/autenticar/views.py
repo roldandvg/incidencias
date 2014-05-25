@@ -17,6 +17,7 @@ from incidencias.apps.autenticar.forms import FormAcceso
 
 class UsuarioList(ListView):
     model = User
+    paginate_by = 10
 
 
 class UsuarioCreate(CreateView):

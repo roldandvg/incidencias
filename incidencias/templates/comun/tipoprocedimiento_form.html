@@ -12,10 +12,10 @@
 		{% endif %}
 	</div>
 	<div class="col_6">
-		{{form.procedimiento.label}}<br/>
-		{{form.procedimiento|attr:"title:Seleccione el procedimiento"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
-		{% if form.procedimiento.errors %}
-			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.procedimiento.errors }}<a href="#close" class="icon-remove"></a></div>
+		{{form.division.label}}<br/>
+		{{form.division|attr:"title:Seleccione la división a la cual pertenece el tipo de procedimiento"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{% if form.division.errors %}
+			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.division.errors }}<a href="#close" class="icon-remove"></a></div>
 		{% endif %}
 	</div>
 	<div class="col_12 center separar-vertical-40x">

@@ -26,7 +26,7 @@ class Municipio(models.Model):
         return self.nombre
 
     class Meta:
-        ordering = ["nombre"]
+        ordering = ["zona", "nombre"]
         verbose_name = 'Municipio'
         verbose_name_plural = 'Municipios'
 
@@ -39,20 +39,34 @@ class Parroquia(models.Model):
         return self.nombre
 
     class Meta:
-        ordering = ["nombre"]
+        ordering = ["municipio", "nombre"]
         verbose_name = 'Parroquia'
         verbose_name_plural = 'Parroquias'
 
 
 class TipoProcedimiento(models.Model):
     nombre = models.CharField(max_length=80)
-    division = models.ForeignKey()
+    division = models.CharField(max_length=2, choices=[('CI', 'Combate de Incendios'), ('BR', 'Búsqueda y Rescate'),
+                                                       ('EP', 'Emergencia Pre-hospitalaria'),
+                                                       ('AE', 'Actividades Especiales')])
 
     def __unicode__(self):
         return self.nombre
 
+    def get_division(self):
+        if self.division == "CI":
+            return "Combate de Incendios"
+        elif self.division == "BR":
+            return "Búsqueda y Rescate"
+        elif self.division == "EP":
+            return "Emergencia Pre-hospitalaria"
+        elif self.division == "AE":
+            return "Actividades Especiales"
+        else:
+            return self.division
+
     class Meta:
-        ordering = ["nombre"]
+        ordering = ["division", "nombre"]
         verbose_name = 'Tipo de Procedimiento'
         verbose_name_plural = 'Tipos de Procedimientos'
 
@@ -65,7 +79,7 @@ class DetalleTipoProcedimiento(models.Model):
         return self.nombre
 
     class Meta:
-        ordering = ["nombre"]
+        ordering = ["tipo_procedimiento", "nombre"]
         verbose_name = 'Detalle de Tipo de Procedimiento'
         verbose_name_plural = 'Detalles de Tipos de Procedimientos'
 

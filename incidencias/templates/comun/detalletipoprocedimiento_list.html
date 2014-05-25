@@ -5,16 +5,16 @@
 	<table class="sortable">
 		<thead>
 			<tr>
-				<th>Nombre</th>
 				<th>Tipo de Procedimiento</th>
+                <th>Nombre</th>
 				<th>Acción</th>
 			</tr>
 		</thead>
 		<tbody>
 			{% for detalletipoprocedimiento in object_list %}
 				<tr class="{% cycle 'colorblanco' 'colorazul' as rowcolors %}">
-					<td>{{detalletipoprocedimiento.nombre}}</td>
 					<td>{{detalletipoprocedimiento.tipo_procedimiento}}</td>
+                    <td>{{detalletipoprocedimiento.nombre}}</td>
 					<td>
 						<a href="{% url 'detalletipoprocedimiento_edit' detalletipoprocedimiento.id %}"><i class="icon-pencil"></i></a>
 						<a href="{% url 'detalletipoprocedimiento_delete' detalletipoprocedimiento.id %}"><i class="icon-trash"></i></a>
@@ -23,4 +23,19 @@
 			{% endfor %}
 		</tbody>
 	</table>
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="{% url 'detalletipoprocedimiento_list' %}?page={{ page_obj.previous_page_number }}">previo</a>
+                {% endif %}
+                <span class="page-current">
+                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{% url 'detalletipoprocedimiento_list' %}?page={{ page_obj.next_page_number }}">próximo</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
 {% endblock %}

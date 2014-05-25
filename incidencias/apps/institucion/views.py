@@ -10,6 +10,7 @@ from incidencias.apps.institucion.models import Cargo, Rango, Estacion, Trabajad
 # Vistas genericas para controlar el CRUD del modelo Cargo
 class CargoList(ListView):
     model = Cargo
+    paginate_by = 10
 
 
 class CargoCreate(CreateView):
@@ -30,6 +31,7 @@ class CargoDelete(DeleteView):
 # Vistas genericas para controlar el CRUD del modelo Rango
 class RangoList(ListView):
     model = Rango
+    paginate_by = 10
 
 
 class RangoCreate(CreateView):
@@ -50,6 +52,7 @@ class RangoDelete(DeleteView):
 # Vistas genericas para controlar el CRUD del modelo Estación
 class EstacionList(ListView):
     model = Estacion
+    paginate_by = 10
 
 
 class EstacionCreate(CreateView):
@@ -70,6 +73,7 @@ class EstacionDelete(DeleteView):
 # Vistas genericas para controlar el CRUD del modelo Trabajador
 class TrabajadorList(ListView):
     model = Trabajador
+    paginate_by = 10
 
 
 class TrabajadorCreate(CreateView):
@@ -93,6 +97,7 @@ class TrabajadorDelete(DeleteView):
 # Vistas genericas para controlar el CRUD del modelo Unidad
 class UnidadList(ListView):
     model = Unidad
+    paginate_by = 10
 
 
 class UnidadCreate(CreateView):

@@ -10,6 +10,7 @@ from incidencias.apps.novedad.models import Novedad, Diagnostico
 # Vistas genericas para controlar el CRUD del modelo Diagnostico
 class DiagnosticoList(ListView):
     model = Diagnostico
+    paginate_by = 10
 
 
 class DiagnosticoCreate(CreateView):
@@ -30,6 +31,7 @@ class DiagnosticoDelete(DeleteView):
 # Vistas genericas para controlar el CRUD del modelo Novedad
 class NovedadList(ListView):
     model = Novedad
+    paginate_by = 10
 
 
 class NovedadCreate(CreateView):

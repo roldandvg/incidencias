@@ -212,46 +212,11 @@
 		}
 	},
 	{
-		"pk": 1,
-		"model": "comun.procedimiento",
-		"fields": {
-			"nombre": "Combate de Incendios"
-		}
-	},
-	{
-		"pk": 2,
-		"model": "comun.procedimiento",
-		"fields": {
-			"nombre": "Búsqueda y Rescate"
-		}
-	},
-	{
-		"pk": 3,
-		"model": "comun.procedimiento",
-		"fields": {
-			"nombre": "Emergencia Prehospitalaria"
-		}
-	},
-	{
-		"pk": 4,
-		"model": "comun.procedimiento",
-		"fields": {
-			"nombre": "Guardias de prevención"
-		}
-	},
-	{
-	    "pk": 5,
-	    "model": "comun.procedimiento",
-	    "fields": {
-	        "nombre": "Actividades Especiales"
-	    }
-	},
-	{
 	    "pk": 1,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
 	        "nombre": "Incendio",
-	        "procedimiento": 1
+	        "division": "CI"
 	    }
 	},
 	{
@@ -259,7 +224,7 @@
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
 	        "nombre": "Escape de gas licuado del petróleo",
-	        "procedimiento": 1
+	        "division": "CI"
 	    }
 	},
 	{
@@ -267,7 +232,7 @@
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
 	        "nombre": "Explosiones / Defragación",
-	        "procedimiento": 1
+	        "division": "CI"
 	    }
 	},
 	{
@@ -275,7 +240,7 @@
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
 	        "nombre": "Cortos circuítos",
-	        "procedimiento": 1
+	        "division": "CI"
 	    }
 	},
 	{
@@ -283,7 +248,7 @@
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
 	        "nombre": "Quemas de basura",
-	        "procedimiento": 1
+	        "division": "CI"
 	    }
 	},
 	{
@@ -291,7 +256,7 @@
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
 	        "nombre": "Quemas de neumáticos",
-	        "procedimiento": 1
+	        "division": "CI"
 	    }
 	},
 	{
@@ -299,7 +264,7 @@
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
 	        "nombre": "Control / Neutralización de combustible",
-	        "procedimiento": 1
+	        "division": "CI"
 	    }
 	},
 	{
@@ -307,7 +272,7 @@
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
 	        "nombre": "Control / Neutralización de materiales peligrosos",
-	        "procedimiento": 1
+	        "division": "CI"
 	    }
 	},
 	{
@@ -315,207 +280,183 @@
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
 	        "nombre": "Servicios de abastecimiento de agua",
-	        "procedimiento": 1
+	        "division": "CI"
 	    }
 	},
 	{
 	    "pk": 10,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Actos de presencia",
-	        "procedimiento": 5
+	        "nombre": "Control / Exterminio de plagas/insectos",
+	        "division": "BR"
 	    }
 	},
 	{
 	    "pk": 11,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Alarmas Infundadas",
-	        "procedimiento": 5
+	        "nombre": "Desbordamiento de Río",
+	        "division": "BR"
 	    }
 	},
 	{
 	    "pk": 12,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Control / Exterminio de plagas/insectos",
-	        "procedimiento": 2
+	        "nombre": "Deslizamiento de tierra",
+	        "division": "BR"
 	    }
 	},
 	{
 	    "pk": 13,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Desbordamiento de Río",
-	        "procedimiento": 5
+	        "nombre": "Recuperación de Cadáver",
+	        "division": "BR"
 	    }
 	},
 	{
 	    "pk": 14,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Deslizamiento de tierra",
-	        "procedimiento": 5
+	        "nombre": "Rescate de animales",
+	        "division": "BR"
 	    }
 	},
 	{
 	    "pk": 15,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Recuperación de Cadáver",
-	        "procedimiento": 2
+	        "nombre": "Rescate de llaves",
+	        "division": "BR"
 	    }
 	},
 	{
 	    "pk": 16,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Rescate de animales",
-	        "procedimiento": 2
+	        "nombre": "Rescate de personas en asensor",
+	        "division": "BR"
 	    }
 	},
 	{
 	    "pk": 17,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Rescate de llaves",
-	        "procedimiento": 2
+	        "nombre": "Rescate de personas incomunicadas",
+	        "division": "BR"
 	    }
 	},
 	{
 	    "pk": 18,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Rescate de personas en asensor",
-	        "procedimiento": 2
+	        "nombre": "Rescates en aguas",
+	        "division": "BR"
 	    }
 	},
 	{
 	    "pk": 19,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Rescate de personas incomunicadas",
-	        "procedimiento": 2
+	        "nombre": "Búsqueda y rescate en montañas",
+	        "division": "BR"
 	    }
 	},
 	{
 	    "pk": 20,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Rescates en aguas",
-	        "procedimiento": 2
+	        "nombre": "Rescates en estructuras colapsadas",
+	        "division": "BR"
 	    }
 	},
 	{
 	    "pk": 21,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Búsqueda y rescate en montañas",
-	        "procedimiento": 2
+	        "nombre": "Accidentes aéreos",
+	        "division": "BR"
 	    }
 	},
 	{
 	    "pk": 22,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Rescates en estructuras colapsadas",
-	        "procedimiento": 2
+	        "nombre": "Talas / Podas de árboles",
+	        "division": "BR"
 	    }
 	},
 	{
 	    "pk": 23,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Accidentes aéreos",
-	        "procedimiento": 2
+	        "nombre": "Intentos de suicidio",
+	        "division": "BR"
 	    }
 	},
 	{
 	    "pk": 24,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Talas / Podas de árboles",
-	        "procedimiento": 2
+	        "nombre": "Inundaciones de viviendas",
+	        "division": "BR"
 	    }
 	},
 	{
 	    "pk": 25,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Intentos de suicidio",
-	        "procedimiento": 2
+	        "nombre": "Viviendas afectadas",
+	        "division": "BR"
 	    }
 	},
-	{
+    {
 	    "pk": 26,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Acto de presencia",
-	        "procedimiento": 5
+	        "nombre": "Personas afectadas por lluvias",
+	        "division": "BR"
 	    }
 	},
 	{
 	    "pk": 27,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Inundaciones de viviendas",
-	        "procedimiento": 2
+	        "nombre": "Accidente de tránsito",
+	        "division": "BR"
 	    }
 	},
 	{
 	    "pk": 28,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Viviendas afectadas",
-	        "procedimiento": 2
+	        "nombre": "Servicios médicos pre-hospitalarios",
+	        "division": "EP"
 	    }
 	},
-    {
+	{
 	    "pk": 29,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Personas afectadas por lluvias",
-	        "procedimiento": 2
+	        "nombre": "Servicios de Ambulancia",
+	        "division": "EP"
 	    }
 	},
 	{
 	    "pk": 30,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Accidente de tránsito",
-	        "procedimiento": 2
+	        "nombre": "Atenciones primarias",
+	        "division": "EP"
 	    }
 	},
 	{
 	    "pk": 31,
 	    "model": "comun.tipoprocedimiento",
 	    "fields": {
-	        "nombre": "Servicios médicos pre-hospitalarios",
-	        "procedimiento": 3
-	    }
-	},
-	{
-	    "pk": 32,
-	    "model": "comun.tipoprocedimiento",
-	    "fields": {
-	        "nombre": "Servicios de Ambulancia",
-	        "procedimiento": 3
-	    }
-	},
-	{
-	    "pk": 33,
-	    "model": "comun.tipoprocedimiento",
-	    "fields": {
-	        "nombre": "Atenciones primarias",
-	        "procedimiento": 3
-	    }
-	},
-	{
-	    "pk": 34,
-	    "model": "comun.tipoprocedimiento",
-	    "fields": {
 	        "nombre": "Acto de presencia en persona fallecida",
-	        "procedimiento": 3
+	        "division": "EP"
 	    }
 	},
 	{
