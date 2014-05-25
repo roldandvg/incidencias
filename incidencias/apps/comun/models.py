@@ -106,6 +106,12 @@ class Persona(models.Model):
     def __unicode__(self):
         return self.nombre
 
+    def get_sexo(self):
+        if self.sexo == "M":
+            return "Masculino"
+        else:
+            return "Femenino"
+
     class Meta:
         ordering = ["cedula", "nombre"]
         verbose_name = "Persona"

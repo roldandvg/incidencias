@@ -47,21 +47,21 @@ class DetallePersona(models.Model):
 
 class Novedad(models.Model):
     fecha = models.DateField()
-    lugar = models.CharField(max_length=255)
-    motivo = models.CharField(max_length=45)
-    descripcion = models.CharField(max_length=255)
     hora_salida = models.TimeField()
     hora_llegada = models.TimeField()
     hora_reporte = models.TimeField()
-    accion_ejecutada = models.CharField(max_length=255)
+    lugar = models.CharField(max_length=255)
+    motivo = models.CharField(max_length=45)
+    descripcion = models.CharField(max_length=255)
+    procedimiento = models.CharField(max_length=255)
     alarma_infundada = models.BooleanField(default=False)
     acto_presencia = models.BooleanField(default=False)
     parroquia = models.ForeignKey(Parroquia)
     tipo_procedimiento = models.ForeignKey(TipoProcedimiento)
-    usuario = models.ForeignKey(User)
+    usuario = models.ForeignKey(User)  # input hidden en template con value default request.username
     unidad = models.ManyToManyField(Unidad)
     comision = models.ManyToManyField(Comision)
-    persona = models.ManyToManyField(Persona)
+    persona = models.ManyToManyField(PersonaAtendida)
 
     def __unicode__(self):
         return self.motivo

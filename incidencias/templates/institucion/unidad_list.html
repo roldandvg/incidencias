@@ -14,23 +14,7 @@
 			{% for unidad in object_list %}
 				<tr class="{% cycle 'colorblanco' 'colorazul' as rowcolors %}">
 					<td>{{ unidad.numero }}</td>
-                    <td>
-                        {% ifequal unidad.tipo 'A' %}
-                            Ambulancia
-                        {% else %}
-                            {% ifequal unidad.tipo 'R' %}
-                                Rescate
-                            {% else %}
-                                {% ifequal unidad.tipo 'I' %}
-                                    Incendio
-                                {% else %}
-                                    {% ifequal unidad.tipo 'O' %}
-                                        Otros
-                                    {% endifequal %}
-                                {% endifequal %}
-                            {% endifequal %}
-                        {% endifequal %}
-                    </td>
+                    <td>{{ unidad.get_tipo }}</td>
 					<td>
 						<a href="{% url 'unidad_edit' unidad.id %}"><i class="icon-pencil"></i></a>
 						<a href="{% url 'unidad_delete' unidad.id %}"><i class="icon-trash"></i></a>

@@ -67,6 +67,16 @@ class Unidad(models.Model):
     def __unicode__(self):
         return self.tipo + ' ' + self.numero
 
+    def get_tipo(self):
+        if self.tipo == "A":
+            return "Ambulancia"
+        elif self.tipo == "R":
+            return "Rescate"
+        elif self.tipo == "I":
+            return "Incendio"
+        else:
+            return "Otros"
+
     class Meta:
         ordering = ["tipo", "numero"]
         verbose_name = 'Unidad'

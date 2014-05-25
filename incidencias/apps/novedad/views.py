@@ -47,3 +47,9 @@ class NovedadUpdate(UpdateView):
 class NovedadDelete(DeleteView):
     model = Novedad
     success_url = reverse_lazy('novedad_list')
+
+
+# Vistas genericas para el CRUD de novedades de acuerdo a la división que va a registrar
+"""class NovedadIncendioList(ListView):
+    model = NovedadIncendio
+    paginate_by =  10"""
