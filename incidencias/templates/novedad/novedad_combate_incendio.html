@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block titleform %}Registro de Novedades{% endblock %}
+{% block subtitleform %}División de Combate de Incendios{% endblock %}
+{% block formulario %}
+	{% csrf_token %}
+	{% load widget_tweaks %}
+    <ul class="tabs left">
+        <li><a href="#tab_novedad">Novedad</a></li>
+        <li><a href="#tab_datos">Datos</a></li>
+        <li><a href="#tab_unidades">Unidades</a></li>
+        <li><a href="#tab_comisiones">Comisiones</a></li>
+    </ul>
+    {% include "novedad/novedad_comun.html" %}
+    <div id="tab_datos" class="tab-content tab-content-custom">
+        {# TIPO DE PROCEDIMIENTO - INCENDIO DE ESTRUCTURA - EXPLOSION DEFLAGACION - CORTO CIRCUITO #}
+        {# {% include "novedad/incendio_estructura.html" %} #}
+        {% include "novedad/incendio_vehiculo.html" %}
+        <div class="col_12">
+            <button type="button" class="small blue"><i class="icon-plus-sign"></i></button>
+            &#160;&#160;
+            <button type="button" class="small blue"><i class="icon-minus-sign"></i></button>
+        </div>
+    </div>
+    <div class="col_12 center separar-vertical-20x">
+		<button class="small blue"><i class="icon-check"></i> Guardar</button>
+		&#160;&#160;
+		<button class="small blue" type="button" onclick="location='{% url 'novedad_list' %}'"><i class="icon-remove-circle"></i> Cancelar</button>
+	</div>
+{% endblock %}

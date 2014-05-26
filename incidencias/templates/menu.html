@@ -1,7 +1,7 @@
 <ul class="menu left">
 	<li class="tooltip-top {% ifequal request.path '/' %}current{% endifequal %}" title="Inicio del Sistema / Sección de bienvenida"><a href="{% url 'inicio' %}"><i class="icon-home"></i> Inicio</a></li>
-    {% if request.user.is_authenticated %}
-        {% if request.user.is_superuser %}
+    {% if request.user.is_authenticated or user.is_authenticated %}
+        {% if request.user.is_superuser or user.is_superuser %}
             <li class="tooltip-top {% if 'comun/' in request.path or 'novedad/diagnostico/' in request.path %}current{% endif %}" title="Configuración básica del sistema"><a href=""><i class="icon-cogs"></i> Configuración</a>
                 <ul>
                     <li class="tooltip-top {% if '/zona/' in request.path or '/municipio/' in request.path or '/parroquia/' in request.path %}current{% endif %}" title="Configuración de cobertura geográfica"><a href=""><i class="icon-globe"></i> Ubicación</a>

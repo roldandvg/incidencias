@@ -108,7 +108,11 @@ body {
 }
 
 .tab-content-custom {
-    height:320px;
+    height:290px;
     margin-bottom:0;
     overflow:auto;
+}
+
+textarea {
+    height:50px
 }

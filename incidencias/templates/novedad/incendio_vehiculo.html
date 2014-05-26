@@ -1,0 +1,78 @@
+{% load widget_tweaks %}
+<div class="col_6">
+    <fieldset>
+        <legend>Datos del Vehículo</legend>
+        <table>
+            <tr>
+                <td class="negrita">{{formVehiculo.anno.label}}</td>
+                <td>{{formVehiculo.anno}}</td>
+                <td class="negrita">{{formVehiculo.placa.label}}</td>
+                <td>{{formVehiculo.placa}}</td>
+            </tr>
+            <tr>
+                <td class="negrita">{{formVehiculo.marca.label}}</td>
+                <td>{{formVehiculo.marca}}</td>
+                <td class="negrita">{{formVehiculo.modelo.label}}</td>
+                <td>{{formVehiculo.modelo}}</td>
+            </tr>
+            <tr>
+                <td class="negrita">{{formVehiculo.color.label}}</td>
+                <td>{{formVehiculo.color}}</td>
+                <td class="negrita">{{formVehiculo.tipo.label}}</td>
+                <td>{{formVehiculo.tipo}}</td>
+            </tr>
+            <tr>
+                <td class="negrita">{{formVehiculo.causa.label}}</td>
+                <td>{{formVehiculo.causa}}</td>
+                <td class="negrita">{{formVehiculo.fase.label}}</td>
+                <td>{{formVehiculo.fase}}</td>
+            </tr>
+            <tr>
+                <td class="negrita">{{formVehiculo.perdidas.label}}</td>
+                <td>{{formVehiculo.perdidas}}</td>
+                <td class="negrita">{{formVehiculo.a_nivel_de.label}}</td>
+                <td>{{formVehiculo.a_nivel_de}}</td>
+            </tr>
+            <tr>
+                <td class="negrita">{{formVehiculo.observacion.label}}</td>
+                <td>{{formVehiculo.observacion}}</td>
+                <td class="negrita"></td>
+                <td></td>
+            </tr>
+        </table>
+    </fieldset>
+</div>
+<div class="col_6">
+    <fieldset>
+        <legend>Datos del Ocupante</legend>
+        <table>
+            <tr>
+                <td class="negrita">{{formVehiculo.persona_vehiculo.label}}</td>
+                <td>{{formVehiculo.persona_vehiculo}}</td>
+                <td class="negrita">{{formVehiculo.cedula.label}}</td>
+                <td>{{formVehiculo.cedula}}</td>
+            </tr>
+            <tr>
+                <td class="negrita">{{formVehiculo.nombre.label}}</td>
+                <td>{{formVehiculo.nombre|attr:"size:25"}}</td>
+                <td class="negrita">{{formVehiculo.edad.label}}</td>
+                <td>{{formVehiculo.edad}}</td>
+            </tr>
+            <tr>
+                <td class="negrita">{{formVehiculo.sexo.label}}</td>
+                <td>{{formVehiculo.sexo}}</td>
+                <td class="negrita">{{formVehiculo.diagnostico.label}}</td>
+                <td>{{formVehiculo.diagnostico}}</td>
+            </tr>
+            <tr>
+                <td class="negrita">{{formVehiculo.detalle_diagnostico.label}}</td>
+                <td>{{formVehiculo.detalle_diagnostico|attr:"cols:26"}}</td>
+                <td class="negrita">{{formVehiculo.estado.label}}</td>
+                <td>{{formVehiculo.estado}}</td>
+            </tr>
+        </table>
+        <button type="button" class="small blue"><i class="icon-plus-sign"></i></button>
+        &#160;&#160;
+        <button type="button" class="small blue"><i class="icon-minus-sign"></i></button>
+    </fieldset>
+</div>

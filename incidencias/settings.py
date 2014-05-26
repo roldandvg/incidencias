@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'incidencias.apps.institucion',
     'incidencias.apps.novedad',
     'model_report',
+    'extra_views',
 )
 
 MIDDLEWARE_CLASSES = (

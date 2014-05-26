@@ -1,0 +1,153 @@
+<div id="tab_novedad" class="tab-content tab-content-custom">
+    <div class="col_12 negrita">{{formNovedad.tipo_procedimiento.label}}</div>
+    <div class="col_12">
+        {{formNovedad.tipo_procedimiento}}
+        {% if formNovedad.tipo_procedimiento.errors %}
+            <br/>
+            <div class="notice error">
+                <i class="icon-remove-sign icon-large"></i>&#160;
+                {{ formNovedad.tipo_procedimiento.errors }}
+                <a href="#close" class="icon-remove"></a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col_3 negrita">{{formNovedad.fecha.label}}</div>
+    <div class="col_3 negrita">{{formNovedad.hora_salida.label}}</div>
+    <div class="col_3 negrita">{{formNovedad.hora_llegada.label}}</div>
+    <div class="col_3 negrita">{{formNovedad.hora_reporte.label}}</div>
+    <div class="col_3">
+        {{formNovedad.fecha}}
+        {% if formNovedad.fecha.errors %}
+            <br/>
+            <div class="notice error">
+                <i class="icon-remove-sign icon-large"></i>&#160;
+                {{ formNovedad.fecha.errors }}
+                <a href="#close" class="icon-remove"></a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col_3">
+        {{formNovedad.hora_salida}}
+        {% if formNovedad.hora_salida.errors %}
+            <br/>
+            <div class="notice error">
+                <i class="icon-remove-sign icon-large"></i>&#160;
+                {{ formNovedad.hora_salida.errors }}
+                <a href="#close" class="icon-remove"></a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col_3">
+        {{formNovedad.hora_llegada}}
+        {% if formNovedad.hora_llegada.errors %}
+            <br/>
+            <div class="notice error">
+                <i class="icon-remove-sign icon-large"></i>&#160;
+                {{ formNovedad.hora_llegada.errors }}
+                <a href="#close" class="icon-remove"></a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col_3">
+        {{formNovedad.hora_reporte}}
+        {% if formNovedad.hora_reporte.errors %}
+            <br/>
+            <div class="notice error">
+                <i class="icon-remove-sign icon-large"></i>&#160;
+                {{ formNovedad.hora_reporte.errors }}
+                <a href="#close" class="icon-remove"></a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col_6 negrita">{{formNovedad.municipio.label}}</div>
+    <div class="col_6 negrita">{{formNovedad.parroquia.label}}</div>
+    <div class="col_6">
+        {{formNovedad.municipio}}
+        {% if formNovedad.municipio.errors %}
+            <br/>
+            <div class="notice error">
+                <i class="icon-remove-sign icon-large"></i>&#160;
+                {{ formNovedad.municipio.errors }}
+                <a href="#close" class="icon-remove"></a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col_6">
+        {{formNovedad.parroquia}}
+        {% if formNovedad.parroquia.errors %}
+            <br/>
+            <div class="notice error">
+                <i class="icon-remove-sign icon-large"></i>&#160;
+                {{ formNovedad.parroquia.errors }}
+                <a href="#close" class="icon-remove"></a>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="col_6 negrita">{{formNovedad.direccion.label}}</div>
+    <div class="col_6 negrita">{{formNovedad.procedimiento.label}}</div>
+    <div class="col_6">
+        {{formNovedad.direccion}}
+        {% if formNovedad.direccion.errors %}
+            <br/>
+            <div class="notice error">
+                <i class="icon-remove-sign icon-large"></i>&#160;
+                {{ formNovedad.direccion.errors }}
+                <a href="#close" class="icon-remove"></a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col_6">
+        {{formNovedad.procedimiento}}
+        {% if formNovedad.procedimiento.errors %}
+            <br/>
+            <div class="notice error">
+                <i class="icon-remove-sign icon-large"></i>&#160;
+                {{ formNovedad.procedimiento.errors }}
+                <a href="#close" class="icon-remove"></a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+<div id="tab_unidades" class="tab-content tab-content-custom">
+    <div class="col_6 negrita">{{formUnidad.numero.label}}</div>
+    <div class="col_6 negrita">Tipo de Unidad</div>
+    <div class="col_6">
+        {{formUnidad.numero}}
+        {% if formUnidad.numero.errors %}
+            <br/>
+            <div class="notice error">
+                <i class="icon-remove-sign icon-large"></i>&#160;
+                {{ formUnidad.numero.errors }}
+                <a href="#close" class="icon-remove"></a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col_6"><label id="tipo_unidad"></label></div>
+    <div class="col_12">
+        <button type="button" class="small blue"><i class="icon-plus-sign"></i></button>
+        &#160;&#160;
+        <button type="button" class="small blue"><i class="icon-minus-sign"></i></button>
+    </div>
+</div>
+<div id="tab_comisiones" class="tab-content tab-content-custom">
+    <div class="col_6 negrita">{{formComision.nombre.label}}</div>
+    <div class="col_6 negrita">Descripción de la Comisión</div>
+    <div class="col_6">
+        {{formComision.nombre}}
+        {% if formComision.nombre.errors %}
+            <br/>
+            <div class="notice error">
+                <i class="icon-remove-sign icon-large"></i>&#160;
+                {{ formComision.nombre.errors }}
+                <a href="#close" class="icon-remove"></a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col_6"><label id="descripcion_comision"></label></div>
+    <div class="col_12">
+        <button type="button" class="small blue"><i class="icon-plus-sign"></i></button>
+        &#160;&#160;
+        <button type="button" class="small blue"><i class="icon-minus-sign"></i></button>
+    </div>
+</div>

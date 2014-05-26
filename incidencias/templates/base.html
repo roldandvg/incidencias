@@ -7,9 +7,12 @@
 		<meta name="description" content="Sistema de Procedimientos Operacionales del Cuerpo de Bomberos del Estado Mérida" />
 		<meta name="keywords" content="incidencias, bomberos, mérida, procedimientos, operaciones, novedades" />
 		<script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'api/jquery.formset.js' %}"></script>
 		<script src="{% static 'api/kickstart/js/kickstart.js' %}"></script>
 		<link rel="stylesheet" href="{% static 'api/kickstart/css/kickstart.css' %}" media="all" />
 		<link rel="stylesheet" href="{% static 'css/estilos.css' %}" media="all" />
+        {% block extrahead %}
+        {% endblock %}
 	</head>
 	<body>
 		<!-- Capa del banner de la aplicación -->
