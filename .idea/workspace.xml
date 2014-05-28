@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6cd54fbf-4fb4-4581-9050-c7cd5216649e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/incidencias/templates/novedad/incendio_estructura.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/incidencias/templates/novedad/incendio_vehiculo.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/incidencias/templates/novedad/novedad_combate_incendio.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/incidencias/templates/novedad/novedad_comun.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/templates/base.html" afterPath="$PROJECT_DIR$/incidencias/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/media/css/estilos.css" afterPath="$PROJECT_DIR$/incidencias/media/css/estilos.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/apps/novedad/forms.py" afterPath="$PROJECT_DIR$/incidencias/apps/novedad/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/apps/comun/fixtures/initial_data.json" afterPath="$PROJECT_DIR$/incidencias/apps/comun/fixtures/initial_data.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/templates/menu.html" afterPath="$PROJECT_DIR$/incidencias/templates/menu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/apps/novedad/models.py" afterPath="$PROJECT_DIR$/incidencias/apps/novedad/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/settings.py" afterPath="$PROJECT_DIR$/incidencias/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/apps/novedad/urls.py" afterPath="$PROJECT_DIR$/incidencias/apps/novedad/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incidencias/apps/novedad/views.py" afterPath="$PROJECT_DIR$/incidencias/apps/novedad/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="6cd54fbf-4fb4-4581-9050-c7cd5216649e" name="Default" comment="" />
     <ignored path="incidencias.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
