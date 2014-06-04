@@ -2,7 +2,7 @@
 {% load static from staticfiles %}
 <html>
 	<head>
-		<title>Sistema de Procedimientos Operacionales del Cuerpo de Bomberos del Estado Mérida</title>
+		<title>Sistema de Gestión de Estadísticas de la Dirección de Bomberos del Estado Mérida</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="Sistema de Procedimientos Operacionales del Cuerpo de Bomberos del Estado Mérida" />
 		<meta name="keywords" content="incidencias, bomberos, mérida, procedimientos, operaciones, novedades" />
@@ -28,15 +28,15 @@
 		<div class="col_12 center">{% include 'menu.html' %}</div>
 		<!-- Capa para el contenido de la aplicación -->
 		<div class="col_12 fondo contenido_form" style="">
-			<h5 class="center">{% block titleform %}Sistema de Procedimientos Operacionales{% endblock %}</h5>
-			<h6 class="center">{% block subtitleform %}Cuerpo de Bomberos del Estado Mérida{% endblock %}</h6>
+			<h5 class="center">{% block titleform %}Sistema de Gestión de Estadísticas{% endblock %}</h5>
+			<h6 class="center">{% block subtitleform %}Dirección de Bomberos del Estado Mérida{% endblock %}</h6>
 			<form method="{% block metodorequest %}post{% endblock %}">
 				{% block formulario %}{% endblock %}
 			</form>
 		</div>
 		<div class="col_12 fondo center" style="margin-top:0; font-size:10px; padding:4px; font-family:Arial;">
 			Proyecto Socio-Tecnológico para el Departamento de Bomberos del Estado Mérida
-			&#160;&#160;&#160;&#160;|&#160;&#160;&#160;&#160;   
+			&#160;&#160;&#160;&#160;|&#160;&#160;&#160;&#160;
 			Copyleft 2014
 		</div>
 	</body>

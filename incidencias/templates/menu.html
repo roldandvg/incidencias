@@ -2,6 +2,12 @@
 	<li class="tooltip-top {% ifequal request.path '/' %}current{% endifequal %}" title="Inicio del Sistema / Sección de bienvenida"><a href="{% url 'inicio' %}"><i class="icon-home"></i> Inicio</a></li>
     {% if request.user.is_authenticated or user.is_authenticated %}
         {% if request.user.is_superuser or user.is_superuser %}
+            <li class="tooltip-top" title="Gestión del Sistema"><a href=""><i class="icon-cog"></i> Sistema</a>
+                <ul>
+                    <li class="tooltip-top" title="Respaldo de datos"><a href=""><i class="icon-cloud-download"></i> Respaldar</a></li>
+                    <li class="tooltip-top" title="Restauración de datos"><a href=""><i class="icon-cloud-upload"></i> Restaurar</a></li>
+                </ul>
+            </li>
             <li class="tooltip-top {% if 'comun/' in request.path or 'novedad/diagnostico/' in request.path %}current{% endif %}" title="Configuración básica del sistema"><a href=""><i class="icon-cogs"></i> Configuración</a>
                 <ul>
                     <li class="tooltip-top {% if '/zona/' in request.path or '/municipio/' in request.path or '/parroquia/' in request.path %}current{% endif %}" title="Configuración de cobertura geográfica"><a href=""><i class="icon-globe"></i> Ubicación</a>
@@ -38,13 +44,13 @@
         {% endif %}
         <li class="tooltip-top" title="Registro de novedades y/o Incidencias atendidas"><a href=""><i class="icon-eye-open"></i> Novedades</a>
             <ul>
-                <li class="tooltip-top" title="Registro de Novedades de la División de Combate de Incendios"><a href=""><i class="icon-bolt"></i> Incendio</a></li>
+                <li class="tooltip-top" title="Registro de Novedades de la División de Combate de Incendios"><a href="{% url 'incendio_new' %}"><i class="icon-bolt"></i> Incendio</a></li>
                 <li class="tooltip-top" title="Registro de Novedades de la División de Búsqueda y Rescate"><a href=""><i class="icon-screenshot"></i> B. y Rescate</a></li>
                 <li class="tooltip-top" title="Registro de Novedades de la División de Emergencia Pre-Hospitalaria"><a href=""><i class="icon-user-md"></i> P. Hospital.</a></li>
                 <li class="tooltip-top" title="Registro de Novedades de la División de Actividades Especiales"><a href=""><i class="icon-random"></i> A. Especiales</a></li>
             </ul>
         </li>
-        <li class="tooltip-top" title="Estadísticas generadas de acuerdo a los procedimientos atendidos"><a href=""><i class="icon-bar-chart"></i> Estadísticas</a>
+        <!--<li class="tooltip-top" title="Estadísticas generadas de acuerdo a los procedimientos atendidos"><a href=""><i class="icon-bar-chart"></i> Estadísticas</a>
             <ul>
                 <li class="tooltip-top" title="Procedimientos Operacionales"><a href=""><i class="icon-ok"></i> Proc. Op.</a>
                     <ul>
@@ -54,7 +60,7 @@
                     </ul>
                 </li>
             </ul>
-        </li>
+        </li>-->
         <li class="tooltip-top" title="Reportes sobre los procedimientos realizados"><a href=""><i class="icon-print"></i> Reportes</a>
             <ul>
                 <li class="tooltip-top" title="Reportes sobre realaciones"><a href=""><i class="icon-copy"></i> Relación</a>
