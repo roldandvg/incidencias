@@ -35,6 +35,10 @@ class UsuarioUpdate(UpdateView):
     fields = ["personal", "username", "password", "email", "is_superuser", "is_staff", "is_active"]
     success_url = reverse_lazy('user_list')
 
+    def form_valid(self, form):
+        form.instance.set_password(form.instance.password)
+        return super(UsuarioUpdate, self).form_valid(form)
+
 
 class UsuarioDelete(DeleteView):
     model = User
