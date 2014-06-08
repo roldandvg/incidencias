@@ -27,7 +27,11 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
+<<<<<<< Updated upstream
 ALLOWED_HOSTS = ["localhost"]
+=======
+ALLOWED_HOSTS = ['localhost']
+>>>>>>> Stashed changes
 
 
 # Application definition
