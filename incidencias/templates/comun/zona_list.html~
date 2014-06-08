@@ -4,7 +4,7 @@
 {% block formulario %}
 	<div>
 		<input type="text" id="buscarZona" name="buscarZona" size="15" placeholder="Indique zona"/>&#160;
-		<button type="button" class="small blue" name="btnBuscar" id="btnBuscar" onclick="location='{% url 'zona_list' %}search/' + document.getElementById('buscarZona').value"><i class="icon-search"> Buscar</i></button>
+		<button type="button" class="small blue" name="btnBuscar" id="btnBuscar" onclick="if (document.getElementById('buscarZona').value!='') location='{% url 'zona_list' %}search/' + document.getElementById('buscarZona').value else location='{% url 'zona_list' %}'"><i class="icon-search"> Buscar</i></button>
 	</div>
 	<br/>
 	<table class="sortable">

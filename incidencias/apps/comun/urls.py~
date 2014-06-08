@@ -5,7 +5,7 @@ from incidencias.apps.comun import views
 
 urlpatterns = patterns('',
                        url(r'^zona/$', login_required(views.ZonaList.as_view()), name="zona_list"),
-					   url(r'^zona/search/([\w-]+)/$', login_required(views.ZonaList.as_view()), name="zona_list"),
+					   url(r'^zona/([\w-]+)/$', login_required(views.ZonaList.as_view()), name="zona_list"),
                        url(r'^zona/new/$', login_required(views.ZonaCreate.as_view()), name='zona_new'),
                        url(r'^zona/edit/(?P<pk>\d+)$', login_required(views.ZonaUpdate.as_view()), name='zona_edit'),
                        url(r'^zona/delete/(?P<pk>\d+)$', login_required(views.ZonaDelete.as_view()), name='zona_delete'),

@@ -17,7 +17,8 @@ class ZonaList(ListView):
 
     def get_queryset(self):
         if len(self.args) > 0:
-            return Zona.objects.filter(nombre__icontains=self.args[0])
+            print self.args[0]
+            return Zona.objects.filter(nombre__startswith=self.args[0])
         else:
             return Zona.objects.all()
 

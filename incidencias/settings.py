@@ -27,7 +27,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost"]
 
 
 # Application definition
@@ -70,10 +70,10 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3',
         'ENGINE': 'django.db.backends.mysql',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'NAME': 'yguillen$incidencias',
-        'USER': 'yguillen',
+        'NAME': 'incidencias',
+        'USER': 'admin',
         'PASSWORD': '123456',
-        'HOST': 'mysql.server',
+        'HOST': 'localhost',
     }
 }
 
