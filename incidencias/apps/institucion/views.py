@@ -12,6 +12,12 @@ class CargoList(ListView):
     model = Cargo
     paginate_by = 10
 
+    def get_queryset(self):
+        if len(self.args) > 0:
+            return Cargo.objects.filter(cargo__icontains=self.args[0])
+        else:
+            return Cargo.objects.all()
+
 
 class CargoCreate(CreateView):
     model = Cargo
@@ -32,6 +38,12 @@ class CargoDelete(DeleteView):
 class RangoList(ListView):
     model = Rango
     paginate_by = 10
+
+    def get_queryset(self):
+        if len(self.args) > 0:
+            return Rango.objects.filter(rango__icontains=self.args[0])
+        else:
+            return Rango.objects.all()
 
 
 class RangoCreate(CreateView):
@@ -54,6 +66,12 @@ class EstacionList(ListView):
     model = Estacion
     paginate_by = 10
 
+    def get_queryset(self):
+        if len(self.args) > 0:
+            return Estacion.objects.filter(nombre__icontains=self.args[0])
+        else:
+            return Estacion.objects.all()
+
 
 class EstacionCreate(CreateView):
     model = Estacion
@@ -74,6 +92,12 @@ class EstacionDelete(DeleteView):
 class TrabajadorList(ListView):
     model = Trabajador
     paginate_by = 10
+
+    def get_queryset(self):
+        if len(self.args) > 0:
+            return Trabajador.objects.filter(nombre__icontains=self.args[0])
+        else:
+            return Trabajador.objects.all()
 
 
 class TrabajadorCreate(CreateView):
@@ -98,6 +122,12 @@ class TrabajadorDelete(DeleteView):
 class UnidadList(ListView):
     model = Unidad
     paginate_by = 10
+
+    def get_queryset(self):
+        if len(self.args) > 0:
+            return Unidad.objects.filter(numero__icontains=self.args[0])
+        else:
+            return Unidad.objects.all()
 
 
 class UnidadCreate(CreateView):

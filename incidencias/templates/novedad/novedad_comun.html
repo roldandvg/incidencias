@@ -1,153 +1,199 @@
+{% load widget_tweaks %}
 <div id="tab_novedad" class="tab-content tab-content-custom">
-    <div class="col_12 negrita">{{formNovedad.tipo_procedimiento.label}}</div>
+    <div class="col_12 negrita">{{form.tipo_procedimiento.label}}</div>
     <div class="col_12">
-        {{formNovedad.tipo_procedimiento}}
-        {% if formNovedad.tipo_procedimiento.errors %}
+        {{form.tipo_procedimiento|attr:"class:tooltip-top"|attr:"title:Seleccione el tipo de procedimiento a registrar"}}
+        {% if form.tipo_procedimiento.errors %}
             <br/>
             <div class="notice error">
                 <i class="icon-remove-sign icon-large"></i>&#160;
-                {{ formNovedad.tipo_procedimiento.errors }}
+                {{ form.tipo_procedimiento.errors }}
                 <a href="#close" class="icon-remove"></a>
             </div>
         {% endif %}
     </div>
-    <div class="col_3 negrita">{{formNovedad.fecha.label}}</div>
-    <div class="col_3 negrita">{{formNovedad.hora_salida.label}}</div>
-    <div class="col_3 negrita">{{formNovedad.hora_llegada.label}}</div>
-    <div class="col_3 negrita">{{formNovedad.hora_reporte.label}}</div>
-    <div class="col_3">
-        {{formNovedad.fecha}}
-        {% if formNovedad.fecha.errors %}
-            <br/>
-            <div class="notice error">
-                <i class="icon-remove-sign icon-large"></i>&#160;
-                {{ formNovedad.fecha.errors }}
-                <a href="#close" class="icon-remove"></a>
-            </div>
-        {% endif %}
+    <div class="col_12">
+        <div class="col_3 negrita">{{form.fecha.label}}</div>
+        <div class="col_3 negrita">{{form.hora_salida.label}}</div>
+        <div class="col_3 negrita">{{form.hora_llegada.label}}</div>
+        <div class="col_3 negrita">{{form.hora_reporte.label}}</div>
     </div>
-    <div class="col_3">
-        {{formNovedad.hora_salida}}
-        {% if formNovedad.hora_salida.errors %}
-            <br/>
-            <div class="notice error">
-                <i class="icon-remove-sign icon-large"></i>&#160;
-                {{ formNovedad.hora_salida.errors }}
-                <a href="#close" class="icon-remove"></a>
-            </div>
-        {% endif %}
+    <div class="col_12">
+        <div class="col_3">
+            {{form.fecha|attr:"class:datepicker tooltip-top"|attr:"size:10"|attr:"placeholder:dd-mm-yy"|attr:"title:Seleccione la fecha en el calendario"}}
+            {% if form.fecha.errors %}
+                <br/>
+                <div class="notice error">
+                    <i class="icon-remove-sign icon-large"></i>&#160;
+                    {{ form.fecha.errors }}
+                    <a href="#close" class="icon-remove"></a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col_3">
+            {{form.hora_salida|attr:"size:6"|attr:"placeholder:00:00"|attr:"class:tooltip-top"|attr:"title:Seleccione la hora en el reloj"}}
+            {% if form.hora_salida.errors %}
+                <br/>
+                <div class="notice error">
+                    <i class="icon-remove-sign icon-large"></i>&#160;
+                    {{ form.hora_salida.errors }}
+                    <a href="#close" class="icon-remove"></a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col_3">
+            {{form.hora_llegada|attr:"size:6"|attr:"placeholder:00:00"|attr:"class:tooltip-top"|attr:"title:Seleccione la hora en el reloj"}}
+            {% if form.hora_llegada.errors %}
+                <br/>
+                <div class="notice error">
+                    <i class="icon-remove-sign icon-large"></i>&#160;
+                    {{ form.hora_llegada.errors }}
+                    <a href="#close" class="icon-remove"></a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col_3">
+            {{form.hora_reporte|attr:"size:6"|attr:"placeholder:00:00"|attr:"class:tooltip-top"|attr:"title:Seleccione la hora en el reloj"}}
+            {% if form.hora_reporte.errors %}
+                <br/>
+                <div class="notice error">
+                    <i class="icon-remove-sign icon-large"></i>&#160;
+                    {{ form.hora_reporte.errors }}
+                    <a href="#close" class="icon-remove"></a>
+                </div>
+            {% endif %}
+        </div>
     </div>
-    <div class="col_3">
-        {{formNovedad.hora_llegada}}
-        {% if formNovedad.hora_llegada.errors %}
-            <br/>
-            <div class="notice error">
-                <i class="icon-remove-sign icon-large"></i>&#160;
-                {{ formNovedad.hora_llegada.errors }}
-                <a href="#close" class="icon-remove"></a>
-            </div>
-        {% endif %}
+    <div class="col_12">
+        <div class="col_6 negrita">Municipio</div>
+        <div class="col_6 negrita">{{form.parroquia.label}}</div>
     </div>
-    <div class="col_3">
-        {{formNovedad.hora_reporte}}
-        {% if formNovedad.hora_reporte.errors %}
-            <br/>
-            <div class="notice error">
-                <i class="icon-remove-sign icon-large"></i>&#160;
-                {{ formNovedad.hora_reporte.errors }}
-                <a href="#close" class="icon-remove"></a>
-            </div>
-        {% endif %}
+    <div class="col_12">
+        <div class="col_6">
+            <select id="municipio" name="municipio" class="tooltip-top" title="Seleccione el municipio">
+                <option value="0">Seleccione...</option>
+            </select>
+        </div>
+        <div class="col_6">
+            {{form.parroquia}}
+            {% if form.parroquia.errors %}
+                <br/>
+                <div class="notice error">
+                    <i class="icon-remove-sign icon-large"></i>&#160;
+                    {{ form.parroquia.errors }}
+                    <a href="#close" class="icon-remove"></a>
+                </div>
+            {% endif %}
+        </div>
     </div>
-    <div class="col_6 negrita">{{formNovedad.municipio.label}}</div>
-    <div class="col_6 negrita">{{formNovedad.parroquia.label}}</div>
-    <div class="col_6">
-        {{formNovedad.municipio}}
-        {% if formNovedad.municipio.errors %}
-            <br/>
-            <div class="notice error">
-                <i class="icon-remove-sign icon-large"></i>&#160;
-                {{ formNovedad.municipio.errors }}
-                <a href="#close" class="icon-remove"></a>
-            </div>
-        {% endif %}
+    <div class="col_12">
+        <div class="col_6 negrita">{{form.direccion.label}}</div>
+        <div class="col_6 negrita">{{form.procedimiento.label}}</div>
     </div>
-    <div class="col_6">
-        {{formNovedad.parroquia}}
-        {% if formNovedad.parroquia.errors %}
-            <br/>
-            <div class="notice error">
-                <i class="icon-remove-sign icon-large"></i>&#160;
-                {{ formNovedad.parroquia.errors }}
-                <a href="#close" class="icon-remove"></a>
-            </div>
-        {% endif %}
-    </div>
-
-    <div class="col_6 negrita">{{formNovedad.direccion.label}}</div>
-    <div class="col_6 negrita">{{formNovedad.procedimiento.label}}</div>
-    <div class="col_6">
-        {{formNovedad.direccion}}
-        {% if formNovedad.direccion.errors %}
-            <br/>
-            <div class="notice error">
-                <i class="icon-remove-sign icon-large"></i>&#160;
-                {{ formNovedad.direccion.errors }}
-                <a href="#close" class="icon-remove"></a>
-            </div>
-        {% endif %}
-    </div>
-    <div class="col_6">
-        {{formNovedad.procedimiento}}
-        {% if formNovedad.procedimiento.errors %}
-            <br/>
-            <div class="notice error">
-                <i class="icon-remove-sign icon-large"></i>&#160;
-                {{ formNovedad.procedimiento.errors }}
-                <a href="#close" class="icon-remove"></a>
-            </div>
-        {% endif %}
+    <div class="col_12">
+        <div class="col_6">
+            {{form.direccion|attr:"class:tooltip-top"}}
+            {% if form.direccion.errors %}
+                <br/>
+                <div class="notice error">
+                    <i class="icon-remove-sign icon-large"></i>&#160;
+                    {{ form.direccion.errors }}
+                    <a href="#close" class="icon-remove"></a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col_6">
+            {{form.procedimiento}}
+            {% if form.procedimiento.errors %}
+                <br/>
+                <div class="notice error">
+                    <i class="icon-remove-sign icon-large"></i>&#160;
+                    {{ form.procedimiento.errors }}
+                    <a href="#close" class="icon-remove"></a>
+                </div>
+            {% endif %}
+        </div>
     </div>
 </div>
 <div id="tab_unidades" class="tab-content tab-content-custom">
-    <div class="col_6 negrita">{{formUnidad.numero.label}}</div>
-    <div class="col_6 negrita">Tipo de Unidad</div>
-    <div class="col_6">
-        {{formUnidad.numero}}
-        {% if formUnidad.numero.errors %}
-            <br/>
-            <div class="notice error">
-                <i class="icon-remove-sign icon-large"></i>&#160;
-                {{ formUnidad.numero.errors }}
-                <a href="#close" class="icon-remove"></a>
-            </div>
-        {% endif %}
-    </div>
-    <div class="col_6"><label id="tipo_unidad"></label></div>
     <div class="col_12">
-        <button type="button" class="small blue"><i class="icon-plus-sign"></i></button>
-        &#160;&#160;
-        <button type="button" class="small blue"><i class="icon-minus-sign"></i></button>
+        {{ unidad_form.management_form }}
+        {{ unidad_form.non_form_errors }}
+        {% for frm_und in unidad_form %}
+            <fieldset class="inline {{ unidad_form.prefix }}">
+                <legend>Unidades</legend>
+                    {{ frm_und.id }}
+                    <div class="col_6 negrita">{{ frm_und.unidad.label }}</div>
+                    <div class="col_6 negrita">Tipo de Unidad</div>
+                    <div class="col_6">
+                        {{ frm_und.unidad }}
+                        {% if frm_und.unidad.errors %}
+                            <br/>
+                            <div class="notice error">
+                                <i class="icon-remove-sign icon-large"></i>&#160;
+                                {{ frm_und.unidad.errors }}
+                                <a href="#close" class="icon-remove"></a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col_6">
+                        <input type="text" name="lblUnidad" id="lblUnidad" value="" size="30" class="tooltip-top"
+                               title="Seleccione la unidad para mostrar el tipo al cual corresponde" readonly/>
+                    </div>
+                    <div class="col_12 negrita">{{ frm_und.a_cargo_de.label_tag }}</div>
+                    <div class="col_12">
+                        {{ frm_und.a_cargo_de }}
+                        {% if frm_und.a_cargo_de.errors %}
+                            <br/>
+                            <div class="notice error">
+                                <i class="icon-remove-sign icon-large"></i>&#160;
+                                {{ frm_und.a_cargo_de.errors }}
+                                <a href="#close" class="icon-remove"></a>
+                            </div>
+                        {% endif %}
+                    </div>
+            </fieldset>
+        {% endfor %}
     </div>
 </div>
 <div id="tab_comisiones" class="tab-content tab-content-custom">
-    <div class="col_6 negrita">{{formComision.nombre.label}}</div>
-    <div class="col_6 negrita">Descripción de la Comisión</div>
-    <div class="col_6">
-        {{formComision.nombre}}
-        {% if formComision.nombre.errors %}
-            <br/>
-            <div class="notice error">
-                <i class="icon-remove-sign icon-large"></i>&#160;
-                {{ formComision.nombre.errors }}
-                <a href="#close" class="icon-remove"></a>
-            </div>
-        {% endif %}
-    </div>
-    <div class="col_6"><label id="descripcion_comision"></label></div>
     <div class="col_12">
-        <button type="button" class="small blue"><i class="icon-plus-sign"></i></button>
-        &#160;&#160;
-        <button type="button" class="small blue"><i class="icon-minus-sign"></i></button>
+        {{ comision_form.management_form }}
+        {{ comision_form.non_form_errors }}
+        {% for frm_com in comision_form %}
+            <fieldset class="inline {{ comision_form.prefix }}">
+                <legend>Otros Organismos</legend>
+                    {{ frm_com.id }}
+                    <div class="col_6 negrita">{{ frm_com.comision.label }}</div>
+                    <div class="col_6 negrita">Descripción</div>
+                    <div class="col_6">
+                        {{ frm_com.comision }}
+                        {% if frm_com.comision.errors %}
+                            <br/>
+                            <div class="notice error">
+                                <i class="icon-remove-sign icon-large"></i>&#160;
+                                {{ frm_com.comision.errors }}
+                                <a href="#close" class="icon-remove"></a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col_6">
+                        <input type="text" name="lblComision" id="lblComision" value="" size="30" class="tooltip-top"
+                               title="Seleccione la comisión para mostrar su descripción" readonly/>
+                    </div>
+                    <div class="col_12 negrita">{{ frm_com.a_cargo_de.label_tag }}</div>
+                    <div class="col_12">
+                        {{ frm_com.a_cargo_de }}
+                        {% if frm_com.a_cargo_de.errors %}
+                            <br/>
+                            <div class="notice error">
+                                <i class="icon-remove-sign icon-large"></i>&#160;
+                                {{ frm_und.a_cargo_de.errors }}
+                                <a href="#close" class="icon-remove"></a>
+                            </div>
+                        {% endif %}
+                    </div>
+            </fieldset>
+        {% endfor %}
     </div>
 </div>

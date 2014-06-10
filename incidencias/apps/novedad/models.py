@@ -190,7 +190,7 @@ class NovedadPersona(models.Model):
 class NovedadUnidad(models.Model):
     novedad = models.ForeignKey(Novedad)
     unidad = models.ForeignKey(Unidad)
-    a_cargo_de = models.CharField(max_length=150)
+    a_cargo_de = models.CharField(max_length=150, null=True)
 
     def __unicode__(self):
         return self.a_cargo_de
@@ -204,7 +204,7 @@ class NovedadUnidad(models.Model):
 class NovedadComision(models.Model):
     novedad = models.ForeignKey(Novedad)
     comision = models.ForeignKey(Comision)
-    a_cargo_de = models.CharField(max_length=150)
+    a_cargo_de = models.CharField(max_length=150, null=True)
 
     def __unicode__(self):
         return self.a_cargo_de

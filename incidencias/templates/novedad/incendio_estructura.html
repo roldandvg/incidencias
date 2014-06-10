@@ -1,78 +1,97 @@
-<div class="col_6">
-    <fieldset>
-        <legend>Datos del Propietario</legend>
-        <table border="0">
-            <tr>
-                <td class="negrita">{{formPersona.cedula.label}}</td>
-                <td>{{formPersona.cedula}}</td>
-            </tr>
-            <tr>
-                <td class="negrita">{{formPersona.nombre.label}}</td>
-                <td>{{formPersona.nombre}}</td>
-            </tr>
-            <tr>
-                <td class="negrita">{{formPersona.edad.label}}</td>
-                <td>{{formPersona.edad}}</td>
-            </tr>
-            <tr>
-                <td class="negrita">{{formPersona.sexo.label}}</td>
-                <td>{{formPersona.sexo}}</td>
-            </tr>
-            <tr>
-                <td class="negrita">{{formPersona.diagnostico.label}}</td>
-                <td>{{formPersona.diagnostico}}</td>
-            </tr>
-            <tr>
-                <td class="negrita">{{formPersona.detalle_diagnostico.label}}</td>
-                <td>{{formPersona.detalle_diagnostico}}</td>
-            </tr>
-            <tr>
-                <td class="negrita">{{formPersona.estado.label}}</td>
-                <td>{{formPersona.estado}}</td>
-            </tr>
-        </table>
-    </fieldset>
+{{ incendio_estructura_form.management_form }}
+{{ incendio_estructura_form.non_form_errors }}
+{% for frm_estr in incendio_estructura_form %}
+    <div class="col_12 inline {{ unidad_form.prefix }}">
+    <div class="col_6">
+        <fieldset>
+            <legend>Datos del Propietario</legend>
+            <table border="0">
+                <tr>
+                    <td class="negrita">{{frm_estr.propietario.cedula.label_tag}}</td>
+                    <td>{{frm_estr.propietario.cedula}}</td>
+                </tr>
+                <tr>
+                    <td class="negrita">{{frm_estr.propietario.nombre.label_tag}}</td>
+                    <td>{{frm_estr.propietario.nombre}}</td>
+                </tr>
+                <tr>
+                    <td class="negrita">{{frm_estr.propietario.edad.label_tag}}</td>
+                    <td>{{frm_estr.propietario.edad}}</td>
+                </tr>
+                <tr>
+                    <td class="negrita">{{frm_estr.propietario.sexo.label}}</td>
+                    <td>{{frm_estr.propietario.sexo}}</td>
+                </tr>
+                <tr>
+                    <td class="negrita">{{frm_estr.propietario.diagnostico.label}}</td>
+                    <td>{{frm_estr.propietario.diagnostico}}</td>
+                </tr>
+                <tr>
+                    <td class="negrita">{{frm_estr.propietario.detalle_diagnostico.label}}</td>
+                    <td>{{frm_estr.popietario.detalle_diagnostico}}</td>
+                </tr>
+                <tr>
+                    <td class="negrita">{{frm_estr.propietario.estado.label}}</td>
+                    <td>{{frm_estr.propietario.estado}}</td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+    <div class="col_6">
+        <fieldset>
+            <legend>Datos de la estructura</legend>
+            <table border="0">
+                <tr>
+                    <td class="negrita">{{frm_estr.nombre_inmueble.label}}</td>
+                    <td>{{frm_estr.nombre_inmueble}}</td>
+                </tr>
+                <tr>
+                    <td class="negrita">{{frm_estr.observaciones.label}}</td>
+                    <td>{{frm_estr.observaciones}}</td>
+                </tr>
+                <tr>
+                    <td class="negrita">{{frm_estr.causa.label}}</td>
+                    <td>{{frm_estr.causa}}</td>
+                </tr>
+                <tr>
+                    <td class="negrita">{{frm_estr.fase.label}}</td>
+                    <td>{{frm_estr.fase}}</td>
+                </tr>
+                <tr>
+                    <td class="negrita">{{frm_estr.perdida_inmueble.label}}</td>
+                    <td>{{frm_estr.perdida_inmueble}}</td>
+                </tr>
+                <tr>
+                    <td class="negrita">{{frm_estr.p_inmueble_obs.label}}</td>
+                    <td>{{frm_estr.p_inmueble_obs}}</td>
+                </tr>
+                <tr>
+                    <td class="negrita">{{frm_estr.perdida_mueble.label}}</td>
+                    <td>{{frm_estr.perdida_mueble}}</td>
+                </tr>
+                <tr>
+                    <td class="negrita">{{frm_estr.p_mueble_obs.label}}</td>
+                    <td>{{frm_estr.p_mueble_obs}}</td>
+                </tr>
+                <tr>
+                    <td class="negrita">{{frm_estr.zona_afectada.label}}</td>
+                    <td>{{frm_estr.zona_afectada}}</td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
 </div>
-<div class="col_6">
-    <fieldset>
-        <legend>Datos de la estructura</legend>
-        <table border="0">
-            <tr>
-                <td class="negrita">{{formEstructura.nombre_inmueble.label}}</td>
-                <td>{{formEstructura.nombre_inmueble}}</td>
-            </tr>
-            <tr>
-                <td class="negrita">{{formEstructura.observaciones.label}}</td>
-                <td>{{formEstructura.observaciones}}</td>
-            </tr>
-            <tr>
-                <td class="negrita">{{formEstructura.causa.label}}</td>
-                <td>{{formEstructura.causa}}</td>
-            </tr>
-            <tr>
-                <td class="negrita">{{formEstructura.fase.label}}</td>
-                <td>{{formEstructura.fase}}</td>
-            </tr>
-            <tr>
-                <td class="negrita">{{formEstructura.perdida_inmueble.label}}</td>
-                <td>{{formEstructura.perdida_inmueble}}</td>
-            </tr>
-            <tr>
-                <td class="negrita">{{formEstructura.p_inmueble_obs.label}}</td>
-                <td>{{formEstructura.p_inmueble_obs}}</td>
-            </tr>
-            <tr>
-                <td class="negrita">{{formEstructura.perdida_mueble.label}}</td>
-                <td>{{formEstructura.perdida_mueble}}</td>
-            </tr>
-            <tr>
-                <td class="negrita">{{formEstructura.p_mueble_obs.label}}</td>
-                <td>{{formEstructura.p_mueble_obs}}</td>
-            </tr>
-            <tr>
-                <td class="negrita">{{formEstructura.zona_afectada.label}}</td>
-                <td>{{formEstructura.zona_afectada}}</td>
-            </tr>
-        </table>
-    </fieldset>
-</div>
+{% endfor %}
+{% block extrahead %}
+    <script type="text/javascript">
+        $(function () {
+            $(".inline.{{ incendio_estructura_form.prefix }}").formset({
+                prefix: "{{ incendio_estructura_form.prefix }}",
+                addCssClass: 'icon-plus-sign',
+                addText: ' agregar',
+                deleteCssClass: 'icon-minus-sign',
+                deleteText: ' eliminar'
+            });
+        });
+    </script>
+{% endblock %}

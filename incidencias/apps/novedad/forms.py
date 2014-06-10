@@ -1,8 +1,11 @@
 # -*- coding:utf-8 -*-
 from django import forms
-from incidencias.apps.comun.models import Municipio, Parroquia, TipoProcedimiento, Comision
+from django.forms import ModelForm, Textarea, Select
+from django.forms.models import inlineformset_factory
+from incidencias.apps.comun.models import Municipio, Parroquia, TipoProcedimiento, Comision, Persona
+from incidencias.apps.novedad.models import Novedad, NovedadUnidad, NovedadComision, NovedadIncendioEstructura, \
+    Diagnostico, NovedadPersona
 from incidencias.apps.institucion.models import Unidad
-from incidencias.apps.novedad.models import Diagnostico
 
 
 def cargar_municipio():
@@ -76,6 +79,28 @@ def cargar_diagnostico():
     return lista
 
 
+class NovedadForm(ModelForm):
+    class Meta:
+        model = Novedad
+        widgets = {
+            'direccion': Textarea(attrs={'cols': 80, 'rows': 3, 'placeholder': 'Indique la dirección del evento',
+                                         'title': 'Indique la dirección en donde se genero el evento de la novedad',
+                                         'class': 'tooltip-top'}),
+            'procedimiento': Textarea(attrs={'cols': 80, 'rows': 3, 'placeholder': 'Indique el procedimiento '
+                                                                                   'efectuado',
+                                             'title': 'Indique el procedimiento que se realizó en la novedad atendida',
+                                             'class': 'tooltip-top'}),
+            'parroquia': Select(attrs={'class': 'tooltip-top', 'title': 'Seleccione la parroquia en donde se generó la '
+                                                                        'novedad'})
+        }
+
+
+UnidadFormSet = inlineformset_factory(Novedad, NovedadUnidad, extra=1)
+ComisionFormSet = inlineformset_factory(Novedad, NovedadComision, extra=1)
+IncendioEstructuraFormSet = inlineformset_factory(Novedad, NovedadIncendioEstructura, extra=1)
+PersonaFormSet = inlineformset_factory(Persona, IncendioEstructuraFormSet)
+
+"""
 class FormPersona(forms.Form):
     nombre = forms.CharField(label="Nombre",
                              widget=forms.TextInput(attrs={'title': 'Indique el nombre de la persona',
@@ -94,8 +119,9 @@ class FormPersona(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(FormPersona, self).__init__(*args, **kwargs)
+"""
 
-
+"""
 class FormCondicionPersona(FormPersona):
     diagnostico = forms.ChoiceField(label="Diagnóstico", choices=cargar_diagnostico(),
                                     widget=forms.Select(attrs={'title': 'Seleccione el diagnóstico de la persona',
@@ -114,14 +140,18 @@ class FormCondicionPersona(FormPersona):
 
     def __init__(self, *args, **kwargs):
         super(FormCondicionPersona, self).__init__(*args, **kwargs)
+"""
 
-
+"""
 # Este formulario debe hacerser en el template con tabs debido a lo extenso del mismo
 class FormNovedad(forms.Form):
-    fecha = forms.DateField(label="Fecha",
-                            widget=forms.TextInput(attrs={'title': 'Indique la fecha del reporte',
-                                                          'placeholder': 'DD/MM/YYYY',
-                                                          'class': 'tooltip-top', 'size': '10'}))
+    fecha = forms.DateField(('%d/%m/%Y',), label="Fecha",
+                            widget=forms.DateInput(format='%d/%m/%Y', attrs={'title': 'Indique la fecha del reporte en '
+                                                                                      'el formato día-mes-año',
+                                                                             'readonly': True,
+                                                                             'placeholder': 'dd-mm-yy',
+                                                                             'class': 'tooltip-top datepicker',
+                                                                             'size': '10'}))
     hora_salida = forms.TimeField(label="Hora de Salida",
                                   widget=forms.TextInput(attrs={'title': 'Indique la hora de salida de la estación',
                                                                 'placeholder': '00:00', 'class': 'tooltip-top',
@@ -162,8 +192,9 @@ class FormNovedad(forms.Form):
     def __init__(self, division=None, *args, **kwargs):
         super(FormNovedad, self).__init__(*args, **kwargs)
         self.fields['tipo_procedimiento'].choices = cargar_tipo_procedimiento(division)
+"""
 
-
+"""
 class FormUnidad(forms.Form):
     numero = forms.ChoiceField(label="Número de Unidad", choices=cargar_unidad(),
                                widget=forms.Select(attrs={'title': 'Seleccione el número de la Unidad',
@@ -171,8 +202,9 @@ class FormUnidad(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(FormUnidad, self).__init__(*args, **kwargs)
+"""
 
-
+"""
 class FormComision(forms.Form):
     nombre = forms.ChoiceField(label="Nombre de la comisión", choices=cargar_comision(),
                                widget=forms.Select(attrs={'title': 'Seleccione la comisión',
@@ -180,8 +212,9 @@ class FormComision(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(FormComision, self).__init__(*args, **kwargs)
+"""
 
-
+"""
 class FormIncendioEstructura(FormPersona):
     nombre_inmueble = forms.CharField(label='Nombre del Inmueble',
                                       widget=forms.TextInput(attrs={'title': 'Indique el nombre del inmueble objeto '
@@ -226,8 +259,9 @@ class FormIncendioEstructura(FormPersona):
 
     def __init__(self, *args, **kwargs):
         super(FormIncendioEstructura, self).__init__(*args, **kwargs)
+"""
 
-
+"""
 class FormIncendioVehiculo(FormCondicionPersona):
     # DAtos del vehiculo
     placa = forms.CharField(label="Placa",
@@ -281,3 +315,4 @@ class FormIncendioVehiculo(FormCondicionPersona):
                                                                         'en el vehículo',
                                                                'placeholder': 'Indique causa de incendio',
                                                                'class': 'tooltip-top', 'cols': '26'}))
+"""

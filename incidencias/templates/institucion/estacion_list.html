@@ -2,6 +2,27 @@
 {% block titleform %}Estaciones <a href="{% url 'estacion_new' %}"><i class="icon-plus-sign" title="Nuevo Registro"></i></a>{% endblock %}
 {% block subtitleform %}Listado de estaciones bomberiles{% endblock %}
 {% block formulario %}
+    <div>
+		<input type="text" id="buscarEstacion" name="buscarEstacion" size="15" placeholder="Indique estación"/>&#160;
+		<button type="button" class="small blue" name="btnBuscar" id="btnBuscar">
+            <i class="icon-search"> Buscar</i>
+        </button>
+        <script type="text/javascript">
+            if (typeof $(location).attr('pathname').split("/")[4] != "undefined") {
+                $("#buscarEstacion").val($(location).attr('pathname').split("/")[4]);
+            }
+            $("#btnBuscar").click(function() {
+                var datos = document.getElementById('buscarEstacion').value;
+                if (datos!='') {
+                    $(location).attr('href',"{% url 'estacion_list' %}search/"+datos);
+                }
+                else {
+                    $(location).attr('href',"{% url 'estacion_list' %}");
+                }
+            });
+        </script>
+	</div>
+	<br/>
 	<table class="sortable">
 		<thead>
 			<tr>

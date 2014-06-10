@@ -2,6 +2,51 @@
 {% block titleform %}Tipos de Procedimientos <a href="{% url 'tipoprocedimiento_new' %}"><i class="icon-plus-sign" title="Nuevo Registro"></i></a>{% endblock %}
 {% block subtitleform %}Listado de tipos de procedimientos atendidos{% endblock %}
 {% block formulario %}
+    <div>
+        <select name="cmbDivision" id="cmbDivision">
+            <option value="0">Todas</option>
+            <option value="CI">Combate de incendios</option>
+            <option value="BR">Búsqueda y Rescate</option>
+            <option value="EP">Emergencia Pre-hospitalaria</option>
+            <option value="AE">Actividades Especiales</option>
+        </select>
+		<input type="text" id="buscarTipoProc" name="buscarTipoProc" size="15" placeholder="Indique tipo de procedimiento"/>&#160;
+		<button type="button" class="small blue" name="btnBuscar" id="btnBuscar">
+            <i class="icon-search"> Buscar</i>
+        </button>
+        <script type="text/javascript">
+            if (typeof $(location).attr('pathname').split("/")[4] != "undefined") {
+                $("#cmbDivision").val($(location).attr('pathname').split("/")[4]);
+            }
+            if (typeof $(location).attr('pathname').split("/")[5] != "undefined" && $(location).attr('pathname').split("/")[5]!="0") {
+                $("#buscarTipoProc").val($(location).attr('pathname').split("/")[5]);
+            }
+
+            $("#btnBuscar").click(function() {
+                var division = document.getElementById('cmbDivision').value;
+                var datos = document.getElementById('buscarTipoProc').value;
+
+                if (division!="0") {
+                    if (datos!='') {
+                        $(location).attr('href',"{% url 'tipoprocedimiento_list' %}search/"+division+"/"+datos);
+                    }
+                    else {
+                        $(location).attr('href',"{% url 'tipoprocedimiento_list' %}search/"+division+"/0");
+                    }
+
+                }
+                else {
+                    if (datos!="") {
+                        $(location).attr('href',"{% url 'tipoprocedimiento_list' %}search/"+division+"/"+datos);
+                    }
+                    else {
+                        $(location).attr('href',"{% url 'tipoprocedimiento_list' %}");
+                    }
+                }
+            });
+        </script>
+	</div>
+	<br/>
 	<table class="sortable">
 		<thead>
 			<tr>

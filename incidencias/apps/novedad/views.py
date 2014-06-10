@@ -1,28 +1,31 @@
 # -*- coding: utf-8 -*-
-from django.http import HttpResponse
-from django.views.generic import TemplateView, ListView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.http import HttpResponseRedirect
+from django.views.generic import ListView, CreateView
+from django.views.generic.edit import UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 
-# Vistas genericas para formset
-from extra_views import FormSetView, ModelFormSetView, InlineFormSetView, InlineFormSet, CreateWithInlinesView, \
-    UpdateWithInlinesView, CalendarMonthView, NamedFormsetsMixin, SortableListMixin, SearchableListMixin
-from extra_views.generic import GenericInlineFormSet, GenericInlineFormSetView
-
-from incidencias.apps.comun.models import Persona
+#from incidencias.apps.comun.models import Persona
 from incidencias.apps.novedad.models import Novedad, Diagnostico, NovedadIncendioEstructura
-from incidencias.apps.novedad.forms import FormPersona, FormNovedad, FormIncendioEstructura, FormUnidad, FormComision, \
-    FormCondicionPersona, FormIncendioVehiculo
+#from incidencias.apps.novedad.forms import FormPersona, FormNovedad, FormIncendioEstructura, FormUnidad, FormComision, \
+#    FormCondicionPersona, FormIncendioVehiculo
+from incidencias.apps.comun.forms import PersonaForm
+from incidencias.apps.novedad.forms import NovedadForm, UnidadFormSet, ComisionFormSet, IncendioEstructuraFormSet
 
 
 # Vistas genericas para controlar el CRUD del modelo Diagnostico
 class DiagnosticoList(ListView):
     model = Diagnostico
     paginate_by = 10
+
+    def get_queryset(self):
+        if len(self.args) > 0:
+            return Diagnostico.objects.filter(nombre__icontains=self.args[0])
+        else:
+            return Diagnostico.objects.all()
 
 
 class DiagnosticoCreate(CreateView):
@@ -44,6 +47,54 @@ class DiagnosticoDelete(DeleteView):
 class NovedadList(ListView):
     model = Novedad
     paginate_by = 10
+
+
+class NovedadIncendioCreateView(CreateView):
+    template_name = 'novedad/novedad_combate_incendio.html'
+    model = Novedad
+    form_class = NovedadForm
+    success_url = 'novedad/'
+
+    def get(self, request, *args, **kwargs):
+        self.object = None
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        unidad_form = UnidadFormSet()
+        comision_form = ComisionFormSet()
+        incendio_estructura_form = IncendioEstructuraFormSet()
+        return self.render_to_response(self.get_context_data(form=form, unidad_form=unidad_form,
+                                                             comision_form=comision_form,
+                                                             incendio_estructura_form=incendio_estructura_form))
+
+    def post(self, request, *args, **kwargs):
+        self.object = None
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        unidad_form = UnidadFormSet(self.request.POST)
+        comision_form = ComisionFormSet(self.request.POST)
+        incendio_estructura_form = IncendioEstructuraFormSet(self.request.POST)
+
+        if form.is_valid() and unidad_form.is_valid() and comision_form.is_valid() \
+                and incendio_estructura_form.is_valid():
+            return self.form_valid(form, unidad_form, comision_form, incendio_estructura_form)
+        else:
+            return self.form_invalid(form, unidad_form, comision_form, incendio_estructura_form)
+
+    def form_valid(self, form, unidad_form, comision_form, incendio_estructura_form):
+        self.object = form.save()
+        unidad_form.instance = self.object
+        unidad_form.save()
+        comision_form.instance = self.object
+        comision_form.save()
+        incendio_estructura_form.instance = self.object
+        incendio_estructura_form.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    def form_invalid(self, form, unidad_form, comision_form, incendio_estructura_form):
+        return render_to_response(self.get_context_data(form=form, unidad_form=unidad_form,
+                                                        comision_form=comision_form,
+                                                        incendio_estructura_form=incendio_estructura_form))
+
 
 """
 class NovedadCreate(CreateView):
@@ -78,6 +129,7 @@ class NovedadIncendioEstructura(CreateWithInlinesView):
     inlines = [IncendioEstructuraInline, PersonaInline]
     template_name = "novedad/incendio_estructura.html"
 """
+"""
 @login_required()
 def novedad_incendio(request):
     form_novedad = FormNovedad(auto_id="%s", division="CI")
@@ -100,3 +152,4 @@ def novedad_incendio(request):
     c.update(csrf(request))
 
     return render_to_response('novedad/novedad_combate_incendio.html', c, context_instance=RequestContext(request))
+"""

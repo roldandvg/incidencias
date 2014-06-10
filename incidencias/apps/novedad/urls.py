@@ -5,6 +5,8 @@ from incidencias.apps.novedad import views
 
 urlpatterns = patterns('',
                        url(r'^diagnostico/$', views.DiagnosticoList.as_view(), name="diagnostico_list"),
+                       url(r'^diagnostico/search/([\w-]+)/$', login_required(views.DiagnosticoList.as_view()),
+                           name="diagnostico_list"),
                        url(r'^diagnostico/new/$', views.DiagnosticoCreate.as_view(), name='diagnostico_new'),
                        url(r'^diagnostico/edit/(?P<pk>\d+)$', views.DiagnosticoUpdate.as_view(),
                            name='diagnostico_edit'),
@@ -19,6 +21,7 @@ urlpatterns = patterns('',
                        #url(r'^inlines/estructura/new/$', login_required(views.NovedadIncendioEstructura.as_view()),
                        #    name='novedad_estructura_new'),
 
-                       url(r'^incendio/new/$', 'incidencias.apps.novedad.views.novedad_incendio',
-                           name='incendio_new'),
+                       #url(r'^incendio/new/$', 'incidencias.apps.novedad.views.novedad_incendio',
+                       #    name='incendio_new'),
+                       url(r'^incendio/new/$', views.NovedadIncendioCreateView.as_view(), name='incendio_new'),
 )

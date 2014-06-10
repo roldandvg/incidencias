@@ -42,6 +42,12 @@ class MunicipioList(ListView):
     model = Municipio
     paginate_by = 10
 
+    def get_queryset(self):
+        if len(self.args) > 0:
+            return Municipio.objects.filter(nombre__icontains=self.args[0])
+        else:
+            return Municipio.objects.all()
+
 
 class MunicipioCreate(CreateView):
     model = Municipio
@@ -62,6 +68,12 @@ class MunicipioDelete(DeleteView):
 class ParroquiaList(ListView):
     model = Parroquia
     paginate_by = 10
+
+    def get_queryset(self):
+        if len(self.args) > 0:
+            return Parroquia.objects.filter(nombre__icontains=self.args[0])
+        else:
+            return Parroquia.objects.all()
 
 
 class ParroquiaCreate(CreateView):
@@ -84,6 +96,19 @@ class TipoProcedimientoList(ListView):
     model = TipoProcedimiento
     paginate_by = 10
 
+    def get_queryset(self):
+        if len(self.args) > 1:
+            if self.args[0] == '0' and self.args[1] == '0':
+                return TipoProcedimiento.objects.all()
+            elif self.args[0] == '0' and self.args[1] != '0':
+                return TipoProcedimiento.objects.filter(nombre__icontains=self.args[1])
+            elif self.args[0] != '0' and self.args[1] == '0':
+                return TipoProcedimiento.objects.filter(division=self.args[0])
+            elif self.args[0] != '0' and self.args[1] != '0':
+                return TipoProcedimiento.objects.filter(division=self.args[0], nombre__icontains=self.args[1])
+        else:
+            return TipoProcedimiento.objects.all()
+
 
 class TipoProcedimientoCreate(CreateView):
     model = TipoProcedimiento
@@ -105,6 +130,12 @@ class DetalleTipoProcedimientoList(ListView):
     model = DetalleTipoProcedimiento
     paginate_by = 10
 
+    def get_queryset(self):
+        if len(self.args) > 0:
+            return DetalleTipoProcedimiento.objects.filter(nombre__icontains=self.args[0])
+        else:
+            return DetalleTipoProcedimiento.objects.all()
+
 
 class DetalleTipoProcedimientoCreate(CreateView):
     model = DetalleTipoProcedimiento
@@ -125,6 +156,12 @@ class DetalleTipoProcedimientoDelete(DeleteView):
 class ComisionList(ListView):
     model = Comision
     paginate_by = 10
+
+    def get_queryset(self):
+        if len(self.args) > 0:
+            return Comision.objects.filter(nombre__icontains=self.args[0])
+        else:
+            return Comision.objects.all()
 
 
 class ComisionCreate(CreateView):

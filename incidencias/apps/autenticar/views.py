@@ -19,6 +19,12 @@ class UsuarioList(ListView):
     model = User
     paginate_by = 10
 
+    def get_queryset(self):
+        if len(self.args) > 0:
+            return User.objects.filter(username__icontains=self.args[0])
+        else:
+            return User.objects.all()
+
 
 class UsuarioCreate(CreateView):
     model = User
