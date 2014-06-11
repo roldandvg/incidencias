@@ -13,80 +13,12 @@
     {% include "novedad/novedad_comun.html" %}
     <div id="tab_datos" class="tab-content tab-content-custom">
         {# TIPO DE PROCEDIMIENTO - INCENDIO DE ESTRUCTURA - EXPLOSION DEFLAGACION - CORTO CIRCUITO #}
-        {% include "novedad/incendio_estructura.html" %}
+        {# {% include "novedad/incendio_estructura.html" %} #}
         {# {% include "novedad/incendio_vehiculo.html" %} #}
-        <div class="col_12">
-            <button type="button" class="small blue"><i class="icon-plus-sign"></i></button>
-            &#160;&#160;
-            <button type="button" class="small blue"><i class="icon-minus-sign"></i></button>
-        </div>
     </div>
     <div class="col_12 center separar-vertical-20x">
 		<button class="small blue"><i class="icon-check"></i> Guardar</button>
 		&#160;&#160;
 		<button class="small blue" type="button" onclick="location='{% url 'novedad_list' %}'"><i class="icon-remove-circle"></i> Cancelar</button>
 	</div>
-{% endblock %}
-{% block extrahead %}
-    <script type="text/javascript">
-        $(function() {
-            $("#id_fecha").datepicker({
-                currentText: 'Hoy',
-                showOn: "button",
-                buttonImage: "/media/images/calendar.png",
-                buttonImageOnly: true,
-                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre',
-                    'Octubre', 'Noviembre', 'Diciembre'],
-                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié;', 'Juv', 'Vie', 'Sáb'],
-                dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
-                dateFormat: 'dd-mm-yy',
-                changeYear: true,
-                showAnim: "drop",
-                setDate: new Date(),
-            });
-
-            $("#id_hora_salida").timepicker({
-                hourText: "Hora",
-                minuteText: "Minuto",
-                showNowButton: true,
-                nowButtonText: "ahora",
-                minutes: {interval:1},
-                //showOn: 'button',
-
-            });
-            $("#id_hora_llegada").timepicker({
-                hourText: "Hora",
-                minuteText: "Minuto",
-                showNowButton: true,
-                nowButtonText: "ahora",
-                minutes: {interval:1}
-            });
-            $("#id_hora_reporte").timepicker({
-                hourText: "Hora",
-                minuteText: "Minuto",
-                showNowButton: true,
-                nowButtonText: "ahora",
-                minutes: {interval:1}
-            });
-        });
-
-        $(function () {
-            $(".inline.{{ unidad_form.prefix }}").formset({
-                prefix: "{{ unidad_form.prefix }}",
-                addCssClass: 'icon-plus-sign',
-                addText: ' agregar',
-                deleteCssClass: 'icon-minus-sign',
-                deleteText: ' eliminar'
-            });
-            $(".inline.{{ comision_form.prefix }}").formset({
-                prefix: "{{ comision_form.prefix }}",
-                addCssClass: "icon-plus-sign",
-                addText: ' agregar',
-                deleteCssClass: 'icon-minus-sign',
-                deleteText: ' eliminar'
-            });
-        });
-    </script>
 {% endblock %}

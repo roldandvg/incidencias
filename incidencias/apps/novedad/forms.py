@@ -80,6 +80,10 @@ def cargar_diagnostico():
 
 
 class NovedadForm(ModelForm):
+    municipio = forms.ChoiceField(label="Municipio", widget=forms.Select(attrs={'class': 'tooltip-top',
+                                                                                'title': 'Seleccione el municipio',
+                                                                                'onchange': ''}))
+
     class Meta:
         model = Novedad
         widgets = {
@@ -94,11 +98,20 @@ class NovedadForm(ModelForm):
                                                                         'novedad'})
         }
 
+    def __init__(self, division=None, *args, **kwargs):
+        ModelForm.__init__(self, *args, **kwargs)
+
+        self.fields['municipio'].choices = cargar_municipio()
+
+        if division:
+            # Evalúa si se estableció el tipo de novedad a registrar de acuerdo a la división indicada, en caso
+            # contrario muestra un listado con todos los tipos de procedimientos registrados
+            self.fields['tipo_procedimiento'].choices = cargar_tipo_procedimiento(division)
 
 UnidadFormSet = inlineformset_factory(Novedad, NovedadUnidad, extra=1)
 ComisionFormSet = inlineformset_factory(Novedad, NovedadComision, extra=1)
 IncendioEstructuraFormSet = inlineformset_factory(Novedad, NovedadIncendioEstructura, extra=1)
-PersonaFormSet = inlineformset_factory(Persona, IncendioEstructuraFormSet)
+PersonaFormSet = inlineformset_factory(Novedad, NovedadPersona, extra=1)
 
 """
 class FormPersona(forms.Form):

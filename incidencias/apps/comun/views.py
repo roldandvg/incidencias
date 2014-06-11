@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
+from django.utils import simplejson
 
 from incidencias.apps.comun.models import Zona, Municipio, Parroquia, TipoProcedimiento, DetalleTipoProcedimiento, \
     Comision
@@ -177,3 +178,18 @@ class ComisionUpdate(UpdateView):
 class ComisionDelete(DeleteView):
     model = Comision
     success_url = reverse_lazy('comision_list')
+
+
+"""
+@note Funciones AJAX
+"""
+
+
+def filtrar_parroquia(request):
+    parroquias = []
+    if request.GET.has_key('id_municipio'):
+        municipio = request.GET['id_municipio']
+        parroquias = [{'value': p.id, 'nombre': p.nombre}
+                      for p in Parroquia.objects.filter(municipio=municipio).order_by('nombre')]
+
+    return HttpResponse(simplejson.dumps(parroquias))

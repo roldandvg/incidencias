@@ -65,14 +65,12 @@
         </div>
     </div>
     <div class="col_12">
-        <div class="col_6 negrita">Municipio</div>
+        <div class="col_6 negrita">{{form.municipio.label}}</div>
         <div class="col_6 negrita">{{form.parroquia.label}}</div>
     </div>
     <div class="col_12">
         <div class="col_6">
-            <select id="municipio" name="municipio" class="tooltip-top" title="Seleccione el municipio">
-                <option value="0">Seleccione...</option>
-            </select>
+            {{form.municipio}}
         </div>
         <div class="col_6">
             {{form.parroquia}}
@@ -120,41 +118,54 @@
         {{ unidad_form.management_form }}
         {{ unidad_form.non_form_errors }}
         {% for frm_und in unidad_form %}
-            <fieldset class="inline {{ unidad_form.prefix }}">
-                <legend>Unidades</legend>
-                    {{ frm_und.id }}
-                    <div class="col_6 negrita">{{ frm_und.unidad.label }}</div>
-                    <div class="col_6 negrita">Tipo de Unidad</div>
-                    <div class="col_6">
-                        {{ frm_und.unidad }}
-                        {% if frm_und.unidad.errors %}
-                            <br/>
-                            <div class="notice error">
-                                <i class="icon-remove-sign icon-large"></i>&#160;
-                                {{ frm_und.unidad.errors }}
-                                <a href="#close" class="icon-remove"></a>
-                            </div>
-                        {% endif %}
-                    </div>
-                    <div class="col_6">
-                        <input type="text" name="lblUnidad" id="lblUnidad" value="" size="30" class="tooltip-top"
-                               title="Seleccione la unidad para mostrar el tipo al cual corresponde" readonly/>
-                    </div>
-                    <div class="col_12 negrita">{{ frm_und.a_cargo_de.label_tag }}</div>
-                    <div class="col_12">
-                        {{ frm_und.a_cargo_de }}
-                        {% if frm_und.a_cargo_de.errors %}
-                            <br/>
-                            <div class="notice error">
-                                <i class="icon-remove-sign icon-large"></i>&#160;
-                                {{ frm_und.a_cargo_de.errors }}
-                                <a href="#close" class="icon-remove"></a>
-                            </div>
-                        {% endif %}
-                    </div>
-            </fieldset>
+            <div class="inline {{ unidad_form.prefix }}">
+                <fieldset>
+                    <legend>Unidades</legend>
+                        {{ frm_und.id }}
+                        <div class="col_6 negrita">{{ frm_und.unidad.label }}</div>
+                        <div class="col_6 negrita">Tipo de Unidad</div>
+                        <div class="col_6">
+                            {{ frm_und.unidad }}
+                            {% if frm_und.unidad.errors %}
+                                <br/>
+                                <div class="notice error">
+                                    <i class="icon-remove-sign icon-large"></i>&#160;
+                                    {{ frm_und.unidad.errors }}
+                                    <a href="#close" class="icon-remove"></a>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col_6">
+                            <input type="text" name="lblUnidad" id="lblUnidad" value="" size="30" class="tooltip-top"
+                                   title="Seleccione la unidad para mostrar el tipo al cual corresponde" readonly/>
+                        </div>
+                        <div class="col_12 negrita">{{ frm_und.a_cargo_de.label_tag }}</div>
+                        <div class="col_12">
+                            {{ frm_und.a_cargo_de }}
+                            {% if frm_und.a_cargo_de.errors %}
+                                <br/>
+                                <div class="notice error">
+                                    <i class="icon-remove-sign icon-large"></i>&#160;
+                                    {{ frm_und.a_cargo_de.errors }}
+                                    <a href="#close" class="icon-remove"></a>
+                                </div>
+                            {% endif %}
+                        </div>
+                </fieldset>
+            </div>
         {% endfor %}
     </div>
+    <script type="text/javascript">
+        $(function() {
+            $("#tab_unidades").find(".inline.{{ unidad_form.prefix }}").formset({
+                prefix: "{{ unidad_form.prefix }}",
+                addCssClass: "icon-plus-sign",
+                addText: ' agregar',
+                deleteCssClass: 'icon-minus-sign',
+                deleteText: ' eliminar'
+            });
+        });
+    </script>
 </div>
 <div id="tab_comisiones" class="tab-content tab-content-custom">
     <div class="col_12">
@@ -188,7 +199,7 @@
                             <br/>
                             <div class="notice error">
                                 <i class="icon-remove-sign icon-large"></i>&#160;
-                                {{ frm_und.a_cargo_de.errors }}
+                                {{ frm_com.a_cargo_de.errors }}
                                 <a href="#close" class="icon-remove"></a>
                             </div>
                         {% endif %}
@@ -196,4 +207,59 @@
             </fieldset>
         {% endfor %}
     </div>
+    <script type="text/javascript">
+        $(function() {
+            $("#tab_comisiones").find(".inline.{{ comision_form.prefix }}").formset({
+                prefix: "{{ comision_form.prefix }}",
+                addCssClass: "icon-plus-sign",
+                addText: ' agregar',
+                deleteCssClass: 'icon-minus-sign',
+                deleteText: ' eliminar'
+            });
+        });
+    </script>
 </div>
+<script type="text/javascript">
+    $(function() {
+        $("#id_fecha").datepicker({
+            currentText: 'Hoy',
+            showOn: "button",
+            buttonImage: "/media/images/calendar.png",
+            buttonImageOnly: true,
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre',
+                'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié;', 'Juv', 'Vie', 'Sáb'],
+            dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+            dateFormat: 'dd-mm-yy',
+            changeYear: true,
+            showAnim: "drop",
+            setDate: new Date()
+        });
+
+        $("#id_hora_salida").timepicker({
+            hourText: "Hora",
+            minuteText: "Minuto",
+            showNowButton: true,
+            nowButtonText: "ahora",
+            minutes: {interval:1}
+        });
+
+        $("#id_hora_llegada").timepicker({
+            hourText: "Hora",
+            minuteText: "Minuto",
+            showNowButton: true,
+            nowButtonText: "ahora",
+            minutes: {interval:1}
+        });
+
+        $("#id_hora_reporte").timepicker({
+            hourText: "Hora",
+            minuteText: "Minuto",
+            showNowButton: true,
+            nowButtonText: "ahora",
+            minutes: {interval:1}
+        });
+    });
+</script>

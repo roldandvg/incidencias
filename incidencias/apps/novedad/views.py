@@ -55,6 +55,12 @@ class NovedadIncendioCreateView(CreateView):
     form_class = NovedadForm
     success_url = 'novedad/'
 
+    def get_form_kwargs(self):
+        # Método que permite establecer el tipo de procedimiento a ser registrado en el formulario de novedades
+        kwargs = super(NovedadIncendioCreateView, self).get_form_kwargs()
+        kwargs.update({'division': 'CI'})
+        return kwargs
+
     def get(self, request, *args, **kwargs):
         self.object = None
         form_class = self.get_form_class()

@@ -28,6 +28,7 @@ urlpatterns = patterns('',
                            name='parroquia_edit'),
                        url(r'^parroquia/delete/(?P<pk>\d+)$', login_required(views.ParroquiaDelete.as_view()),
                            name='parroquia_delete'),
+                       url(r'^parroquia/ajax', 'filtrar_parroquia'),
 
                        url(r'^tipoprocedimiento/$', login_required(views.TipoProcedimientoList.as_view()),
                            name="tipoprocedimiento_list"),

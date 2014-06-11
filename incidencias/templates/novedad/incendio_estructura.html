@@ -1,10 +1,11 @@
 {{ incendio_estructura_form.management_form }}
 {{ incendio_estructura_form.non_form_errors }}
 {% for frm_estr in incendio_estructura_form %}
-    <div class="col_12 inline {{ unidad_form.prefix }}">
+    <div class="inline {{ incendio_estructura_form.prefix }}">
     <div class="col_6">
         <fieldset>
             <legend>Datos del Propietario</legend>
+            {{ frm_estr.id }}
             <table border="0">
                 <tr>
                     <td class="negrita">{{frm_estr.propietario.cedula.label_tag}}</td>
@@ -82,16 +83,14 @@
     </div>
 </div>
 {% endfor %}
-{% block extrahead %}
-    <script type="text/javascript">
-        $(function () {
-            $(".inline.{{ incendio_estructura_form.prefix }}").formset({
-                prefix: "{{ incendio_estructura_form.prefix }}",
-                addCssClass: 'icon-plus-sign',
-                addText: ' agregar',
-                deleteCssClass: 'icon-minus-sign',
-                deleteText: ' eliminar'
-            });
+<script type="text/javascript">
+    $(function() {
+        $("#tab_datos").find(".inline.{{ incendio_estructura_form.prefix }}").formset({
+            prefix: "{{ incendio_estructura_form.prefix }}",
+            addCssClass: 'icon-plus-sign',
+            addText: ' agregar',
+            deleteCssClass: 'icon-minus-sign',
+            deleteText: ' eliminar'
         });
-    </script>
-{% endblock %}
+    });
+</script>
