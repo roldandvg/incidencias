@@ -48,9 +48,10 @@ class NovedadList(ListView):
     model = Novedad
     paginate_by = 10
 
-
+"""
+#descomentar
 class NovedadIncendioCreateView(CreateView):
-    template_name = 'novedad/novedad_combate_incendio.html'
+    #template_name = 'novedad/novedad_combate_incendio.html'
     model = Novedad
     form_class = NovedadForm
     success_url = 'novedad/'
@@ -100,7 +101,28 @@ class NovedadIncendioCreateView(CreateView):
         return render_to_response(self.get_context_data(form=form, unidad_form=unidad_form,
                                                         comision_form=comision_form,
                                                         incendio_estructura_form=incendio_estructura_form))
-
+"""                                                        
+def novedad_incendio(request):
+    c = RequestContext(request)
+    c.update(csrf(request))
+    
+    if request.POST:
+        form = NovedadForm(data=request.POST, division="CI")
+        
+        if not form.is_valid():
+            return render_to_response('novedad/novedad_combate_incendio.html',
+                                      {'form':form,
+                                       'unidad_form': UnidadFormSet(request.POST, prefix="unidad_formset"),
+                                       'comision_form': ComisionFormSet(request.POST, prefix="comision_formset"),
+                                       'incendio_estructura_form': IncendioEstructuraFormSet(request.POST, prefix="estructura_formset")},
+                                       c)
+        
+    return render_to_response('novedad/novedad_combate_incendio.html',
+                              {'form': NovedadForm(division='CI'),
+                               'unidad_form': UnidadFormSet(prefix="unidad_formset"), 
+                               'comision_form': ComisionFormSet(prefix="comision_formset"),
+                               'incendio_estructura_form': IncendioEstructuraFormSet(prefix="estructura_formset")},
+                               c)
 
 """
 class NovedadCreate(CreateView):

@@ -1,11 +1,14 @@
 # -*- coding:utf-8 -*-
 from django import forms
 from django.forms import ModelForm, Textarea, Select
+from django.forms.formsets import formset_factory
 from django.forms.models import inlineformset_factory
+from incidencias.apps.comun.constantes import ESTADO_PERSONA_INCENDIO, SEXO
 from incidencias.apps.comun.models import Municipio, Parroquia, TipoProcedimiento, Comision, Persona
 from incidencias.apps.novedad.models import Novedad, NovedadUnidad, NovedadComision, NovedadIncendioEstructura, \
     Diagnostico, NovedadPersona
 from incidencias.apps.institucion.models import Unidad
+from nested_formset import nestedformset_factory
 
 
 def cargar_municipio():
@@ -87,6 +90,8 @@ class NovedadForm(ModelForm):
     class Meta:
         model = Novedad
         widgets = {
+            'fecha':forms.DateInput(attrs={'title':"Indique la fecha del registro de la novedad", 
+                                     'size':'10', 'maxlength':'10', 'class':'tooltip-top', 'readonly':'readonly'}),
             'direccion': Textarea(attrs={'cols': 80, 'rows': 3, 'placeholder': 'Indique la dirección del evento',
                                          'title': 'Indique la dirección en donde se genero el evento de la novedad',
                                          'class': 'tooltip-top'}),
@@ -107,11 +112,56 @@ class NovedadForm(ModelForm):
             # Evalúa si se estableció el tipo de novedad a registrar de acuerdo a la división indicada, en caso
             # contrario muestra un listado con todos los tipos de procedimientos registrados
             self.fields['tipo_procedimiento'].choices = cargar_tipo_procedimiento(division)
+            
+    def save(self, commit=True):
+        novedad = super(NovedadForm, self).save(commit=False)
+        if commit:
+            novedad.save()
+        return novedad
+            
 
-UnidadFormSet = inlineformset_factory(Novedad, NovedadUnidad, extra=1)
-ComisionFormSet = inlineformset_factory(Novedad, NovedadComision, extra=1)
-IncendioEstructuraFormSet = inlineformset_factory(Novedad, NovedadIncendioEstructura, extra=1)
-PersonaFormSet = inlineformset_factory(Novedad, NovedadPersona, extra=1)
+class DatosIncendioEstructuraForm(forms.Form):
+    #Datos de la estructura
+    nombre_inmueble = forms.CharField(label="Nombre del inmueble")
+    causa = forms.CharField(label="causa")
+    fase = forms.CharField(label="fase")
+    perdida_inmueble = forms.CharField(label="Perdida del inmueble")
+    p_inmueble_obs = forms.CharField(label="Observaciones")
+    perdida_mueble = forms.CharField(label="Perdida de muebles")
+    p_mueble_obs = forms.CharField(label="Observaciones")
+    zona_afectada = forms.CharField(label="Zona afectada")
+    # Datos del propietario
+    propietario = forms.CharField(label="Propietario")
+    p_cedula = forms.CharField(label="Cédula")
+    p_edad = forms.CharField(label="Edad")
+    p_sexo = forms.ChoiceField(label="Sexo", choices=SEXO)
+    p_diagnostico = forms.ChoiceField(label="Diagnóstico", choices=cargar_diagnostico())
+    p_detalle_diag = forms.CharField(label="Detalle del diagnóstico")
+    p_estado = forms.ChoiceField(label="Estado", choices=ESTADO_PERSONA_INCENDIO)
+    
+    """def save(self, commit=True):
+        estructura = super(DatosIncendioEstructuraForm, self).save(commit=False)
+        print self"""
+        
+class UnidadForm(ModelForm):
+    class Meta:
+        model = Unidad
+        
+class ComisionForm(ModelForm):
+    class Meta:
+        model = Comision
+    
+
+UnidadFormSet = inlineformset_factory(Novedad, NovedadUnidad, form=UnidadForm, extra=1)
+ComisionFormSet = inlineformset_factory(Novedad, NovedadComision, form=ComisionForm, extra=1)
+#IncendioEstructuraFormSet = nestedformset_factory(Novedad, NovedadIncendioEstructura, 
+#                                                  nested_formset=inlineformset_factory(Persona, NovedadIncendioEstructura, 
+#                                                  form=DatosIncendioEstructuraForm,
+#                                                  extra=1, max_num=1), 
+#                                                  extra=1)
+#IncendioEstructuraFormSet = inlineformset_factory(Novedad, NovedadIncendioEstructura, extra=1)
+#PersonaFormSet = inlineformset_factory(Novedad, NovedadPersona, extra=1)
+IncendioEstructuraFormSet = formset_factory(DatosIncendioEstructuraForm, extra=1)
 
 """
 class FormPersona(forms.Form):

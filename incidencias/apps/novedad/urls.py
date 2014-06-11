@@ -23,5 +23,7 @@ urlpatterns = patterns('',
 
                        #url(r'^incendio/new/$', 'incidencias.apps.novedad.views.novedad_incendio',
                        #    name='incendio_new'),
-                       url(r'^incendio/new/$', views.NovedadIncendioCreateView.as_view(), name='incendio_new'),
+                       #url(r'^incendio/new/$', views.NovedadIncendioCreateView.as_view(), name='incendio_new'),
+                       url(r'^incendio/new/$', 'incidencias.apps.novedad.views.novedad_incendio',
+                           name='incendio_new')
 )

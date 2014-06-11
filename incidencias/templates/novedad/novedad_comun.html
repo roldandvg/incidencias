@@ -117,11 +117,13 @@
     <div class="col_12">
         {{ unidad_form.management_form }}
         {{ unidad_form.non_form_errors }}
-        {% for frm_und in unidad_form %}
-            <div class="inline {{ unidad_form.prefix }}">
+        {% for frm_und in unidad_form.forms %}
+            <div class="{{ unidad_form.prefix }}">
                 <fieldset>
                     <legend>Unidades</legend>
-                        {{ frm_und.id }}
+                        {% if unidad_form.can_delete %}
+							{{unidad_form.DELETE }} {# asigna un campo que permite indicarle al formset si se elimina el campo #}
+						{% endif %}
                         <div class="col_6 negrita">{{ frm_und.unidad.label }}</div>
                         <div class="col_6 negrita">Tipo de Unidad</div>
                         <div class="col_6">
@@ -157,7 +159,7 @@
     </div>
     <script type="text/javascript">
         $(function() {
-            $("#tab_unidades").find(".inline.{{ unidad_form.prefix }}").formset({
+            $(".{{ unidad_form.prefix }}").formset({
                 prefix: "{{ unidad_form.prefix }}",
                 addCssClass: "icon-plus-sign",
                 addText: ' agregar',
@@ -171,45 +173,49 @@
     <div class="col_12">
         {{ comision_form.management_form }}
         {{ comision_form.non_form_errors }}
-        {% for frm_com in comision_form %}
-            <fieldset class="inline {{ comision_form.prefix }}">
-                <legend>Otros Organismos</legend>
-                    {{ frm_com.id }}
-                    <div class="col_6 negrita">{{ frm_com.comision.label }}</div>
-                    <div class="col_6 negrita">Descripción</div>
-                    <div class="col_6">
-                        {{ frm_com.comision }}
-                        {% if frm_com.comision.errors %}
-                            <br/>
-                            <div class="notice error">
-                                <i class="icon-remove-sign icon-large"></i>&#160;
-                                {{ frm_com.comision.errors }}
-                                <a href="#close" class="icon-remove"></a>
-                            </div>
+        {% for frm_com in comision_form.forms %}
+             <div class="{{ comision_form.prefix }}">
+                <fieldset>
+                    <legend>Otros Organismos</legend>
+                        {% if comision_form.can_delete %}
+                            {{comision_form.DELETE }} {# asigna un campo que permite indicarle al formset si se elimina el campo #}
                         {% endif %}
-                    </div>
-                    <div class="col_6">
-                        <input type="text" name="lblComision" id="lblComision" value="" size="30" class="tooltip-top"
-                               title="Seleccione la comisión para mostrar su descripción" readonly/>
-                    </div>
-                    <div class="col_12 negrita">{{ frm_com.a_cargo_de.label_tag }}</div>
-                    <div class="col_12">
-                        {{ frm_com.a_cargo_de }}
-                        {% if frm_com.a_cargo_de.errors %}
-                            <br/>
-                            <div class="notice error">
-                                <i class="icon-remove-sign icon-large"></i>&#160;
-                                {{ frm_com.a_cargo_de.errors }}
-                                <a href="#close" class="icon-remove"></a>
-                            </div>
-                        {% endif %}
-                    </div>
-            </fieldset>
+                        <div class="col_6 negrita">{{ frm_com.comision.label }}</div>
+                        <div class="col_6 negrita">Descripción</div>
+                        <div class="col_6">
+                            {{ frm_com.comision }}
+                            {% if frm_com.comision.errors %}
+                                <br/>
+                                <div class="notice error">
+                                    <i class="icon-remove-sign icon-large"></i>&#160;
+                                    {{ frm_com.comision.errors }}
+                                    <a href="#close" class="icon-remove"></a>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col_6">
+                            <input type="text" name="lblComision" id="lblComision" value="" size="30" class="tooltip-top"
+                                   title="Seleccione la comisión para mostrar su descripción" readonly/>
+                        </div>
+                        <div class="col_12 negrita">{{ frm_com.a_cargo_de.label_tag }}</div>
+                        <div class="col_12">
+                            {{ frm_com.a_cargo_de }}
+                            {% if frm_com.a_cargo_de.errors %}
+                                <br/>
+                                <div class="notice error">
+                                    <i class="icon-remove-sign icon-large"></i>&#160;
+                                    {{ frm_com.a_cargo_de.errors }}
+                                    <a href="#close" class="icon-remove"></a>
+                                </div>
+                            {% endif %}
+                        </div>
+                </fieldset>
+            </div>
         {% endfor %}
     </div>
     <script type="text/javascript">
         $(function() {
-            $("#tab_comisiones").find(".inline.{{ comision_form.prefix }}").formset({
+            $(".{{ comision_form.prefix }}").formset({
                 prefix: "{{ comision_form.prefix }}",
                 addCssClass: "icon-plus-sign",
                 addText: ' agregar',

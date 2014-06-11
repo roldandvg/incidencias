@@ -12,3 +12,7 @@ ESTATUS = (('True','Activo(a)'),('False','Inactivo(a)'))
 NACIONALIDAD = (('V','Venezolano(a)'), ('E','Extranjero(a)'))
 
 SEXO = (('M','Masculino'),('F','Femenino'))
+
+ESTADO_PERSONA = (('I', 'Ileso'), ('A', 'Arrollado'), ('L', 'Lesionado'), ('D', 'Desaparecido'), ('E', 'Desalojado'), ('F', 'Fallecido'))
+
+ESTADO_PERSONA_INCENDIO = (('I', 'Ileso'), ('L', 'Lesionado'), ('E', 'Desalojado'), ('F', 'Fallecido'))

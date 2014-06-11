@@ -111,7 +111,7 @@ class NovedadIncendioEstructura(models.Model):
     class Meta:
         verbose_name = "Novedad de Incendio de Estructura"
         verbose_name_plural = "Novedades de Incendio de Estructuras"
-
+        
 
 class NovedadIncendioVehiculo(models.Model):
     causa = models.CharField(max_length=255)
