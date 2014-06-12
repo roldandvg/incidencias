@@ -4,6 +4,16 @@ from django.db import models
 
 # Create your models here.
 class Zona(models.Model):
+    """!
+    Clase de modelo correspondiente a la Zona
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
+
+    ## Nombre de la zona
     nombre = models.CharField(max_length=150)
 
     def __unicode__(self):
@@ -19,7 +29,19 @@ class Zona(models.Model):
 
 
 class Municipio(models.Model):
+    """!
+    Clase de modelo correspondiente al Municipio
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
+
+    ## Nombre del Municipio
     nombre = models.CharField(max_length=45)
+
+    ## Identificador de la zona
     zona = models.ForeignKey(Zona)
 
     def __unicode__(self):
@@ -32,7 +54,18 @@ class Municipio(models.Model):
 
 
 class Parroquia(models.Model):
+    """!
+    Clase de modelo correspondiente a la Parroquia
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
+
+    ## Nombre de la Parroquia
     nombre = models.CharField(max_length=45)
+    ## Identificador del municipio
     municipio = models.ForeignKey(Municipio)
 
     def __unicode__(self):
@@ -45,7 +78,18 @@ class Parroquia(models.Model):
 
 
 class TipoProcedimiento(models.Model):
+    """!
+    Clase de modelo correspondiente al Tipo de Procedimiento
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
+
+    ## Nombre del tipo de procedimiento
     nombre = models.CharField(max_length=80)
+    ## Tipo de división a la que pertenece el tipo de procedimiento
     division = models.CharField(max_length=2, choices=[('CI', 'Combate de Incendios'), ('BR', 'Búsqueda y Rescate'),
                                                        ('EP', 'Emergencia Pre-hospitalaria'),
                                                        ('AE', 'Actividades Especiales')])
@@ -72,7 +116,18 @@ class TipoProcedimiento(models.Model):
 
 
 class DetalleTipoProcedimiento(models.Model):
+    """!
+    Clase de modelo correspondiente al Detalle del tipo de procedimiento
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
+
+    ## Nombre del detalle del tipo de procedimiento
     nombre = models.CharField(max_length=80)
+    ## Identificdor del tipo de procedimiento
     tipo_procedimiento = models.ForeignKey(TipoProcedimiento)
 
     def __unicode__(self):
@@ -85,7 +140,18 @@ class DetalleTipoProcedimiento(models.Model):
 
 
 class Comision(models.Model):
+    """!
+    Clase de modelo correspondiente a la Comisión
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
+
+    ## Nombre de la comisión
     nombre = models.CharField(max_length=45)
+    ## Descripción de la comisión
     descripcion = models.CharField(max_length=200)
 
     def __unicode__(self):
@@ -98,9 +164,22 @@ class Comision(models.Model):
 
 
 class Persona(models.Model):
+    """!
+    Clase de modelo correspondiente a la Persona
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
+
+    ## Nombre de la persona
     nombre = models.CharField(max_length=80, null=True)
+    ## Número de cédula
     cedula = models.CharField(max_length=10, unique=True, null=True)
+    ## Edad de la persona
     edad = models.SmallIntegerField(null=True)
+    ## Sexo de la persona, M: Masculino,  F: Femenino
     sexo = models.CharField(max_length=1, null=True, choices=[('M', 'Masculino'), ('F', 'Femenino')])
 
     def __unicode__(self):

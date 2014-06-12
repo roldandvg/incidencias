@@ -86,12 +86,16 @@ class NovedadForm(ModelForm):
     municipio = forms.ChoiceField(label="Municipio", widget=forms.Select(attrs={'class': 'tooltip-top',
                                                                                 'title': 'Seleccione el municipio',
                                                                                 'onchange': ''}))
+    fecha = forms.DateField(('%d-%m-%Y',), label="Fecha",
+                            widget=forms.DateInput(format='%d-%m-%Y',
+                                                   attrs={'title': "Indique la fecha del registro de la novedad",
+                                                          'size': '10', 'maxlength': '10',
+                                                          'class': 'tooltip-top', 'readonly': 'readonly'}))
 
     class Meta:
         model = Novedad
+        exclude = ['alarma_infundada', 'acto_presencia', 'usuario']
         widgets = {
-            'fecha':forms.DateInput(attrs={'title':"Indique la fecha del registro de la novedad", 
-                                     'size':'10', 'maxlength':'10', 'class':'tooltip-top', 'readonly':'readonly'}),
             'direccion': Textarea(attrs={'cols': 80, 'rows': 3, 'placeholder': 'Indique la dirección del evento',
                                          'title': 'Indique la dirección en donde se genero el evento de la novedad',
                                          'class': 'tooltip-top'}),
@@ -112,7 +116,7 @@ class NovedadForm(ModelForm):
             # Evalúa si se estableció el tipo de novedad a registrar de acuerdo a la división indicada, en caso
             # contrario muestra un listado con todos los tipos de procedimientos registrados
             self.fields['tipo_procedimiento'].choices = cargar_tipo_procedimiento(division)
-            
+
     def save(self, commit=True):
         novedad = super(NovedadForm, self).save(commit=False)
         if commit:
@@ -138,6 +142,12 @@ class DatosIncendioEstructuraForm(forms.Form):
     p_diagnostico = forms.ChoiceField(label="Diagnóstico", choices=cargar_diagnostico())
     p_detalle_diag = forms.CharField(label="Detalle del diagnóstico")
     p_estado = forms.ChoiceField(label="Estado", choices=ESTADO_PERSONA_INCENDIO)
+
+    def clean_nombre_inmueble(self):
+        print self.cleaned_data['nombre_inmueble']
+        if self.cleaned_data['nombre_inmueble'] == "":
+            raise forms.ValidationError("Debe indicar el nombre del inmueble")
+        return self.cleaned_data['nombre_inmueble']
     
     """def save(self, commit=True):
         estructura = super(DatosIncendioEstructuraForm, self).save(commit=False)

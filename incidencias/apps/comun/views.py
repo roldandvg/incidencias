@@ -12,7 +12,16 @@ from incidencias.apps.comun.models import Zona, Municipio, Parroquia, TipoProced
 
 
 # Vistas genericas para controlar el CRUD del modelo Zona
+
 class ZonaList(ListView):
+    """!
+    Clase que permite consultar una zona
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
     model = Zona
     paginate_by = 10
 
@@ -24,16 +33,40 @@ class ZonaList(ListView):
 
 
 class ZonaCreate(CreateView):
+    """!
+    Clase que permite crear una nueva zona
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
     model = Zona
     success_url = reverse_lazy('zona_list')
 
 
 class ZonaUpdate(UpdateView):
+    """!
+    Clase que permite modificar una zona
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
     model = Zona
     success_url = reverse_lazy('zona_list')
 
 
 class ZonaDelete(DeleteView):
+    """!
+    Clase que permite eliminar una zona
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
     model = Zona
     success_url = reverse_lazy('zona_list')
 
@@ -51,16 +84,40 @@ class MunicipioList(ListView):
 
 
 class MunicipioCreate(CreateView):
+    """!
+    Clase que permite crear un nuevo municipio
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
     model = Municipio
     success_url = reverse_lazy('municipio_list')
 
 
 class MunicipioUpdate(UpdateView):
+    """!
+    Clase que permite modificar un municipio
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
     model = Municipio
     success_url = reverse_lazy('municipio_list')
 
 
 class MunicipioDelete(DeleteView):
+    """!
+    Clase que permite eliminar un municipio
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
     model = Municipio
     success_url = reverse_lazy('municipio_list')
 
@@ -78,16 +135,40 @@ class ParroquiaList(ListView):
 
 
 class ParroquiaCreate(CreateView):
+    """!
+    Clase que permite crear una nueva parroquia
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
     model = Parroquia
     success_url = reverse_lazy('parroquia_list')
 
 
 class ParroquiaUpdate(UpdateView):
+    """!
+    Clase que permite modificar una parroquia
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
     model = Parroquia
     success_url = reverse_lazy('parroquia_list')
 
 
 class ParroquiaDelete(DeleteView):
+    """!
+    Clase que permite eliminar una parroquia
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
     model = Parroquia
     success_url = reverse_lazy('parroquia_list')
 
@@ -98,6 +179,15 @@ class TipoProcedimientoList(ListView):
     paginate_by = 10
 
     def get_queryset(self):
+        """!
+        Descripción del método o función
+
+        @author Yanina Guillén
+        @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+        @date 05-05-14
+        @param[in] nombre_parametro  Indica el tipo de parámetro y que es lo que recibe
+        @return Listado de tipos de procedimientos
+        """
         if len(self.args) > 1:
             if self.args[0] == '0' and self.args[1] == '0':
                 return TipoProcedimiento.objects.all()

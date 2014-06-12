@@ -8,7 +8,18 @@ from incidencias.apps.institucion.models import Estacion, Unidad
 
 # Create your models here.
 class Diagnostico(models.Model):
+    """!
+    Clase de modelo correspondiente al Diagnóstico
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
+
+    ## Nombre del diagnóstico
     nombre = models.CharField(max_length=45)
+    ## Descripción del diagnóstico
     descripcion = models.CharField(max_length=255)
 
     def __unicode__(self):
@@ -21,15 +32,37 @@ class Diagnostico(models.Model):
 
 
 class PersonaFallecida(models.Model):
-    # Modelo que pertenece a la novedad de la División de Búsqueda y Rescate, en el tipo de procedimiento
-    # Levantamiento de Cadaver
+    """!
+    Clase de modelo correspondiente a Persona fallecida en el tipo de procedimiento levantamiento de cadáver
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
+
+    ## Posición en la que se econtró al occiso
     posicion = models.CharField(max_length=45)
+
+    ## Número de días desaparecido
     dias_desaparecido = models.SmallIntegerField()
+
+    ## Posible causa de muerte
     causa_muerte = models.CharField(max_length=255, blank=True, null=True)
+
+    ## Descripción de la camisa que poseía el occiso
     camisa = models.CharField(max_length=45)
+
+    ## Descripción del pantalón que poseía el occiso
     pantalon = models.CharField(max_length=45)
+
+    ## Descripción de los zapatos que poseía el occiso
     zapatos = models.CharField(max_length=45)
+
+    ## Otras observaciones del occiso
     observacion = models.CharField(max_length=255)
+
+    ## Identificador de la persona
     persona = models.ForeignKey(Persona)
 
     def __unicode__(self):
@@ -42,11 +75,31 @@ class PersonaFallecida(models.Model):
 
 
 class Vehiculo(models.Model):
+    """!
+    Clase de modelo correspondiente al Vehículo
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
+
+    ## Número de la placa del vehículo
     placa = models.CharField(max_length=10)
+
+    ##Marca del vehículo
     marca = models.CharField(max_length=45)
+
+    ## Color del vehículo
     color = models.CharField(max_length=20)
+
+    ## Año del vehículo
     anno = models.CharField(max_length=4)
+
+    ## Modelo del vehículo
     modelo = models.CharField(max_length=45)
+
+    ## Tipo de vehículo, moto, carro, camión
     tipo = models.CharField(max_length=30)
 
     def __unicode__(self):
@@ -59,9 +112,25 @@ class Vehiculo(models.Model):
 
 
 class VehiculoPersona(models.Model):
+    """!
+    Clase de modelo correspondiente a la relación del Vehículo con la Persona
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
+
+    ## Tipo de Persona en el vehículo, C: consuctor, A: acompañante
     tipo = models.CharField(max_length=1, choices=[('C', 'Conductor'), ('A', 'Acompañante')])
+
+    ## Observaciones de la persona en el vehículo
     observacion = models.CharField(max_length=255)
+
+    ## Identificador del vehículo
     vehiculo = models.ForeignKey(Vehiculo)
+
+    ## Identificador de la persona
     persona = models.ForeignKey(Persona)
 
     def __unicode__(self):
@@ -74,17 +143,47 @@ class VehiculoPersona(models.Model):
 
 
 class Novedad(models.Model):
+    """!
+    Clase de modelo correspondiente a la Novedad
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
+
+    ## Fecha e la que ocurrió la novedad
     fecha = models.DateField()
+
+    ## Hora de salida de la unidad desde la estación al sitio donde ocurrió la novedad
     hora_salida = models.TimeField()
+
+    ## Hora de llegada de la unidad al sitio donde ocurrió la novedad
     hora_llegada = models.TimeField()
+
+    ## Hora en la que se hizo el reporte del procedimiento
     hora_reporte = models.TimeField()
+
+    ## Dirección donde ocurrió la novedad
     direccion = models.CharField(max_length=255)
+
+    ## Descripción de los métodos y técnicas utilizadas en la novedad
     procedimiento = models.CharField(max_length=255)
+
+    ## Valor lógico que indica si la novedad es una alarma infundada
     alarma_infundada = models.BooleanField(default=False)
+
+    ## Valor lógico que indica si la novedad es sólo un acto de presencia
     acto_presencia = models.BooleanField(default=False)
+
+    ## Identificador de la parroquia
     parroquia = models.ForeignKey(Parroquia)
+
+    ## Identificador del tipo de procedimiento
     tipo_procedimiento = models.ForeignKey(TipoProcedimiento)
-    usuario = models.ForeignKey(User)  # input hidden en template con value default request.username
+
+    ## Identificador del usuario en sesión
+    usuario = models.ForeignKey(User, null=True)  # input hidden en template con value default request.username
 
     def __unicode__(self):
         return self.motivo
@@ -188,6 +287,7 @@ class NovedadPersona(models.Model):
 
 
 class NovedadUnidad(models.Model):
+
     novedad = models.ForeignKey(Novedad)
     unidad = models.ForeignKey(Unidad)
     a_cargo_de = models.CharField(max_length=150, null=True)
@@ -252,11 +352,28 @@ class Vivienda(models.Model):
 
 
 class ViviendaPersona(models.Model):
+    """!
+    Clase de modelo correspondiente a la relación de la vivienda con la persona
+
+    @author Iraida Sanabria
+    @copyright <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU Public License versión 2 (GPLv2)</a>
+    @date 06-05-14
+    @version 1.0
+    """
+
+    ## Valor lógico que indica si la persona es la propietaria de la vivienda
     propietario = models.BooleanField(default=False)
+
+    ## Parentesco de la persona con el propietario de la vivienda
     parentesco = models.CharField(max_length=20)
+
     lesionados = models.SmallIntegerField(default=0)
     fallecidos = models.SmallIntegerField(default=0)
+
+    ## Identificador de la vivienda
     vivienda = models.ForeignKey(Vivienda)
+
+    ## Identificador de la persona
     persona = models.ForeignKey(Persona)
 
     def __unicode__(self):

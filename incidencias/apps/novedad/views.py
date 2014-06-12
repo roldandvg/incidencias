@@ -7,6 +7,7 @@ from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
+from django.contrib.auth.models import User
 
 #from incidencias.apps.comun.models import Persona
 from incidencias.apps.novedad.models import Novedad, Diagnostico, NovedadIncendioEstructura
@@ -102,21 +103,33 @@ class NovedadIncendioCreateView(CreateView):
                                                         comision_form=comision_form,
                                                         incendio_estructura_form=incendio_estructura_form))
 """                                                        
+
+
 def novedad_incendio(request):
     c = RequestContext(request)
     c.update(csrf(request))
-    
+
     if request.POST:
         form = NovedadForm(data=request.POST, division="CI")
-        
+        print form
         if not form.is_valid():
             return render_to_response('novedad/novedad_combate_incendio.html',
-                                      {'form':form,
+                                      {'form': form,
                                        'unidad_form': UnidadFormSet(request.POST, prefix="unidad_formset"),
                                        'comision_form': ComisionFormSet(request.POST, prefix="comision_formset"),
                                        'incendio_estructura_form': IncendioEstructuraFormSet(request.POST, prefix="estructura_formset")},
-                                       c)
-        
+                                      c)
+
+        novedad = form.save(commit=False)
+        incendio_estructura_form = IncendioEstructuraFormSet(data=request.POST, prefix="estructura_formset",
+                                                             instance=novedad)
+        unidad_form = UnidadFormSet(data=request.POST, prefix="unidad_formset", instance=novedad)
+        comision_form = ComisionFormSet(data=request.POST, prefix="comision_formset", instance=novedad)
+
+        if not incendio_estructura_form.is_valid() or not unidad_form.is_valid() or not comision_form.is_valid():
+            return render_to_response('novedad/novedad_combate_incendio.html',
+                                      {'form': form, 'unidad_form': unidad_form, 'comision_form': comision_form}, c)
+
     return render_to_response('novedad/novedad_combate_incendio.html',
                               {'form': NovedadForm(division='CI'),
                                'unidad_form': UnidadFormSet(prefix="unidad_formset"), 
