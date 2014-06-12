@@ -185,9 +185,6 @@ class Novedad(models.Model):
     ## Identificador del usuario en sesión
     usuario = models.ForeignKey(User, null=True)  # input hidden en template con value default request.username
 
-    def __unicode__(self):
-        return self.motivo
-
     class Meta:
         ordering = ["fecha", "tipo_procedimiento"]
         verbose_name = "Novedad"

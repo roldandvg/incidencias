@@ -9,42 +9,202 @@
             <fieldset>
                 <legend>Datos de la estructura</legend>
                 <div class="col_6 negrita">{{estructura.nombre_inmueble.label}}</div>
-                <div class="col_6">{{estructura.nombre_inmueble}}</div>
+                <div class="col_6">
+                    {{estructura.nombre_inmueble}}
+                    {% if estructura.nombre_inmueble.errors %}
+                        <br/>
+                        <div class="notice error">
+                            <i class="icon-remove-sign icon-large"></i>&#160;
+                            {{ estructura.nombre_inmueble.errors }}
+                            <a href="#close" class="icon-remove"></a>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="col_6 negrita">{{estructura.observaciones.label}}</div>
-                <div class="col_6">{{estructura.observaciones}}</div>
+                <div class="col_6">
+                    {{estructura.observaciones}}
+                    {% if estructura.observaciones.errors %}
+                        <br/>
+                        <div class="notice error">
+                            <i class="icon-remove-sign icon-large"></i>&#160;
+                            {{ estructura.observaciones.errors }}
+                            <a href="#close" class="icon-remove"></a>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="col_6 negrita">{{estructura.causa.label}}</div>
-                <div class="col_6">{{estructura.causa}}</div>
+                <div class="col_6">
+                    {{estructura.causa}}
+                    {% if estructura.causa.errors %}
+                        <br/>
+                        <div class="notice error">
+                            <i class="icon-remove-sign icon-large"></i>&#160;
+                            {{ estructura.causa.errors }}
+                            <a href="#close" class="icon-remove"></a>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="col_6 negrita">{{estructura.fase.label}}</div>
-                <div class="col_6">{{estructura.fase}}</div>
+                <div class="col_6">
+                    {{estructura.fase}}
+                    {% if estructura.fase.errors %}
+                        <br/>
+                        <div class="notice error">
+                            <i class="icon-remove-sign icon-large"></i>&#160;
+                            {{ estructura.fase.errors }}
+                            <a href="#close" class="icon-remove"></a>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="col_6 negrita">{{estructura.perdida_inmueble.label}}</div>
-                <div class="col_6">{{estructura.perdida_inmueble}}</div>
+                <div class="col_6">
+                    {{estructura.perdida_inmueble}}
+                    {% if estructura.perdida_inmueble.errors %}
+                        <br/>
+                        <div class="notice error">
+                            <i class="icon-remove-sign icon-large"></i>&#160;
+                            {{ estructura.perdida_inmueble.errors }}
+                            <a href="#close" class="icon-remove"></a>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="col_6 negrita">{{estructura.p_inmueble_obs.label}}</div>
-                <div class="col_6">{{estructura.p_inmueble_obs}}</div>
+                <div class="col_6">
+                    {{estructura.p_inmueble_obs}}
+                    {% if estructura.p_inmueble_obs.errors %}
+                        <br/>
+                        <div class="notice error">
+                            <i class="icon-remove-sign icon-large"></i>&#160;
+                            {{ estructura.p_inmueble_obs.errors }}
+                            <a href="#close" class="icon-remove"></a>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="col_6 negrita">{{estructura.perdida_mueble.label}}</div>
-                <div class="col_6">{{estructura.perdida_mueble}}</div>
+                <div class="col_6">
+                    {{estructura.perdida_mueble}}
+                    {% if estructura.perdida_mueble.errors %}
+                        <br/>
+                        <div class="notice error">
+                            <i class="icon-remove-sign icon-large"></i>&#160;
+                            {{ estructura.perdida_mueble.errors }}
+                            <a href="#close" class="icon-remove"></a>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="col_6 negrita">{{estructura.p_mueble_obs.label}}</div>
-                <div class="col_6">{{estructura.p_mueble_obs}}</div>
+                <div class="col_6">
+                    {{estructura.p_mueble_obs}}
+                    {% if estructura.p_mueble_obs.errors %}
+                        <br/>
+                        <div class="notice error">
+                            <i class="icon-remove-sign icon-large"></i>&#160;
+                            {{ estructura.p_mueble_obs.errors }}
+                            <a href="#close" class="icon-remove"></a>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="col_6 negrita">{{estructura.zona_afectada.label}}</div>
-                <div class="col_6">{{estructura.zona_afectada}}</div>
+                <div class="col_6">
+                    {{estructura.zona_afectada}}
+                    {% if estructura.zona_afectada.errors %}
+                        <br/>
+                        <div class="notice error">
+                            <i class="icon-remove-sign icon-large"></i>&#160;
+                            {{ estructura.zona_afectada.errors }}
+                            <a href="#close" class="icon-remove"></a>
+                        </div>
+                    {% endif %}
+                </div>
             </fieldset>
         </div>
         <div class="col_6">
             <fieldset>
                 <legend>Datos del Propietario</legend>
                 <div class="col_6 negrita">{{estructura.p_cedula.label}}</div>
-                <div class="col_6">{{estructura.p_cedula}}</div>
+                <div class="col_6">
+                    {{estructura.p_cedula}}
+                    {% if estructura.p_cedula.errors %}
+                        <br/>
+                        <div class="notice error">
+                            <i class="icon-remove-sign icon-large"></i>&#160;
+                            {{ estructura.p_cedula.errors }}
+                            <a href="#close" class="icon-remove"></a>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="col_6 negrita">{{estructura.propietario.label}}</div>
-                <div class="col_6">{{estructura.propietario}}</div>
+                <div class="col_6">
+                    {{estructura.propietario}}
+                    {% if estructura.propietario.errors %}
+                        <br/>
+                        <div class="notice error">
+                            <i class="icon-remove-sign icon-large"></i>&#160;
+                            {{ estructura.propietario.errors }}
+                            <a href="#close" class="icon-remove"></a>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="col_6 negrita">{{estructura.p_edad.label}}</div>
-                <div class="col_6">{{estructura.p_edad}}</div>
+                <div class="col_6">
+                    {{estructura.p_edad}}
+                    {% if estructura.p_edad.errors %}
+                        <br/>
+                        <div class="notice error">
+                            <i class="icon-remove-sign icon-large"></i>&#160;
+                            {{ estructura.p_edad.errors }}
+                            <a href="#close" class="icon-remove"></a>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="col_6 negrita">{{estructura.p_sexo.label}}</div>
-                <div class="col_6">{{estructura.p_sexo}}</div>
+                <div class="col_6">
+                    {{estructura.p_sexo}}
+                    {% if estructura.p_sexo.errors %}
+                        <br/>
+                        <div class="notice error">
+                            <i class="icon-remove-sign icon-large"></i>&#160;
+                            {{ estructura.p_sexo.errors }}
+                            <a href="#close" class="icon-remove"></a>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="col_6 negrita">{{estructura.p_diagnostico.label}}</div>
-                <div class="col_6">{{estructura.p_diagnostico}}</div>
+                <div class="col_6">
+                    {{estructura.p_diagnostico}}
+                    {% if estructura.p_diagnostico.errors %}
+                        <br/>
+                        <div class="notice error">
+                            <i class="icon-remove-sign icon-large"></i>&#160;
+                            {{ estructura.p_diagnostico.errors }}
+                            <a href="#close" class="icon-remove"></a>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="col_6 negrita">{{estructura.p_detalle_diag.label}}</div>
-                <div class="col_6">{{estructura.p_detalle_diag}}</div>
+                <div class="col_6">
+                    {{estructura.p_detalle_diag}}
+                    {% if estructura.p_detalle_diag.errors %}
+                        <br/>
+                        <div class="notice error">
+                            <i class="icon-remove-sign icon-large"></i>&#160;
+                            {{ estructura.p_detalle_diag.errors }}
+                            <a href="#close" class="icon-remove"></a>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="col_6 negrita">{{estructura.p_estado.label}}</div>
-                <div class="col_6">{{estructura.p_estado}}</div>
+                <div class="col_6">
+                    {{estructura.p_estado}}
+                    {% if estructura.p_estado.errors %}
+                        <br/>
+                        <div class="notice error">
+                            <i class="icon-remove-sign icon-large"></i>&#160;
+                            {{ estructura.p_estado.errors }}
+                            <a href="#close" class="icon-remove"></a>
+                        </div>
+                    {% endif %}
+                </div>
             </fieldset>
         </div>
     </div>

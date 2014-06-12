@@ -43,5 +43,28 @@
 			&#160;&#160;&#160;&#160;|&#160;&#160;&#160;&#160;
 			Copyleft 2014
 		</div>
+        {% if exito %}
+            <div id="dialog-info" title="Registro de datos">
+                <p style="text-align:justify;">
+                    <span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 7px 0;"></span>
+                    Los datos fueron registrados satisfactoriamente
+                </p>
+            </div>
+            <script type="text/javascript">
+                $(function() {
+                    $('#dialog-info').dialog('open');
+                    $("#dialog-info").dialog({
+                        resizable: false,
+                        height:225,
+                        modal: true,
+                        buttons: {
+                            'Aceptar': function() {
+                                $(this).dialog('close');
+                            }
+                        }
+                    });
+                });
+            </script>
+        {% endif %}
 	</body>
 </html>

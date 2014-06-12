@@ -7,8 +7,8 @@
 			<tr>
 				<th>Fecha</th>
                 <th>Lugar</th>
-                <th>Motivo</th>
-                <th>Descripción</th>
+                <!--<th>Motivo</th>-->
+                <th>Procedimiento</th>
                 <th>Tipo de Procedimiento</th>
 				<th>Acción</th>
 			</tr>
@@ -17,13 +17,13 @@
 			{% for novedad in object_list %}
 				<tr class="{% cycle 'colorblanco' 'colorazul' as rowcolors %}">
 					<td>{{ novedad.fecha }}</td>
-                    <td>{{ novedad.lugar }}</td>
-                    <td>{{ novedad.motivo }}</td>
-                    <td>{{ novedad.descripcion }}</td>
+                    <td>{{ novedad.direccion }}</td>
+                    <!--<td>{# {{ novedad.motivo }} #}</td> -->
+                    <td>{{ novedad.procedimiento }}</td>
                     <td>{{ novedad.tipo_procedimiento }}</td>
 					<td>
-						<a href="{% url 'novedad_edit' novedad.id %}"><i class="icon-pencil"></i></a>
-						<a href="{% url 'novedad_delete' novedad.id %}"><i class="icon-trash"></i></a>
+						<a href="{# {% url 'novedad_edit' novedad.id %} #}"><i class="icon-pencil"></i></a>
+						<a href="{# {% url 'novedad_delete' novedad.id %} #}"><i class="icon-trash"></i></a>
 					</td>
 				</tr>
 			{% endfor %}

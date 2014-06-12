@@ -5,12 +5,13 @@ from django.views.generic.edit import UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, redirect
 from django.template import RequestContext
 from django.contrib.auth.models import User
 
-#from incidencias.apps.comun.models import Persona
-from incidencias.apps.novedad.models import Novedad, Diagnostico, NovedadIncendioEstructura
+from incidencias.apps.comun.models import Persona, Comision
+from incidencias.apps.institucion.models import Unidad
+from incidencias.apps.novedad.models import Novedad, Diagnostico, NovedadIncendioEstructura, NovedadPersona, NovedadUnidad, NovedadComision
 #from incidencias.apps.novedad.forms import FormPersona, FormNovedad, FormIncendioEstructura, FormUnidad, FormComision, \
 #    FormCondicionPersona, FormIncendioVehiculo
 from incidencias.apps.comun.forms import PersonaForm
@@ -108,10 +109,12 @@ class NovedadIncendioCreateView(CreateView):
 def novedad_incendio(request):
     c = RequestContext(request)
     c.update(csrf(request))
+    
+    exito = False  #define la bandera para indicarle al template cuando mostrar el mensaje de registro en el sistema
 
     if request.POST:
         form = NovedadForm(data=request.POST, division="CI")
-        print form
+        
         if not form.is_valid():
             return render_to_response('novedad/novedad_combate_incendio.html',
                                       {'form': form,
@@ -121,17 +124,78 @@ def novedad_incendio(request):
                                       c)
 
         novedad = form.save(commit=False)
-        incendio_estructura_form = IncendioEstructuraFormSet(data=request.POST, prefix="estructura_formset",
-                                                             instance=novedad)
-        unidad_form = UnidadFormSet(data=request.POST, prefix="unidad_formset", instance=novedad)
-        comision_form = ComisionFormSet(data=request.POST, prefix="comision_formset", instance=novedad)
-
+        incendio_estructura_form = IncendioEstructuraFormSet(data=request.POST, prefix="estructura_formset")
+        unidad_form = UnidadFormSet(data=request.POST, prefix="unidad_formset")
+        comision_form = ComisionFormSet(data=request.POST, prefix="comision_formset")
+        
         if not incendio_estructura_form.is_valid() or not unidad_form.is_valid() or not comision_form.is_valid():
             return render_to_response('novedad/novedad_combate_incendio.html',
-                                      {'form': form, 'unidad_form': unidad_form, 'comision_form': comision_form}, c)
+                                      {'form': form, 
+                                      'incendio_estructura_form': incendio_estructura_form,
+                                      'unidad_form': unidad_form, 
+                                      'comision_form': comision_form}, 
+                                      c)
+                                      
+        # En caso de que todos los formularios sean válidos, se procede a registrar la información
+        novedad.save()
+        
+        #se registra los datos de las novedades
+        for estructura in incendio_estructura_form:
+            nombre_inmueble = estructura.cleaned_data['nombre_inmueble']
+            causa = estructura.cleaned_data['causa']
+            fase = estructura.cleaned_data['fase']
+            perdida_inmueble = estructura.cleaned_data['perdida_inmueble']
+            p_inmueble_obs = estructura.cleaned_data['p_inmueble_obs']
+            perdida_mueble = estructura.cleaned_data['perdida_mueble']
+            p_mueble_obs = estructura.cleaned_data['p_mueble_obs']
+            zona_afectada = estructura.cleaned_data['zona_afectada']
+
+            propietario = estructura.cleaned_data['propietario']
+            p_cedula = estructura.cleaned_data['p_cedula']
+            p_edad = estructura.cleaned_data['p_edad']
+            p_sexo = estructura.cleaned_data['p_sexo']
+            p_diagnostico = estructura.cleaned_data['p_diagnostico']
+            p_detalle_diag = estructura.cleaned_data['p_detalle_diag']
+            p_estado = estructura.cleaned_data['p_estado']
+            
+            try:
+                persona = Persona.objects.create(nombre=propietario, cedula=p_cedula, edad=p_edad, sexo=p_sexo)
+            except:
+                persona = Persona.objects.get(cedula=p_cedula)
+            
+            diagnostico = Diagnostico.objects.get(pk=p_diagnostico)
+            
+            novedad_persona = NovedadPersona.objects.create(novedad=novedad, persona=persona, diagnostico=diagnostico, 
+                                                            detalle_diagnostico=p_detalle_diag, estado=p_estado, )
+            
+            NovedadIncendioEstructura.objects.create(nombre=nombre_inmueble, causa=causa, fase=fase, 
+                                                     perdida_inmueble=perdida_inmueble,
+                                                     p_inmueble_obs=p_inmueble_obs, perdida_mueble=perdida_mueble,
+                                                     p_mueble_obs=p_mueble_obs, zona_afectada=zona_afectada,
+                                                     propietario=persona, novedad=novedad)
+                                                     
+        #se registra los datos de las unidades
+        for und in unidad_form:
+            unidad = Unidad.objects.get(pk=und.cleaned_data['unidad'])
+            a_cargo_de = und.cleaned_data['a_cargo_de']
+            
+            NovedadUnidad.objects.create(novedad=novedad, unidad=unidad, a_cargo_de=a_cargo_de)
+            
+        #se registra los datos de las comisiones
+        for com in comision_form:
+            comision = Comision.objects.get(pk=com.cleaned_data['comision'])
+            a_cargo_de = com.cleaned_data['a_cargo_de']
+            
+            NovedadComision.objects.create(novedad=novedad, comision=comision, a_cargo_de=a_cargo_de)
+            
+        exito = True
+        
+        return render_to_response('novedad/novedad_list.html', {'exito': exito}, context_instance = RequestContext(request))
+                                                     
+                                                     
 
     return render_to_response('novedad/novedad_combate_incendio.html',
-                              {'form': NovedadForm(division='CI'),
+                              {'form': NovedadForm(division='CI'), 'exito': exito,
                                'unidad_form': UnidadFormSet(prefix="unidad_formset"), 
                                'comision_form': ComisionFormSet(prefix="comision_formset"),
                                'incendio_estructura_form': IncendioEstructuraFormSet(prefix="estructura_formset")},

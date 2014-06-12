@@ -119,6 +119,7 @@ class NovedadForm(ModelForm):
 
     def save(self, commit=True):
         novedad = super(NovedadForm, self).save(commit=False)
+        
         if commit:
             novedad.save()
         return novedad
@@ -142,20 +143,34 @@ class DatosIncendioEstructuraForm(forms.Form):
     p_diagnostico = forms.ChoiceField(label="Diagnóstico", choices=cargar_diagnostico())
     p_detalle_diag = forms.CharField(label="Detalle del diagnóstico")
     p_estado = forms.ChoiceField(label="Estado", choices=ESTADO_PERSONA_INCENDIO)
+    
+    def __init__(self, *args, **kwargs):
+        super(DatosIncendioEstructuraForm, self).__init__(*args, **kwargs)
+        self.fields['p_diagnostico'].choices = cargar_diagnostico()
 
     def clean_nombre_inmueble(self):
-        print self.cleaned_data['nombre_inmueble']
         if self.cleaned_data['nombre_inmueble'] == "":
             raise forms.ValidationError("Debe indicar el nombre del inmueble")
         return self.cleaned_data['nombre_inmueble']
     
+    def clean_p_diagnostico(self):
+        if self.cleaned_data['p_diagnostico'] == "0":
+            raise forms.ValidationError("Debe seleccionar el diagnóstico")
+        return self.cleaned_data['p_diagnostico']
+        
     """def save(self, commit=True):
         estructura = super(DatosIncendioEstructuraForm, self).save(commit=False)
         print self"""
-        
+
+"""        
 class UnidadForm(ModelForm):
     class Meta:
         model = Unidad
+        
+    def clean_unidad(self):
+        if self.cleaned_data['unidad'] == "" or self:
+            raise forms.ValidationErr("Debe seleccionar una unidad")
+        return self.cleaned_data['unidad']
         
 class ComisionForm(ModelForm):
     class Meta:
@@ -164,6 +179,41 @@ class ComisionForm(ModelForm):
 
 UnidadFormSet = inlineformset_factory(Novedad, NovedadUnidad, form=UnidadForm, extra=1)
 ComisionFormSet = inlineformset_factory(Novedad, NovedadComision, form=ComisionForm, extra=1)
+"""
+class UnidadForm(forms.Form):
+    unidad = forms.ChoiceField(label="Unidad",
+                               choices=cargar_unidad(),
+                               widget=forms.Select(attrs={'class': 'tooltip-top', 'title': 'Seleccione el número de la unidad'}))
+    a_cargo_de = forms.CharField(label="A cargo de",
+                                 widget=forms.TextInput(attrs={'placeholder': 'Persona a cargo de la unidad',
+                                                              'class': 'tooltip-top', 'title': 'Indique el nombre de la persona a cargo de la unidad que asistió la novedad'}))
+                                                              
+    def __init__(self, *args, **kwargs):
+        super(UnidadForm, self).__init__(*args, **kwargs)
+        self.fields['unidad'].choices = cargar_unidad()
+    
+    def clean_unidad(self):
+        if self.cleaned_data['unidad'] == "0":
+            raise forms.ValidationError("Debe seleccionar el número de la unidad")
+        return self.cleaned_data['unidad']
+                                                              
+class ComisionForm(forms.Form):
+    comision = forms.ChoiceField(label="Comisión",
+                               choices=cargar_comision(),
+                               widget=forms.Select(attrs={'class': 'tooltip-top', 'title': 'Seleccione la comisión'}))
+    a_cargo_de = forms.CharField(label="A cargo de",
+                                 widget=forms.TextInput(attrs={'placeholder': 'Persona a cargo de la comisión',
+                                                              'class': 'tooltip-top', 'title': 'Indique el nombre de la persona a cargo de la comisión que asistió la novedad'}))
+                                                              
+    def __init__(self, *args, **kwargs):
+        super(ComisionForm, self).__init__(*args, **kwargs)
+        self.fields['comision'].choices = cargar_comision()
+    
+    def clean_comision(self):
+        if self.cleaned_data['comision'] == "0":
+            raise forms.ValidationError("Debe seleccionar la comisión")
+        return self.cleaned_data['comision']
+    
 #IncendioEstructuraFormSet = nestedformset_factory(Novedad, NovedadIncendioEstructura, 
 #                                                  nested_formset=inlineformset_factory(Persona, NovedadIncendioEstructura, 
 #                                                  form=DatosIncendioEstructuraForm,
@@ -172,6 +222,8 @@ ComisionFormSet = inlineformset_factory(Novedad, NovedadComision, form=ComisionF
 #IncendioEstructuraFormSet = inlineformset_factory(Novedad, NovedadIncendioEstructura, extra=1)
 #PersonaFormSet = inlineformset_factory(Novedad, NovedadPersona, extra=1)
 IncendioEstructuraFormSet = formset_factory(DatosIncendioEstructuraForm, extra=1)
+UnidadFormSet = formset_factory(UnidadForm, extra=1)
+ComisionFormSet = formset_factory(ComisionForm, extra=1)
 
 """
 class FormPersona(forms.Form):
