@@ -2,10 +2,10 @@
 	<li class="tooltip-top {% ifequal request.path '/' %}current{% endifequal %}" title="Inicio del Sistema / Sección de bienvenida"><a href="{% url 'inicio' %}"><i class="icon-home"></i> Inicio</a></li>
     {% if request.user.is_authenticated or user.is_authenticated %}
         {% if request.user.is_superuser or user.is_superuser %}
-            <li class="tooltip-top" title="Gestión del Sistema"><a href=""><i class="icon-cog"></i> Sistema</a>
+            <li class="tooltip-top" title="Gestión del Sistema"><a href="#"><i class="icon-cog"></i> Sistema</a>
                 <ul>
-                    <li class="tooltip-top" title="Respaldo de datos"><a href=""><i class="icon-cloud-download"></i> Respaldar</a></li>
-                    <li class="tooltip-top" title="Restauración de datos"><a href=""><i class="icon-cloud-upload"></i> Restaurar</a></li>
+                    <li class="tooltip-top" title="Respaldo de datos"><a href="{% url 'backup_data' %}"><i class="icon-cloud-download"></i> Respaldar</a></li>
+                    <li class="tooltip-top" title="Restauración de datos"><a href="{% url 'restore_data' %}"><i class="icon-cloud-upload"></i> Restaurar</a></li>
                 </ul>
             </li>
             <li class="tooltip-top {% if 'comun/' in request.path or 'novedad/diagnostico/' in request.path %}current{% endif %}" title="Configuración básica del sistema"><a href=""><i class="icon-cogs"></i> Configuración</a>
@@ -42,12 +42,12 @@
                 </ul>
             </li>
         {% endif %}
-        <li class="tooltip-top" title="Registro de novedades y/o Incidencias atendidas"><a href=""><i class="icon-eye-open"></i> Novedades</a>
+        <li class="tooltip-top" title="Registro de novedades y/o Incidencias atendidas"><a href="{% url 'novedad_list' %}"><i class="icon-eye-open"></i> Novedades</a>
             <ul>
                 <li class="tooltip-top" title="Registro de Novedades de la División de Combate de Incendios"><a href="{% url 'incendio_new' %}"><i class="icon-bolt"></i> Incendio</a></li>
-                <li class="tooltip-top" title="Registro de Novedades de la División de Búsqueda y Rescate"><a href=""><i class="icon-screenshot"></i> B. y Rescate</a></li>
+                <!--<li class="tooltip-top" title="Registro de Novedades de la División de Búsqueda y Rescate"><a href=""><i class="icon-screenshot"></i> B. y Rescate</a></li>
                 <li class="tooltip-top" title="Registro de Novedades de la División de Emergencia Pre-Hospitalaria"><a href=""><i class="icon-user-md"></i> P. Hospital.</a></li>
-                <li class="tooltip-top" title="Registro de Novedades de la División de Actividades Especiales"><a href=""><i class="icon-random"></i> A. Especiales</a></li>
+                <li class="tooltip-top" title="Registro de Novedades de la División de Actividades Especiales"><a href=""><i class="icon-random"></i> A. Especiales</a></li>-->
             </ul>
         </li>
         <!--<li class="tooltip-top" title="Estadísticas generadas de acuerdo a los procedimientos atendidos"><a href=""><i class="icon-bar-chart"></i> Estadísticas</a>
@@ -78,7 +78,7 @@
 	<li class="tooltip-top" title="Sección de ayuda sobre el uso del sistema"><a href=""><i></i> Ayuda</a>
 		<ul>
 			<li class="tooltip-top" title="Manual de usuario en línea"><a href=""><i class="icon-book"></i> Manual</a></li>
-			<li class="tooltip-top" title="Información básica sobre el sistema"><a href=""><i class="icon-question-sign"></i> Acerca de</a></li>
+			<li id="acerca_de" class="tooltip-top" title="Información básica sobre el sistema"><a href=""><i class="icon-question-sign"></i> Acerca de</a></li>
 		</ul>
 	</li>
 	<li class="right texto-small">

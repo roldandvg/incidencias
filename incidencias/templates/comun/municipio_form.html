@@ -6,7 +6,7 @@
 	{% load widget_tweaks %}
 	<div class="col_6">
 		{{form.nombre.label}}<br/>
-		{{form.nombre|attr:"size:60"|attr:"placeholder:Indique el nombre del municipio"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{{form.nombre|attr:"size:60"|attr:"placeholder:Indique el nombre del municipio"|attr:"onkeypress:return validar_solo_texto(event)"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
 		{% if form.nombre.errors %}
 			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.nombre.errors }}<a href="#close" class="icon-remove"></a></div>
 		{% endif %}<br/>

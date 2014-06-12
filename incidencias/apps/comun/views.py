@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
-#from django.shortcuts import render
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from django.utils import simplejson
+from django.core.management import call_command
+from django.conf import settings
+from datetime import datetime
 
 from incidencias.apps.comun.models import Zona, Municipio, Parroquia, TipoProcedimiento, DetalleTipoProcedimiento, \
     Comision
+    
+import os
 
 
 # Vistas genericas para controlar el CRUD del modelo Zona
@@ -43,7 +49,7 @@ class ZonaCreate(CreateView):
     """
     model = Zona
     success_url = reverse_lazy('zona_list')
-
+    
 
 class ZonaUpdate(UpdateView):
     """!
@@ -56,7 +62,7 @@ class ZonaUpdate(UpdateView):
     """
     model = Zona
     success_url = reverse_lazy('zona_list')
-
+    
 
 class ZonaDelete(DeleteView):
     """!
@@ -268,7 +274,41 @@ class ComisionUpdate(UpdateView):
 class ComisionDelete(DeleteView):
     model = Comision
     success_url = reverse_lazy('comision_list')
-
+    
+    
+"""
+@note: Funciones para el respaldo y restauración de datos
+"""
+def backup(request):
+    respaldo = "exito"
+    output_filename = os.path.join(settings.BASE_DIR, "incidencias/backup/respaldo_%s.json" % datetime.now().strftime("%d-%m-%Y_%I-%M%p"))
+    output = open(output_filename, "w")
+    try:
+        call_command('dumpdata', format='json', indent=4, stdout=output)
+    except Exception, e:
+        print e
+        respaldo = "error"
+    output.close()
+        
+    return render_to_response('base.html', {'respaldo': respaldo}, context_instance=RequestContext(request))
+    
+def restore(request):
+    loaddata = "exito"
+    directorio = os.path.join(settings.BASE_DIR, "incidencias/backup")
+    archivos = []
+    try:
+        for root, dirs, files in os.walk(directorio):
+            for file in files:
+                if file.endswith(".json"):
+                    archivos.append(os.path.join(root, file))
+                    
+        archivos = sorted(archivos, reverse=True)
+        call_command('loaddata', archivos[0])
+    except Exception, e:
+        print e
+        loaddata = "error"
+        
+    return render_to_response('base.html', {'loaddata': loaddata}, context_instance=RequestContext(request))
 
 """
 @note Funciones AJAX

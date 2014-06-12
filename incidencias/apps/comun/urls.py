@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from incidencias.apps.comun import views
 
 urlpatterns = patterns('',
+                       url(r'^backup/$', 'incidencias.apps.comun.views.backup', name='backup_data'),
+                       url(r'^restore/$', 'incidencias.apps.comun.views.restore', name='restore_data'),
                        url(r'^zona/$', login_required(views.ZonaList.as_view()), name="zona_list"),
                        url(r'^zona/search/([\w-]+)/$', login_required(views.ZonaList.as_view()), name="zona_list"),
                        url(r'^zona/new/$', login_required(views.ZonaCreate.as_view()), name='zona_new'),

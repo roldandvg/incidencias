@@ -2,7 +2,7 @@
 <div id="tab_novedad" class="tab-content tab-content-custom">
     <div class="col_12 negrita">{{form.tipo_procedimiento.label}}</div>
     <div class="col_12">
-        {{form.tipo_procedimiento|attr:"class:tooltip-top"|attr:"title:Seleccione el tipo de procedimiento a registrar"}}
+        {{form.tipo_procedimiento|attr:"class:tooltip-top"|attr:"title:Seleccione el tipo de procedimiento a registrar"}}  <i class="icon-asterisk icono-small icono-required"></i>
         {% if form.tipo_procedimiento.errors %}
             <br/>
             <div class="notice error">
@@ -20,7 +20,7 @@
     </div>
     <div class="col_12">
         <div class="col_3">
-            {{form.fecha|attr:"class:datepicker tooltip-top"|attr:"size:10"|attr:"placeholder:dd-mm-yy"|attr:"title:Seleccione la fecha en el calendario"}}
+            {{form.fecha|attr:"class:datepicker tooltip-top"|attr:"size:10"|attr:"placeholder:dd-mm-yy"|attr:"title:Seleccione la fecha en el calendario"}} <i class="icon-asterisk icono-small icono-required"></i>
             {% if form.fecha.errors %}
                 <br/>
                 <div class="notice error">
@@ -31,7 +31,7 @@
             {% endif %}
         </div>
         <div class="col_3">
-            {{form.hora_salida|attr:"size:6"|attr:"placeholder:00:00"|attr:"class:tooltip-top"|attr:"title:Seleccione la hora en el reloj"}}
+            {{form.hora_salida|attr:"size:6"|attr:"placeholder:00:00"|attr:"class:tooltip-top"|attr:"title:Seleccione la hora en el reloj"}} <i class="icon-asterisk icono-small icono-required"></i>
             {% if form.hora_salida.errors %}
                 <br/>
                 <div class="notice error">
@@ -42,7 +42,7 @@
             {% endif %}
         </div>
         <div class="col_3">
-            {{form.hora_llegada|attr:"size:6"|attr:"placeholder:00:00"|attr:"class:tooltip-top"|attr:"title:Seleccione la hora en el reloj"}}
+            {{form.hora_llegada|attr:"size:6"|attr:"placeholder:00:00"|attr:"class:tooltip-top"|attr:"title:Seleccione la hora en el reloj"}} <i class="icon-asterisk icono-small icono-required"></i>
             {% if form.hora_llegada.errors %}
                 <br/>
                 <div class="notice error">
@@ -53,7 +53,7 @@
             {% endif %}
         </div>
         <div class="col_3">
-            {{form.hora_reporte|attr:"size:6"|attr:"placeholder:00:00"|attr:"class:tooltip-top"|attr:"title:Seleccione la hora en el reloj"}}
+            {{form.hora_reporte|attr:"size:6"|attr:"placeholder:00:00"|attr:"class:tooltip-top"|attr:"title:Seleccione la hora en el reloj"}} <i class="icon-asterisk icono-small icono-required"></i>
             {% if form.hora_reporte.errors %}
                 <br/>
                 <div class="notice error">
@@ -65,15 +65,15 @@
         </div>
     </div>
     <div class="col_12">
-        <div class="col_6 negrita">{{form.municipio.label}}</div>
+        <div class="col_6 negrita">{# {{form.municipio.label}} #}</div>
         <div class="col_6 negrita">{{form.parroquia.label}}</div>
     </div>
     <div class="col_12">
         <div class="col_6">
-            {{form.municipio}}
+            {# {{form.municipio}} #}
         </div>
         <div class="col_6">
-            {{form.parroquia}}
+            {{form.parroquia}} <i class="icon-asterisk icono-small icono-required"></i>
             {% if form.parroquia.errors %}
                 <br/>
                 <div class="notice error">
@@ -90,7 +90,7 @@
     </div>
     <div class="col_12">
         <div class="col_6">
-            {{form.direccion|attr:"class:tooltip-top"}}
+            {{form.direccion|attr:"class:tooltip-top"}} <i class="icon-asterisk icono-small icono-required"></i>
             {% if form.direccion.errors %}
                 <br/>
                 <div class="notice error">
@@ -101,7 +101,7 @@
             {% endif %}
         </div>
         <div class="col_6">
-            {{form.procedimiento}}
+            {{form.procedimiento}} <i class="icon-asterisk icono-small icono-required"></i>
             {% if form.procedimiento.errors %}
                 <br/>
                 <div class="notice error">
@@ -124,9 +124,9 @@
 							{{unidad_form.DELETE }} {# asigna un campo que permite indicarle al formset si se elimina el campo #}
 						{% endif %}
                         <div class="col_6 negrita">{{ frm_und.unidad.label }}</div>
-                        <div class="col_6 negrita">Tipo de Unidad</div>
+                        <div class="col_6 negrita"><!--Tipo de Unidad-->&#160;</div>
                         <div class="col_6">
-                            {{ frm_und.unidad }}
+                            {{ frm_und.unidad }} <i class="icon-asterisk icono-small icono-required"></i>
                             {% if frm_und.unidad.errors %}
                                 <br/>
                                 <div class="notice error">
@@ -136,13 +136,13 @@
                                 </div>
                             {% endif %}
                         </div>
-                        <div class="col_6">
-                            <input type="text" name="lblUnidad" id="lblUnidad" value="" size="30" class="tooltip-top"
-                                   title="Seleccione la unidad para mostrar el tipo al cual corresponde" readonly/>
+                        <div class="col_6">&#160;
+                            <!--<input type="text" name="lblUnidad" id="lblUnidad" value="" size="30" class="tooltip-top"
+                                   title="Seleccione la unidad para mostrar el tipo al cual corresponde" readonly/>-->
                         </div>
                         <div class="col_12 negrita">{{ frm_und.a_cargo_de.label_tag }}</div>
                         <div class="col_12">
-                            {{ frm_und.a_cargo_de }}
+                            {{ frm_und.a_cargo_de }} <i class="icon-asterisk icono-small icono-required"></i>
                             {% if frm_und.a_cargo_de.errors %}
                                 <br/>
                                 <div class="notice error">
@@ -180,9 +180,9 @@
                             {{comision_form.DELETE }} {# asigna un campo que permite indicarle al formset si se elimina el campo #}
                         {% endif %}
                         <div class="col_6 negrita">{{ frm_com.comision.label }}</div>
-                        <div class="col_6 negrita">Descripción</div>
+                        <div class="col_6 negrita"><!--Descripción-->&#160</div>
                         <div class="col_6">
-                            {{ frm_com.comision }}
+                            {{ frm_com.comision }} <i class="icon-asterisk icono-small icono-required"></i>
                             {% if frm_com.comision.errors %}
                                 <br/>
                                 <div class="notice error">
@@ -192,13 +192,13 @@
                                 </div>
                             {% endif %}
                         </div>
-                        <div class="col_6">
-                            <input type="text" name="lblComision" id="lblComision" value="" size="30" class="tooltip-top"
-                                   title="Seleccione la comisión para mostrar su descripción" readonly/>
+                        <div class="col_6">&#160;
+                            <!--<input type="text" name="lblComision" id="lblComision" value="" size="30" class="tooltip-top"
+                                   title="Seleccione la comisión para mostrar su descripción" readonly/>-->
                         </div>
                         <div class="col_12 negrita">{{ frm_com.a_cargo_de.label_tag }}</div>
                         <div class="col_12">
-                            {{ frm_com.a_cargo_de }}
+                            {{ frm_com.a_cargo_de }} <i class="icon-asterisk icono-small icono-required"></i>
                             {% if frm_com.a_cargo_de.errors %}
                                 <br/>
                                 <div class="notice error">

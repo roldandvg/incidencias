@@ -3,6 +3,8 @@ from django import forms
 from django.forms import ModelForm, Textarea, Select
 from django.forms.formsets import formset_factory
 from django.forms.models import inlineformset_factory
+from django.db.models import Q
+
 from incidencias.apps.comun.constantes import ESTADO_PERSONA_INCENDIO, SEXO
 from incidencias.apps.comun.models import Municipio, Parroquia, TipoProcedimiento, Comision, Persona
 from incidencias.apps.novedad.models import Novedad, NovedadUnidad, NovedadComision, NovedadIncendioEstructura, \
@@ -37,7 +39,8 @@ def cargar_tipo_procedimiento(division=None):
     lista = ('0', 'Seleccione...'),
     try:
         if division:
-            tipo_procedimiento = TipoProcedimiento.objects.filter(division=division)
+            #tipo_procedimiento = TipoProcedimiento.objects.filter(division=division)
+            tipo_procedimiento = TipoProcedimiento.objects.filter(Q(nombre__endswith="Estructuras") | Q(nombre__endswith="Defragación") | Q(nombre="Cortos circuítos"))
         else:
             tipo_procedimiento = TipoProcedimiento.objects.all()
 
@@ -85,7 +88,7 @@ def cargar_diagnostico():
 class NovedadForm(ModelForm):
     municipio = forms.ChoiceField(label="Municipio", widget=forms.Select(attrs={'class': 'tooltip-top',
                                                                                 'title': 'Seleccione el municipio',
-                                                                                'onchange': ''}))
+                                                                                'onchange': ''}), required=False)
     fecha = forms.DateField(('%d-%m-%Y',), label="Fecha",
                             widget=forms.DateInput(format='%d-%m-%Y',
                                                    attrs={'title': "Indique la fecha del registro de la novedad",
@@ -127,21 +130,58 @@ class NovedadForm(ModelForm):
 
 class DatosIncendioEstructuraForm(forms.Form):
     #Datos de la estructura
-    nombre_inmueble = forms.CharField(label="Nombre del inmueble")
-    causa = forms.CharField(label="causa")
-    fase = forms.CharField(label="fase")
-    perdida_inmueble = forms.CharField(label="Perdida del inmueble")
-    p_inmueble_obs = forms.CharField(label="Observaciones")
-    perdida_mueble = forms.CharField(label="Perdida de muebles")
-    p_mueble_obs = forms.CharField(label="Observaciones")
-    zona_afectada = forms.CharField(label="Zona afectada")
+    nombre_inmueble = forms.CharField(label="Nombre del inmueble", 
+                                      widget=forms.TextInput(attrs={'size': '45', 'class': 'tooltip-top', 
+                                                                    'title': 'Indique el nombre completo del inmueble, en caso de no poseer indique el texto N/P',
+                                                                    'placeholder': 'Indique nombre del inmueble'}))
+    causa = forms.CharField(label="causa", 
+                            widget=forms.TextInput(attrs={'size': '45', 'class': 'tooltip-top',
+                                                          'title': 'Indique la causa por la cual se generó el incendio de la estructura',
+                                                          'placeholder': 'Indique causa de incendio'}))
+    fase = forms.CharField(label="fase", 
+                           widget=forms.TextInput(attrs={'size': '45', 'class': 'tooltip-top',
+                                                         'title': 'Indique la fase en la que se encontró el incendio al momento de atender la novedad',
+                                                         'placeholder': 'Indique fase del incendio'}))
+    perdida_inmueble = forms.CharField(label="Perdida del inmueble", 
+                                       widget=forms.TextInput(attrs={'size': '45', 'class': 'tooltip-top',
+                                                                     'title': 'Indique las perdidas del inmueble ocasionadas por el incendio',
+                                                                     'placeholder': 'Indique perdidas del inmueble'}))
+    p_inmueble_obs = forms.CharField(label="Observaciones", 
+                                     widget=forms.Textarea(attrs={'cols': '45', 'rows': '3', 'class': 'tooltip-top', 
+                                                                  'title': 'Indique las observaciones sobre las perdidas en el inmueble',
+                                                                  'placeholder': 'Indique observaciones'}))
+    perdida_mueble = forms.CharField(label="Perdida de muebles", 
+                                     widget=forms.TextInput(attrs={'size': '45', 'class': 'tooltip-top',
+                                                                   'title': 'Indique las perdidas de los bienes muebles ocasionadas por el incendio',
+                                                                   'placeholder': 'Indique perdidas de muebles'}))
+    p_mueble_obs = forms.CharField(label="Observaciones", 
+                                   widget=forms.Textarea(attrs={'cols': '45', 'rows': '3', 'class': 'tooltip-top', 
+                                                                'title': 'Indique las observaciones sobre las perdidas en los bienes muebles',
+                                                                'placeholder': 'Indique observaciones'}))
+    zona_afectada = forms.CharField(label="Zona afectada", 
+                                    widget=forms.TextInput(attrs={'size': '45', 'class': 'tooltip-top',
+                                                                  'title': 'Indique las zonas afectadas por el incendio',
+                                                                  'placeholder': 'Indique zonas afectadas'}))
     # Datos del propietario
-    propietario = forms.CharField(label="Propietario")
-    p_cedula = forms.CharField(label="Cédula")
-    p_edad = forms.CharField(label="Edad")
+    propietario = forms.CharField(label="Propietario", 
+                                  widget=forms.TextInput(attrs={'size': '45', 'class': 'tooltip-top',
+                                                                'title': 'Indique el nombre del propietario de la estructura',
+                                                                'placeholder': 'Indique nombre de propietario'}))
+    p_cedula = forms.CharField(label="Cédula", 
+                               widget=forms.TextInput(attrs={'onkeypress': 'return validar_solo_numeros(event)', 'size': '12', 
+                                                             'class': 'tooltip-top', 'title': 'Indique la cédula del propietario',
+                                                             'placeholder': '000000000000'}))
+    p_edad = forms.CharField(label="Edad", 
+                             widget=forms.TextInput(attrs={'onkeypress': 'return validar_solo_numeros(event)', 
+                                                           'maxlength': '3', 'size': '4', 'class': 'tooltip-top',
+                                                           'title': 'Indique la edad del propietario de la estructura',
+                                                           'placeholder': '00'}))
     p_sexo = forms.ChoiceField(label="Sexo", choices=SEXO)
     p_diagnostico = forms.ChoiceField(label="Diagnóstico", choices=cargar_diagnostico())
-    p_detalle_diag = forms.CharField(label="Detalle del diagnóstico")
+    p_detalle_diag = forms.CharField(label="Detalle del diagnóstico", 
+                                     widget=forms.Textarea(attrs={'cols': '45', 'rows': '3', 'class': 'tooltip-top',
+                                                                  'title': 'Indique algunos detalles sobre las condiciones en las que se encontraba el propietario de la estructura al momento de atender la novedad',
+                                                                  'placeholder': 'Indique detalles del diagnóstico'}))
     p_estado = forms.ChoiceField(label="Estado", choices=ESTADO_PERSONA_INCENDIO)
     
     def __init__(self, *args, **kwargs):

@@ -13,8 +13,15 @@
         <script type="text/javascript" src="{% static 'api/jquery-ui-timepicker-0.3.3/jquery.ui.timepicker.js' %}"></script>
         <script src="{% static 'api/jquery.formset.js' %}"></script>
 		<script src="{% static 'api/kickstart/js/kickstart.js' %}"></script>
+        <script src="{% static 'js/funciones.js' %}"></script>
+        <script src="{% static 'js/validaciones.js' %}"></script>
 		<link rel="stylesheet" href="{% static 'api/kickstart/css/kickstart.css' %}" media="all" />
 		<link rel="stylesheet" href="{% static 'css/estilos.css' %}" media="all" />
+        <script type="text/javascript">
+            $("#acerca_de").click(function() {
+                alert('en construcción');
+            });
+        </script>
         {% block extrahead %}
         {% endblock %}
 	</head>
@@ -52,7 +59,6 @@
             </div>
             <script type="text/javascript">
                 $(function() {
-                    $('#dialog-info').dialog('open');
                     $("#dialog-info").dialog({
                         resizable: false,
                         height:225,
@@ -65,6 +71,100 @@
                     });
                 });
             </script>
+        {% endif %}
+        {% if respaldo %}
+            {% ifequal respaldo "exito" %}
+                <div id="dialog-info-backup" title="Respaldo de datos">
+                    <p style="text-align:justify;">
+                        <span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 7px 0;"></span>
+                        Los datos fueron respaldados satisfactoriamente
+                    </p>
+                </div>
+                <script type="text/javascript">
+                    $(function() {
+                        $("#dialog-info-backup").dialog({
+                            resizable: false,
+                            height:225,
+                            modal: true,
+                            buttons: {
+                                'Aceptar': function() {
+                                    $(this).dialog('close');
+                                }
+                            }
+                        });
+                    });
+                </script>
+            {% else %}
+                {% ifequal respaldo "error" %}
+                    <div id="dialog-info-backup-error" title="Respaldo de datos">
+                        <p style="text-align:justify;">
+                            <span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 7px 0;"></span>
+                            Se presentó un error al momento de respaldar los datos, verifique el log del servidor para mayor detalle.
+                        </p>
+                    </div>
+                    <script type="text/javascript">
+                        $(function() {
+                            $("#dialog-info-backup-error").dialog({
+                                resizable: false,
+                                height:225,
+                                modal: true,
+                                buttons: {
+                                    'Aceptar': function() {
+                                        $(this).dialog('close');
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+                {% endifequal %}
+            {% endifequal %}
+        {% endif %}
+        {% if loaddata %}
+            {% ifequal loaddata "exito" %}
+                <div id="dialog-info-restore" title="Restauración de datos">
+                    <p style="text-align:justify;">
+                        <span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 7px 0;"></span>
+                        Los datos fueron restaurados satisfactoriamente
+                    </p>
+                </div>
+                <script type="text/javascript">
+                    $(function() {
+                        $("#dialog-info-restore").dialog({
+                            resizable: false,
+                            height:225,
+                            modal: true,
+                            buttons: {
+                                'Aceptar': function() {
+                                    $(this).dialog('close');
+                                }
+                            }
+                        });
+                    });
+                </script>
+            {% else %}
+                {% ifequal loaddata "error" %}
+                    <div id="dialog-info-restore-error" title="Restauración de datos">
+                        <p style="text-align:justify;">
+                            <span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 7px 0;"></span>
+                            Se presentó un error al momento de restaurar los datos, verifique el log del servidor para mayor detalle.
+                        </p>
+                    </div>
+                    <script type="text/javascript">
+                        $(function() {
+                            $("#dialog-info-restore-error").dialog({
+                                resizable: false,
+                                height:225,
+                                modal: true,
+                                buttons: {
+                                    'Aceptar': function() {
+                                        $(this).dialog('close');
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+                {% endifequal %}
+            {% endifequal %}
         {% endif %}
 	</body>
 </html>

@@ -6,21 +6,21 @@
 	{% load widget_tweaks %}
     <div class="col_6">
         {{form.cedula.label}}<br/>
-		{{form.cedula|attr:"size:10"|attr:"placeholder:indique el número de cédula"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{{form.cedula|attr:"size:10"|attr:"placeholder:indique el número de cédula"|attr:"onkeypress:return validar_solo_numeros(event)"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
 		{% if form.cedula.errors %}
 			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.cedula.errors }}<a href="#close" class="icon-remove"></a></div>
 		{% endif %}
     </div>
     <div class="col_6">
         {{form.nombre.label}}<br/>
-		{{form.nombre|attr:"size:60"|attr:"placeholder:indique el nombre del trabajador"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{{form.nombre|attr:"size:60"|attr:"placeholder:indique el nombre del trabajador"|attr:"onkeypress:return validar_solo_texto(event)"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
 		{% if form.nombre.errors %}
 			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.nombre.errors }}<a href="#close" class="icon-remove"></a></div>
 		{% endif %}
     </div>
     <div class="col_6">
         {{form.edad.label}}<br/>
-		{{form.edad|attr:"size:4"|attr:"placeholder:edad"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{{form.edad|attr:"size:4"|attr:"placeholder:edad"|attr:"onkeypress:return validar_solo_numeros(event)"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
 		{% if form.edad.errors %}
 			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.edad.errors }}<a href="#close" class="icon-remove"></a></div>
 		{% endif %}

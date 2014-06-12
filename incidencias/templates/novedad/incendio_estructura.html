@@ -10,7 +10,7 @@
                 <legend>Datos de la estructura</legend>
                 <div class="col_6 negrita">{{estructura.nombre_inmueble.label}}</div>
                 <div class="col_6">
-                    {{estructura.nombre_inmueble}}
+                    {{estructura.nombre_inmueble}} <i class="icon-asterisk icono-small icono-required"></i>
                     {% if estructura.nombre_inmueble.errors %}
                         <br/>
                         <div class="notice error">
@@ -20,21 +20,9 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="col_6 negrita">{{estructura.observaciones.label}}</div>
-                <div class="col_6">
-                    {{estructura.observaciones}}
-                    {% if estructura.observaciones.errors %}
-                        <br/>
-                        <div class="notice error">
-                            <i class="icon-remove-sign icon-large"></i>&#160;
-                            {{ estructura.observaciones.errors }}
-                            <a href="#close" class="icon-remove"></a>
-                        </div>
-                    {% endif %}
-                </div>
                 <div class="col_6 negrita">{{estructura.causa.label}}</div>
                 <div class="col_6">
-                    {{estructura.causa}}
+                    {{estructura.causa}} <i class="icon-asterisk icono-small icono-required"></i>
                     {% if estructura.causa.errors %}
                         <br/>
                         <div class="notice error">
@@ -46,7 +34,7 @@
                 </div>
                 <div class="col_6 negrita">{{estructura.fase.label}}</div>
                 <div class="col_6">
-                    {{estructura.fase}}
+                    {{estructura.fase}} <i class="icon-asterisk icono-small icono-required"></i>
                     {% if estructura.fase.errors %}
                         <br/>
                         <div class="notice error">
@@ -58,7 +46,7 @@
                 </div>
                 <div class="col_6 negrita">{{estructura.perdida_inmueble.label}}</div>
                 <div class="col_6">
-                    {{estructura.perdida_inmueble}}
+                    {{estructura.perdida_inmueble}} <i class="icon-asterisk icono-small icono-required"></i>
                     {% if estructura.perdida_inmueble.errors %}
                         <br/>
                         <div class="notice error">
@@ -70,7 +58,7 @@
                 </div>
                 <div class="col_6 negrita">{{estructura.p_inmueble_obs.label}}</div>
                 <div class="col_6">
-                    {{estructura.p_inmueble_obs}}
+                    {{estructura.p_inmueble_obs}} <i class="icon-asterisk icono-small icono-required"></i>
                     {% if estructura.p_inmueble_obs.errors %}
                         <br/>
                         <div class="notice error">
@@ -82,7 +70,7 @@
                 </div>
                 <div class="col_6 negrita">{{estructura.perdida_mueble.label}}</div>
                 <div class="col_6">
-                    {{estructura.perdida_mueble}}
+                    {{estructura.perdida_mueble}} <i class="icon-asterisk icono-small icono-required"></i>
                     {% if estructura.perdida_mueble.errors %}
                         <br/>
                         <div class="notice error">
@@ -94,7 +82,7 @@
                 </div>
                 <div class="col_6 negrita">{{estructura.p_mueble_obs.label}}</div>
                 <div class="col_6">
-                    {{estructura.p_mueble_obs}}
+                    {{estructura.p_mueble_obs}} <i class="icon-asterisk icono-small icono-required"></i>
                     {% if estructura.p_mueble_obs.errors %}
                         <br/>
                         <div class="notice error">
@@ -106,7 +94,7 @@
                 </div>
                 <div class="col_6 negrita">{{estructura.zona_afectada.label}}</div>
                 <div class="col_6">
-                    {{estructura.zona_afectada}}
+                    {{estructura.zona_afectada}} <i class="icon-asterisk icono-small icono-required"></i>
                     {% if estructura.zona_afectada.errors %}
                         <br/>
                         <div class="notice error">
@@ -123,7 +111,7 @@
                 <legend>Datos del Propietario</legend>
                 <div class="col_6 negrita">{{estructura.p_cedula.label}}</div>
                 <div class="col_6">
-                    {{estructura.p_cedula}}
+                    {{estructura.p_cedula}} <i class="icon-asterisk icono-small icono-required"></i>
                     {% if estructura.p_cedula.errors %}
                         <br/>
                         <div class="notice error">
@@ -135,7 +123,7 @@
                 </div>
                 <div class="col_6 negrita">{{estructura.propietario.label}}</div>
                 <div class="col_6">
-                    {{estructura.propietario}}
+                    {{estructura.propietario}} <i class="icon-asterisk icono-small icono-required"></i>
                     {% if estructura.propietario.errors %}
                         <br/>
                         <div class="notice error">
@@ -147,7 +135,7 @@
                 </div>
                 <div class="col_6 negrita">{{estructura.p_edad.label}}</div>
                 <div class="col_6">
-                    {{estructura.p_edad}}
+                    {{estructura.p_edad}} <i class="icon-asterisk icono-small icono-required"></i>
                     {% if estructura.p_edad.errors %}
                         <br/>
                         <div class="notice error">
@@ -159,7 +147,7 @@
                 </div>
                 <div class="col_6 negrita">{{estructura.p_sexo.label}}</div>
                 <div class="col_6">
-                    {{estructura.p_sexo}}
+                    {{estructura.p_sexo}} <i class="icon-asterisk icono-small icono-required"></i>
                     {% if estructura.p_sexo.errors %}
                         <br/>
                         <div class="notice error">
@@ -171,7 +159,7 @@
                 </div>
                 <div class="col_6 negrita">{{estructura.p_diagnostico.label}}</div>
                 <div class="col_6">
-                    {{estructura.p_diagnostico}}
+                    {{estructura.p_diagnostico}} <i class="icon-asterisk icono-small icono-required"></i>
                     {% if estructura.p_diagnostico.errors %}
                         <br/>
                         <div class="notice error">
@@ -183,7 +171,7 @@
                 </div>
                 <div class="col_6 negrita">{{estructura.p_detalle_diag.label}}</div>
                 <div class="col_6">
-                    {{estructura.p_detalle_diag}}
+                    {{estructura.p_detalle_diag}} <i class="icon-asterisk icono-small icono-required"></i>
                     {% if estructura.p_detalle_diag.errors %}
                         <br/>
                         <div class="notice error">
@@ -195,7 +183,7 @@
                 </div>
                 <div class="col_6 negrita">{{estructura.p_estado.label}}</div>
                 <div class="col_6">
-                    {{estructura.p_estado}}
+                    {{estructura.p_estado}} <i class="icon-asterisk icono-small icono-required"></i>
                     {% if estructura.p_estado.errors %}
                         <br/>
                         <div class="notice error">

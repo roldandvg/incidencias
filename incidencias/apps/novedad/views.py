@@ -114,7 +114,7 @@ def novedad_incendio(request):
 
     if request.POST:
         form = NovedadForm(data=request.POST, division="CI")
-        
+        print form
         if not form.is_valid():
             return render_to_response('novedad/novedad_combate_incendio.html',
                                       {'form': form,
@@ -189,11 +189,7 @@ def novedad_incendio(request):
             NovedadComision.objects.create(novedad=novedad, comision=comision, a_cargo_de=a_cargo_de)
             
         exito = True
-        
-        return render_to_response('novedad/novedad_list.html', {'exito': exito}, context_instance = RequestContext(request))
-                                                     
-                                                     
-
+        print "llego?"
     return render_to_response('novedad/novedad_combate_incendio.html',
                               {'form': NovedadForm(division='CI'), 'exito': exito,
                                'unidad_form': UnidadFormSet(prefix="unidad_formset"), 

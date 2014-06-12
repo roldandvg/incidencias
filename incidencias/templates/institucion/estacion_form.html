@@ -6,24 +6,24 @@
 	{% load widget_tweaks %}
 	<div class="col_6">
 		{{form.nombre.label}}<br/>
-		{{form.nombre|attr:"size:60"|attr:"placeholder:Indique el nombre de la estación"}} <i class="icon-asterisk icono-small icono-required"></i><br/><!-- icon-spin -->
+		{{form.nombre|attr:"size:60"|attr:"placeholder:Indique el nombre de la estación"|attr:"onkeypress:return validar_solo_texto(event)"}} <i class="icon-asterisk icono-small icono-required"></i><br/><!-- icon-spin -->
 		{% if form.nombre.errors %}
 			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.nombre.errors }}<a href="#close" class="icon-remove"></a></div>
 		{% endif %}<br/>
 		{{form.detalle.label}}<br/>
-		{{form.detalle|attr:"size:60"|attr:"placeholder:indique una descripción de la estación"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{{form.detalle|attr:"size:60"|attr:"placeholder:indique una descripción de la estación"|attr:"onkeypress:return validar_solo_texto(event)"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
 		{% if form.detalle.errors %}
 			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.detalle.errors }}<a href="#close" class="icon-remove"></a></div>
 		{% endif %}<br/>
 		{{form.telefono.label}}<br/>
-		{{form.telefono|attr:"size:15"|attr:"placeholder:indique el teléfono de la estación"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{{form.telefono|attr:"size:15"|attr:"placeholder:indique el teléfono de la estación"|attr:"onkeypress:return validar_solo_numeros(event)"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
 		{% if form.telefono.errors %}
 			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.telefono.errors }}<a href="#close" class="icon-remove"></a></div>
 		{% endif %}
 	</div>
 	<div class="col_6">
 		{{form.jefe.label}}<br/>
-		{{form.jefe|attr:"size:60"|attr:"placeholder:indique el nombre del jefe de la estación"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{{form.jefe|attr:"size:60"|attr:"placeholder:indique el nombre del jefe de la estación"|attr:"onkeypress:return validar_solo_texto(event)"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
 		{% if form.jefe.errors %}
 			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.jefe.errors }}<a href="#close" class="icon-remove"></a></div>
 		{% endif %}<br/>
