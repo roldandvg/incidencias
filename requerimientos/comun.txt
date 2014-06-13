@@ -5,3 +5,4 @@ PyPDF2==1.21
 MySQL-python
 django-extra-views==0.6.4
 django-nested-formset
+django-xhtml2pdf

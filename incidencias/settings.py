@@ -113,6 +113,7 @@ STATICFILES_FINDERS = (
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, "incidencias/templates"),
     os.path.join(BASE_DIR, "incidencias/apps/comun/templates"),
+    os.path.join(BASE_DIR, "incidencias/templates/reportes"),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (

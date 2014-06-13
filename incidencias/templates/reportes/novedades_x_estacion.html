@@ -1,0 +1,52 @@
+{% load static from staticfiles %}
+<html>
+	<style>
+		@page {
+			size: letter portrait;
+			@frame header_frame {           /* Static Frame */
+				-pdf-frame-content: header_content;
+				border-top-width:0;
+				width: 100%; top: 0pt; height: 80pt;
+			}
+			
+			@frame content_frame {          /* Content Frame */
+				-pdf-frame-content: content;
+				left: 0pt; width: 610pt; top: 85pt; height: 690pt;
+			}
+			
+			@frame footer_frame {           /* Another static Frame */
+				-pdf-frame-content: footer_content;
+				left: 0pt; width: 610pt; top: 776pt; height: 20pt;
+				text-align:center;
+			}
+		}
+		
+		
+	</style>
+	<body>
+		<div id="header_content" style="border:0;">
+			<br/>
+			<table border="0">
+				<tr>
+					<td width="10%" align="center"><img src="{{logo}}" height="90px"/></td>
+					<td width="90%" align="center">
+						<h1>Dirección de Bomberos del Estado Mérida</h1>
+						<h2>Departamento de Estadística</h2>
+						<h2>Reporte de Novedades por Estación</h2>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="content">
+			{% for estacion in estaciones %}
+				<div>{{estacion}}</div>
+			{% endfor %}
+		</div>
+		<div id="footer_content">
+			Final Av. Las Américas, Urb. Humbolt – Mérida, Edo. Mérida. Tlfs. 0274-2663612– Fax: 2667007
+			{%block page_foot%}
+                Page <pdf:pagenumber>
+            {%endblock%}
+		</div>
+	</body>
+</html>

@@ -13,6 +13,7 @@ from datetime import datetime
 
 from incidencias.apps.comun.models import Zona, Municipio, Parroquia, TipoProcedimiento, DetalleTipoProcedimiento, \
     Comision
+from incidencias.apps.institucion.models import Estacion
     
 import os
 
@@ -323,3 +324,42 @@ def filtrar_parroquia(request):
                       for p in Parroquia.objects.filter(municipio=municipio).order_by('nombre')]
 
     return HttpResponse(simplejson.dumps(parroquias))
+    
+    
+"""
+@note: Funciones de vista para los reportes
+"""
+
+from django_xhtml2pdf.utils import generate_pdf
+
+import cStringIO as StringIO
+from xhtml2pdf import pisa
+from django.template.loader import get_template
+from django.template import Context
+from django.http import HttpResponse
+from cgi import escape
+
+def render_to_pdf(template_src, context_dict):
+    template = get_template(template_src)
+    context = Context(context_dict)
+    html  = template.render(context)
+    result = StringIO.StringIO()
+
+    pdf = pisa.pisaDocument(StringIO.StringIO(html.encode("UTF-8")), result)
+    if not pdf.err:
+        return HttpResponse(result.getvalue(), mimetype='application/pdf')
+    return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))
+    
+def reporte(request):
+    estaciones = Estacion.objects.all()
+    print estaciones
+    c = {'logo': os.path.join(settings.BASE_DIR, "incidencias/media/images/logo.png"), 'estaciones': estaciones}
+    return render_to_pdf('reportes/novedades_x_estacion.html', c)
+
+"""
+def reporte(request):
+	resp = HttpResponse(content_type='application/pdf')
+	template = get_template('reportes/prueba.html').render(Context({'mensaje':'esto es una prueba'}))
+	result = generate_pdf('reportes/prueba.html', file_object=resp)
+	return result
+"""

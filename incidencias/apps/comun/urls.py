@@ -66,4 +66,5 @@ urlpatterns = patterns('',
                        url(r'^comision/new/$', views.ComisionCreate.as_view(), name='comision_new'),
                        url(r'^comision/edit/(?P<pk>\d+)$', views.ComisionUpdate.as_view(), name='comision_edit'),
                        url(r'^comision/delete/(?P<pk>\d+)$', views.ComisionDelete.as_view(), name='comision_delete'),
+                       url(r'^reporte/$', 'incidencias.apps.comun.views.reporte', name='reporte'),
 )

@@ -71,6 +71,8 @@ class Parroquia(models.Model):
     def __unicode__(self):
         return self.nombre
 
+
+
     class Meta:
         ordering = ["municipio", "nombre"]
         verbose_name = 'Parroquia'

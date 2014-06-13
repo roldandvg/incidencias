@@ -1,0 +1,33 @@
+{% load static from staticfiles %}
+<html>
+	<style>
+		@page {
+			size: letter portrait;
+			@frame header_frame {           /* Static Frame */
+				-pdf-frame-content: header_content;
+				border-top-width:0;
+				width: 100%; top: 0pt; height: 80pt;
+			}
+			
+			@frame content_frame {          /* Content Frame */
+				-pdf-frame-content: content;
+				left: 0pt; width: 610pt; top: 85pt; height: 690pt;
+			}
+			
+			@frame footer_frame {           /* Another static Frame */
+				-pdf-frame-content: footer_content;
+				left: 0pt; width: 610pt; top: 776pt; height: 20pt;
+			}
+		}
+	</style>
+	<body>
+		<div id="header_content" style="border:0;">
+			<img src="{{logo}}" height="90px"/>
+			prueba
+		</div>
+		<div id="content">
+			{{mensaje}}hola mundo
+		</div>
+		<div id="footer_content">prueba</div>
+	</body>
+</html>

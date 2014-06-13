@@ -65,7 +65,7 @@
             <ul>
                 <li class="tooltip-top" title="Reportes sobre realaciones"><a href=""><i class="icon-copy"></i> Relación</a>
                     <ul>
-                        <li class="tooltip-top" title="Reporte de relación por estación"><a href=""><i class="icon-copy"></i> Estación</a></li>
+                        <li class="tooltip-top" title="Reporte de relación por estación"><a href="{% url 'reporte' %}"><i class="icon-copy"></i> Estación</a></li>
                         <li class="tooltip-top" title="Reporte de relación mensual"><a href=""><i class="icon-copy"></i> Mensual</a></li>
                     </ul>
                 </li>
@@ -78,7 +78,7 @@
 	<li class="tooltip-top" title="Sección de ayuda sobre el uso del sistema"><a href=""><i></i> Ayuda</a>
 		<ul>
 			<li class="tooltip-top" title="Manual de usuario en línea"><a href=""><i class="icon-book"></i> Manual</a></li>
-			<li id="acerca_de" class="tooltip-top" title="Información básica sobre el sistema"><a href=""><i class="icon-question-sign"></i> Acerca de</a></li>
+			<li class="tooltip-top" title="Información básica sobre el sistema"><a href="#" onclick="$(function() { $('#dialog-acerca-de').dialog({ resizable: false, height:460, width: 400, modal: true, buttons: { 'Aceptar': function() { $(this).dialog('close'); } } }); });"><i class="icon-question-sign"></i> Acerca de</a></li>
 		</ul>
 	</li>
 	<li class="right texto-small">
