@@ -67,13 +67,13 @@ WSGI_APPLICATION = 'incidencias.wsgi.application'
 
 DATABASES = {
     'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        'ENGINE': 'django.db.backends.mysql',
-        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'NAME': 'incidencias',
-        'USER': 'admin',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.sqlite3',
+        #'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'NAME': 'incidencias',
+        #'USER': 'admin',
+        #'PASSWORD': '123456',
+        #'HOST': 'localhost',
     }
 }
 

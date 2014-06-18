@@ -183,7 +183,7 @@ class Novedad(models.Model):
     tipo_procedimiento = models.ForeignKey(TipoProcedimiento)
 
     ## Identificador del usuario en sesión
-    usuario = models.ForeignKey(User, null=True)  # input hidden en template con value default request.username
+    
 
     class Meta:
         ordering = ["fecha", "tipo_procedimiento"]
@@ -193,14 +193,8 @@ class Novedad(models.Model):
 
 class NovedadIncendioEstructura(models.Model):
     nombre = models.CharField(max_length=100)
-    #observaciones = models.CharField(max_length=255)
-    causa = models.CharField(max_length=255)
     fase = models.CharField(max_length=255, null=True)
     perdida_inmueble = models.CharField(max_length=255)
-    p_inmueble_obs = models.CharField(max_length=255)
-    perdida_mueble = models.CharField(max_length=255)
-    p_mueble_obs = models.CharField(max_length=255)
-    zona_afectada = models.CharField(max_length=255)
     propietario = models.ForeignKey(Persona)
     novedad = models.ForeignKey(Novedad)
 

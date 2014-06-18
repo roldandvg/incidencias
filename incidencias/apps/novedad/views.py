@@ -142,13 +142,10 @@ def novedad_incendio(request):
         #se registra los datos de las novedades
         for estructura in incendio_estructura_form:
             nombre_inmueble = estructura.cleaned_data['nombre_inmueble']
-            causa = estructura.cleaned_data['causa']
+            
             fase = estructura.cleaned_data['fase']
             perdida_inmueble = estructura.cleaned_data['perdida_inmueble']
-            p_inmueble_obs = estructura.cleaned_data['p_inmueble_obs']
-            perdida_mueble = estructura.cleaned_data['perdida_mueble']
-            p_mueble_obs = estructura.cleaned_data['p_mueble_obs']
-            zona_afectada = estructura.cleaned_data['zona_afectada']
+            
 
             propietario = estructura.cleaned_data['propietario']
             p_cedula = estructura.cleaned_data['p_cedula']
@@ -168,10 +165,9 @@ def novedad_incendio(request):
             novedad_persona = NovedadPersona.objects.create(novedad=novedad, persona=persona, diagnostico=diagnostico, 
                                                             detalle_diagnostico=p_detalle_diag, estado=p_estado, )
             
-            NovedadIncendioEstructura.objects.create(nombre=nombre_inmueble, causa=causa, fase=fase, 
+            NovedadIncendioEstructura.objects.create(nombre=nombre_inmueble, fase=fase, 
                                                      perdida_inmueble=perdida_inmueble,
-                                                     p_inmueble_obs=p_inmueble_obs, perdida_mueble=perdida_mueble,
-                                                     p_mueble_obs=p_mueble_obs, zona_afectada=zona_afectada,
+                                                     
                                                      propietario=persona, novedad=novedad)
                                                      
         #se registra los datos de las unidades
