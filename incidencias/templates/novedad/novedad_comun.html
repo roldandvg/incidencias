@@ -65,12 +65,12 @@
         </div>
     </div>
     <div class="col_12">
-        <div class="col_6 negrita">{# {{form.municipio.label}} #}</div>
+        <div class="col_6 negrita">{{form.municipio.label}}</div>
         <div class="col_6 negrita">{{form.parroquia.label}}</div>
     </div>
     <div class="col_12">
         <div class="col_6">
-            {# {{form.municipio}} #}
+            {{form.municipio}}
         </div>
         <div class="col_6">
             {{form.parroquia}} <i class="icon-asterisk icono-small icono-required"></i>
@@ -124,7 +124,7 @@
 							{{unidad_form.DELETE }} {# asigna un campo que permite indicarle al formset si se elimina el campo #}
 						{% endif %}
                         <div class="col_6 negrita">{{ frm_und.unidad.label }}</div>
-                        <div class="col_6 negrita"><!--Tipo de Unidad-->&#160;</div>
+                        <div class="col_6 negrita">{{ frm_und.detalle_unidad.label }}</div>
                         <div class="col_6">
                             {{ frm_und.unidad }} <i class="icon-asterisk icono-small icono-required"></i>
                             {% if frm_und.unidad.errors %}
@@ -137,8 +137,7 @@
                             {% endif %}
                         </div>
                         <div class="col_6">&#160;
-                            <!--<input type="text" name="lblUnidad" id="lblUnidad" value="" size="30" class="tooltip-top"
-                                   title="Seleccione la unidad para mostrar el tipo al cual corresponde" readonly/>-->
+                            {{ frm_und.detalle_unidad }}
                         </div>
                         <div class="col_12 negrita">{{ frm_und.a_cargo_de.label_tag }}</div>
                         <div class="col_12">
@@ -180,7 +179,7 @@
                             {{comision_form.DELETE }} {# asigna un campo que permite indicarle al formset si se elimina el campo #}
                         {% endif %}
                         <div class="col_6 negrita">{{ frm_com.comision.label }}</div>
-                        <div class="col_6 negrita"><!--Descripción-->&#160</div>
+                        <div class="col_6 negrita">{{ frm_com.detalle_comision.label }}</div>
                         <div class="col_6">
                             {{ frm_com.comision }} <i class="icon-asterisk icono-small icono-required"></i>
                             {% if frm_com.comision.errors %}
@@ -193,8 +192,7 @@
                             {% endif %}
                         </div>
                         <div class="col_6">&#160;
-                            <!--<input type="text" name="lblComision" id="lblComision" value="" size="30" class="tooltip-top"
-                                   title="Seleccione la comisión para mostrar su descripción" readonly/>-->
+                            {{ frm_com.detalle_comision }}
                         </div>
                         <div class="col_12 negrita">{{ frm_com.a_cargo_de.label_tag }}</div>
                         <div class="col_12">

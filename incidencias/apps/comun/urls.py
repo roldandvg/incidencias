@@ -67,4 +67,7 @@ urlpatterns = patterns('',
                        url(r'^comision/edit/(?P<pk>\d+)$', views.ComisionUpdate.as_view(), name='comision_edit'),
                        url(r'^comision/delete/(?P<pk>\d+)$', views.ComisionDelete.as_view(), name='comision_delete'),
                        url(r'^reporte/$', 'incidencias.apps.comun.views.reporte', name='reporte'),
+                       url(r'^ajax/update_parroquias', 'incidencias.apps.comun.ajax.update_parroquia', name='update_parroquia'),
+                       url(r'^ajax/mostrar_unidad', 'incidencias.apps.comun.ajax.mostrar_unidad', name='mostrar_unidad'),
+                       url(r'^ajax/mostrar_comision', 'incidencias.apps.comun.ajax.mostrar_comision', name='mostrar_comision'),
 )

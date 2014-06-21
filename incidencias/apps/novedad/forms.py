@@ -86,9 +86,10 @@ def cargar_diagnostico():
 
 
 class NovedadForm(ModelForm):
-    municipio = forms.ChoiceField(label="Municipio", widget=forms.Select(attrs={'class': 'tooltip-top',
-                                                                                'title': 'Seleccione el municipio',
-                                                                                'onchange': ''}), required=False)
+    municipio = forms.ChoiceField(label="Municipio", 
+                                  widget=forms.Select(attrs={'class': 'tooltip-top', 'title': 'Seleccione el municipio',
+                                                             'onchange': "filtrar_parroquia('/comun/ajax/update_parroquias', this.value, '0', 'id_parroquia')"}), 
+                                                     required=False)
     fecha = forms.DateField(('%d-%m-%Y',), label="Fecha",
                             widget=forms.DateInput(format='%d-%m-%Y',
                                                    attrs={'title': "Indique la fecha del registro de la novedad",
@@ -107,7 +108,8 @@ class NovedadForm(ModelForm):
                                              'title': 'Indique el procedimiento que se realizó en la novedad atendida',
                                              'class': 'tooltip-top'}),
             'parroquia': Select(attrs={'class': 'tooltip-top', 'title': 'Seleccione la parroquia en donde se generó la '
-                                                                        'novedad'})
+                                                                        'novedad',
+                                       'disabled': 'true'})
         }
 
     def __init__(self, division=None, *args, **kwargs):
@@ -134,10 +136,7 @@ class DatosIncendioEstructuraForm(forms.Form):
                                       widget=forms.TextInput(attrs={'size': '45', 'class': 'tooltip-top', 
                                                                     'title': 'Indique el nombre completo del inmueble, en caso de no poseer indique el texto N/P',
                                                                     'placeholder': 'Indique nombre del inmueble'}))
-    causa = forms.CharField(label="causa", 
-                            widget=forms.TextInput(attrs={'size': '45', 'class': 'tooltip-top',
-                                                          'title': 'Indique la causa por la cual se generó el incendio de la estructura',
-                                                          'placeholder': 'Indique causa de incendio'}))
+    
     fase = forms.CharField(label="fase", 
                            widget=forms.TextInput(attrs={'size': '45', 'class': 'tooltip-top',
                                                          'title': 'Indique la fase en la que se encontró el incendio al momento de atender la novedad',
@@ -146,22 +145,7 @@ class DatosIncendioEstructuraForm(forms.Form):
                                        widget=forms.TextInput(attrs={'size': '45', 'class': 'tooltip-top',
                                                                      'title': 'Indique las perdidas del inmueble ocasionadas por el incendio',
                                                                      'placeholder': 'Indique perdidas del inmueble'}))
-    p_inmueble_obs = forms.CharField(label="Observaciones", 
-                                     widget=forms.Textarea(attrs={'cols': '45', 'rows': '3', 'class': 'tooltip-top', 
-                                                                  'title': 'Indique las observaciones sobre las perdidas en el inmueble',
-                                                                  'placeholder': 'Indique observaciones'}))
-    perdida_mueble = forms.CharField(label="Perdida de muebles", 
-                                     widget=forms.TextInput(attrs={'size': '45', 'class': 'tooltip-top',
-                                                                   'title': 'Indique las perdidas de los bienes muebles ocasionadas por el incendio',
-                                                                   'placeholder': 'Indique perdidas de muebles'}))
-    p_mueble_obs = forms.CharField(label="Observaciones", 
-                                   widget=forms.Textarea(attrs={'cols': '45', 'rows': '3', 'class': 'tooltip-top', 
-                                                                'title': 'Indique las observaciones sobre las perdidas en los bienes muebles',
-                                                                'placeholder': 'Indique observaciones'}))
-    zona_afectada = forms.CharField(label="Zona afectada", 
-                                    widget=forms.TextInput(attrs={'size': '45', 'class': 'tooltip-top',
-                                                                  'title': 'Indique las zonas afectadas por el incendio',
-                                                                  'placeholder': 'Indique zonas afectadas'}))
+    
     # Datos del propietario
     propietario = forms.CharField(label="Propietario", 
                                   widget=forms.TextInput(attrs={'size': '45', 'class': 'tooltip-top',
@@ -223,7 +207,10 @@ ComisionFormSet = inlineformset_factory(Novedad, NovedadComision, form=ComisionF
 class UnidadForm(forms.Form):
     unidad = forms.ChoiceField(label="Unidad",
                                choices=cargar_unidad(),
-                               widget=forms.Select(attrs={'class': 'tooltip-top', 'title': 'Seleccione el número de la unidad'}))
+                               widget=forms.Select(attrs={'class': 'tooltip-top', 'title': 'Seleccione el número de la unidad',
+                                                          'onchange': "mostrar_unidad('/comun/ajax/mostrar_unidad', this.id, this.value)"}))
+    detalle_unidad = forms.CharField(label='Tipo de Unidad',
+                                     widget=forms.TextInput(attrs={'readonly': 'readonly'}))
     a_cargo_de = forms.CharField(label="A cargo de",
                                  widget=forms.TextInput(attrs={'placeholder': 'Persona a cargo de la unidad',
                                                               'class': 'tooltip-top', 'title': 'Indique el nombre de la persona a cargo de la unidad que asistió la novedad'}))
@@ -240,7 +227,10 @@ class UnidadForm(forms.Form):
 class ComisionForm(forms.Form):
     comision = forms.ChoiceField(label="Comisión",
                                choices=cargar_comision(),
-                               widget=forms.Select(attrs={'class': 'tooltip-top', 'title': 'Seleccione la comisión'}))
+                               widget=forms.Select(attrs={'class': 'tooltip-top', 'title': 'Seleccione la comisión',
+                                                          'onchange': "mostrar_comision('/comun/ajax/mostrar_comision', this.id, this.value)"}))
+    detalle_comision = forms.CharField(label='Descripción',
+                                       widget=forms.TextInput(attrs={'readonly': 'readonly'}))
     a_cargo_de = forms.CharField(label="A cargo de",
                                  widget=forms.TextInput(attrs={'placeholder': 'Persona a cargo de la comisión',
                                                               'class': 'tooltip-top', 'title': 'Indique el nombre de la persona a cargo de la comisión que asistió la novedad'}))
