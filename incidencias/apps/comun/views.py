@@ -14,6 +14,7 @@ from datetime import datetime
 from incidencias.apps.comun.models import Zona, Municipio, Parroquia, TipoProcedimiento, DetalleTipoProcedimiento, \
     Comision
 from incidencias.apps.institucion.models import Estacion
+from incidencias.apps.novedad.models import Novedad
     
 import os
 
@@ -329,16 +330,72 @@ def filtrar_parroquia(request):
 """
 @note: Funciones de vista para los reportes
 """
+from reportlab.lib.pagesizes import LETTER
+from reportlab.lib.units import cm
+from reportlab.lib.colors import navy, yellow, red, purple, orange,\
+    green, white, blue
+from reportlab.lib.enums import TA_CENTER, TA_RIGHT, TA_JUSTIFY
+from geraldo import Report, ReportBand, DetailBand, Label, ObjectValue, SystemField, FIELD_ACTION_COUNT, BAND_WIDTH, Image
+from geraldo.generators import PDFGenerator
 
-from django_xhtml2pdf.utils import generate_pdf
+class BaseReport(Report):
+    title = 'Dirección de Bomberos del Estado Mérida'
+    subject = 'Departamento de Estadística'
+    print_if_empty = True
+    
+    class band_begin(ReportBand):
+        height = 1*cm
+        elements = [
+            Label(text='Reporte de Novedades por estación al %s' % datetime.now().strftime("%d-%m-%Y"), top=0.1*cm,
+                left=0*cm, width=20*cm, style={'alignment': TA_CENTER}),
+        ]
+        
+    class band_page_header(ReportBand):
+        height = 1.4*cm
+        elements = [
+            SystemField(expression='%(report_title)s', top=0.1*cm, left=0,
+                width=BAND_WIDTH, style={'fontName': 'Helvetica-Bold',
+                    'fontSize': 14, 'alignment': TA_CENTER}),
+            Label(text="Departamento de Estadística", top=0.8*cm, left=0, width=20*cm,
+                style={'fontName': 'Helvetica-Bold', 'fontSize': 12, 'alignment': TA_CENTER}),
+            Image(left=0*cm, top=0*cm, width=4.5*cm, height=2.2*cm,
+                filename=os.path.join(settings.BASE_DIR, "incidencias/media/images/logo_gobernacion_report.png")),
+            Image(left=20*cm, top=0.1*cm, width=4*cm, height=2.2*cm,
+                filename=os.path.join(settings.BASE_DIR, "incidencias/media/images/logo_report.png")),
+            Label(text="<b>Estación</b>", top=2.2*cm, left=0),
+            Label(text="<b>Novedad</b>", top=2.2*cm, left=6*cm),
+            Label(text="<b>Procedimiento</b>", top=2.2*cm, left=12*cm),
+        ]
+        borders = {'bottom': True}
+        
+    class band_detail(ReportBand):
+        height = 0.5*cm
+        elements = [
+            Label(text="Sede Principal", top=0.3*cm, left=0),
+            #ObjectValue(attribute_name='nombre', top=0.3*cm, left=0),
+            ObjectValue(attribute_name='fecha', top=0.3*cm, left=6*cm, width=5.5*cm),
+            ObjectValue(attribute_name='tipo_procedimiento', top=0.3*cm, left=8*cm, width=5.5*cm),
+            ObjectValue(attribute_name='procedimiento', top=0.3*cm, left=12*cm, width=5.5*cm),
+        ]
+        
+    class band_page_footer(ReportBand):
+        height = 0.5*cm
+        elements = [
+            Label(text='Final Av. Las Américas, Urb. Humbolt – Mérida, Edo. Mérida. Tlfs. 0274-2663612– Fax: 2667007<br/>Página Web: http://www.bomberosmerida.gob.ve  e-mail: cbmestadistica@gmail.com Tlf. Directo a estadística: 0274-7893882', top=0.1*cm, left=0, width=20*cm, style={'fontSize':8, 'alignment': TA_CENTER}),
+            SystemField(expression='Página # %(page_number)d / %(page_count)d', top=0.1*cm,
+                width=BAND_WIDTH, style={'alignment': TA_RIGHT}),
+        ]
+        borders = {'top': True}
+    
+def reporte(request):
+    response = HttpResponse(mimetype='application/pdf')
+    #report = BaseReport(queryset=Estacion.objects.filter(nombre__endswith='Principal'))
+    report = BaseReport(queryset=Novedad.objects.all())
+    report.generate_by(PDFGenerator, filename=response)
+    return response
 
-import cStringIO as StringIO
-from xhtml2pdf import pisa
-from django.template.loader import get_template
-from django.template import Context
-from django.http import HttpResponse
-from cgi import escape
 
+"""
 def render_to_pdf(template_src, context_dict):
     template = get_template(template_src)
     context = Context(context_dict)
@@ -355,6 +412,7 @@ def reporte(request):
     print estaciones
     c = {'logo': os.path.join(settings.BASE_DIR, "incidencias/media/images/logo.png"), 'estaciones': estaciones}
     return render_to_pdf('reportes/novedades_x_estacion.html', c)
+"""
 
 """
 def reporte(request):
