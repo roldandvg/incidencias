@@ -122,3 +122,12 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
 
 LOGIN_URL = "/"
 LOGOUT_URL = "/"
+
+EMAIL_HOST    = 'smtp.gmail.com'
+EMAIL_PORT          = 25
+EMAIL_HOST_USER     = 'rvargas.pruebas@gmail.com'
+EMAIL_HOST_PASSWORD = 'f@vj/wnd'
+EMAIL_USE_TLS       = True
+EMAIL_FROM      = 'incidencias@bomberosmerida.gob.ve'
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

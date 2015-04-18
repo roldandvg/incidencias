@@ -94,7 +94,48 @@
                 {{form.passwd}}
                 {{form.passwd.errors}}
 				<button class="small blue"><i class="icon-signin"></i> Acceso</button>
+                <button class="small blue" type="button" id="recPass">
+                    <i class="icon-key"></i> Recuperar contraseña
+                </button>
 			{% endif %}
 		</form>
 	</li>
 </ul>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#recPass").click(function(){
+            $("#dialog-forgotpass").dialog({
+                modal: true,
+                draggable: false,
+                resizable: false,
+                position: ['center'],
+                show: 'blind',
+                hide: 'blind',
+                buttons: {
+                    'enviar': function() {
+                        $.getJSON(
+                            '/autenticar/usuario/forgotpass/', {'email': $("#email").val()}, 
+                            function(datos){
+                                if (datos.resultado) {
+                                    $("#dialog-forgotpass").close();
+                                    alert("Se ha enviado un correo con la nueva contraseña");
+                                }
+                                else {
+                                    alert(datos.msg);
+                                }
+                            }
+                        );
+                    }
+                }
+            });
+        });
+    });
+</script>
+<div id="dialog-forgotpass" title="Recuperar Contraseña" style="display:none">
+    <span class="ui-state-default">
+        <span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 0 0;"></span>
+    </span>
+    <div style="margin-left: 23px;">
+        <input type="text" id="email" placeholder="correo electrónico">
+    </div>
+</div>

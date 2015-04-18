@@ -10,6 +10,7 @@ urlpatterns = patterns('',
                        url(r'^usuario/new/$', login_required(views.UsuarioCreate.as_view()), name='user_new'),
                        url(r'^usuario/edit/(?P<pk>\d+)$', login_required(views.UsuarioUpdate.as_view()), name='user_edit'),
                        url(r'^usuario/delete/(?P<pk>\d+)$', login_required(views.UsuarioDelete.as_view()), name='user_delete'),
+                       url(r'^usuario/forgotpass/$', 'incidencias.apps.autenticar.views.forgotpass', name="olvido_pass"),
                        url(r'^login/?$', 'incidencias.apps.autenticar.views.acceso', name='acceso_sistema'),
                        url(r'^logout/?$', 'incidencias.apps.autenticar.views.salir', name='salir_sistema'),
 )
