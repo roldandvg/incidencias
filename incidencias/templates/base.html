@@ -27,12 +27,7 @@
         {% block extrahead %}
         {% endblock %}
         <script type="text/javascript">
-            $(document).ready(function(){
-                if( !($.cookie('sessionid') === null) ) {  // if NOT expired / still existent
-                    alert("su sesión ha expirado");
-                    window.href="/";
-                }
-            });
+            
 
             function passwordStrength(password)
             {
