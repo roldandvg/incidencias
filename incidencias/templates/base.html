@@ -8,11 +8,13 @@
 		<meta name="keywords" content="incidencias, bomberos, mérida, procedimientos, operaciones, novedades" />
         <link rel="stylesheet" href="{% static 'api/jquery-ui-1.10.4.custom/css/redmond/jquery-ui-1.10.4.custom.css' %}"/>
         <link rel="stylesheet" href="{% static 'api/jquery-ui-timepicker-0.3.3/jquery.ui.timepicker.css' %}" type="text/css" />
+        <link href="{% static 'css/pwd_meter.css' %}" rel="stylesheet" type="text/css" media="screen"></link>
         <script src="{% static 'js/jquery.min.js' %}"></script>
         <script src="{% static 'api/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.js' %}"></script>
         <script type="text/javascript" src="{% static 'api/jquery-ui-timepicker-0.3.3/jquery.ui.timepicker.js' %}"></script>
         <script src="{% static 'api/jquery.formset.js' %}"></script>
 		<script src="{% static 'api/kickstart/js/kickstart.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/pwd_meter.js' %}"></script>
         <script src="{% static 'js/funciones.js' %}"></script>
         <script src="{% static 'js/validaciones.js' %}"></script>
 		<link rel="stylesheet" href="{% static 'api/kickstart/css/kickstart.css' %}" media="all" />
@@ -24,6 +26,89 @@
         </script>
         {% block extrahead %}
         {% endblock %}
+        <script type="text/javascript">
+            $(document).ready(function(){
+                if( !($.cookie('sessionid') === null) ) {  // if NOT expired / still existent
+                    alert("su sesión ha expirado");
+                    window.href="/";
+                }
+            });
+
+            function passwordStrength(password)
+            {
+                var desc = new Array();
+                desc[0] = "Muy Débil";
+                desc[1] = "Débil";
+                desc[2] = "Mejor";
+                desc[3] = "Buena";
+                desc[4] = "Fuerte";
+                desc[5] = "Muy Fuerte";
+
+                var score   = 0;
+
+                //if password bigger than 6 give 1 point
+                if (password.length > 6) score++;
+
+                //if password has both lower and uppercase characters give 1 point  
+                if ( ( password.match(/[a-z]/) ) && ( password.match(/[A-Z]/) ) ) score++;
+
+                //if password has at least one number give 1 point
+                if (password.match(/\d+/)) score++;
+
+                //if password has at least one special caracther give 1 point
+                if ( password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/) ) score++;
+
+                //if password bigger than 12 give another 1 point
+                if (password.length > 12) score++;
+
+                 document.getElementById("passwordDescription").innerHTML = desc[score];
+                 document.getElementById("passwordStrength").className = "strength" + score;
+            }
+        </script>
+        <style type="text/css">
+            #passwordStrength
+            {
+                height:10px;
+                display:block;
+                float:left;
+            }
+
+            .strength0
+            {
+                width:250px;
+                background:#cccccc;
+            }
+
+            .strength1
+            {
+                width:50px;
+                background:#ff0000;
+            }
+
+            .strength2
+            {
+                width:100px;    
+                background:#ff5f5f;
+            }
+
+            .strength3
+            {
+                width:150px;
+                background:#56e500;
+            }
+
+            .strength4
+            {
+                background:#4dcd00;
+                width:200px;
+            }
+
+            .strength5
+            {
+                background:#399800;
+                width:250px;
+            }
+        </style>
 	</head>
 	<body>
 		<!-- Capa del banner de la aplicación -->

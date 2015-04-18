@@ -20,10 +20,15 @@
 	</div>
     <div class="col_6">
 		{{form.password.label}}<br/>
-		{{form.password|attr:"size:40"|attr:"type:password"|attr:"placeholder:Indique una contraseña"|attr:"value:123456"|attr:"title:La contraseña por defecto es 123456"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
+		{{form.password|attr:"size:40"|attr:"type:password"|attr:"placeholder:Indique una contraseña"|attr:"value:123456"|attr:"title:La contraseña por defecto es 123456"|attr:"onkeyup:passwordStrength(this.value)"|attr:"onfocus:$(this).val('')"}} <i class="icon-asterisk icono-small icono-required"></i><br/>
 		{% if form.password.errors %}
 			<div class="notice error"><i class="icon-remove-sign icon-large"></i> {{ form.password.errors }}<a href="#close" class="icon-remove"></a></div>
 		{% endif %}
+		<p>
+			<label for="passwordStrength">Fortaleza de contraseña</label>
+			<div id="passwordDescription">Contraseña no introducida</div>
+			<div id="passwordStrength" class="strength0"></div>
+		</p>
 	</div>
     <div class="col_6">
 		<label>Confirme la contraseña</label><br/>
