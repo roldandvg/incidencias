@@ -131,4 +131,4 @@ EMAIL_USE_TLS       = True
 EMAIL_FROM      = 'incidencias@bomberosmerida.gob.ve'
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-SESSION_COOKIE_AGE = 5 * 60
+SESSION_COOKIE_AGE = 3 * 60
